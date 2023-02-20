@@ -1,0 +1,8 @@
+.vscode
+*.OBJ
+*.BIN
+*.EXE
+*.MAP
+working
+RUN.TXT
+node_modules/

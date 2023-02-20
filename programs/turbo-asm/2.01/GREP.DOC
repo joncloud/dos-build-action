@@ -1,0 +1,343 @@
+                  GREP: A FILE SEARCH UTILITY
+                  ---------------------------
+
+
+TABLE OF CONTENTS
+-----------------
+1. What is GREP?
+2. GREP Options
+3. The Search String
+4. Operators in Regular Expressions
+5. The File Specification
+6. GREP Examples
+
+1. WHAT IS GREP?
+----------------
+
+  GREP is a powerful search utility that can search for text in several files 
+  at once.
+
+  The general command-line syntax for GREP follows:
+
+    grep [options] searchstring filespec [filespec filespec ...filespec]
+
+  For example, if you want to see in which source files you call the 
+  setupmodem function, you could use GREP to search the contents of all the 
+  .ASM files in your directory to look for the string setupmodem, like this:
+
+    grep setupmodem *.asm
+
+
+2. GREP OPTIONS
+---------------
+
+  In the command line, options are one or more single characters preceded by 
+  a hyphen symbol (-). Each individual character is a switch that you can turn
+  on or off: type the plus (+) after a character to turn the option on, or 
+  type a hyphen (-) after the character to turn the option off.
+
+  The default is on (the + is implied): for example, -r means the same thing 
+  as -r+. You can list multiple options individually (like this: -i -d -l), 
+  or you can combine them (like this: -ild or -il -d, and so forth); they're 
+  all the same to GREP.
+
+  Here is a list of the option characters used with GREP and their meanings:
+
+  -c  Count only: Only a count of matching lines is printed. For each file 
+      that contains at least one matching line, GREP prints the file name and
+      a count of the number of matching lines. Matching lines are not printed.
+
+  -d  Directories: For each filespec specified on the command line, GREP 
+      searches for all files that match the file specification, both in the 
+      directory specified and in all subdirectories below the specified 
+      directory. If you give a filespec without a path, GREP assumes the 
+      files are in the current directory.
+
+  -i  Ignore case: GREP ignores uppercase/lowercase differences (case-folding).
+      GREP treats all letters a-z as being identical to the corresponding 
+      letters A-Z in all situations.
+
+  -l  List match files: Only the name of each file containing a match is 
+      printed. After GREP finds a match, it prints the file name and 
+      processing immediately moves on to the next file.
+
+  -n  Numbers: Each matching line that GREP prints is preceded by its 
+      line number.
+
+  -o  UNIX output format: Changes the output format of matching lines to 
+      support more easily the UNIX style of command-line piping. All lines 
+      of output are preceded by the name of the file that contained the 
+      matching line.
+
+  -r  Regular expression search: The text defined by searchstring is treated 
+      as a regular expression instead of as a literal string.
+
+  -u  Update options: GREP will combine the options given on the command line 
+      with its default options and write these to the GREP.COM file as the 
+      new defaults. (In other words, GREP is self-configuring.) This option 
+      allows you to tailor the default option settings to your own taste.
+
+  -v  Non-match: Only non-matching lines are printed. Only lines that do not 
+      contain the search string are considered to be non-matching lines.
+
+  -w  Word search: Text found that matches the regular expression will be 
+      considered a match only if the character immediately preceding and 
+      following cannot be part of a word. The default word character set 
+      includes A-Z, 9-0, and the underscore (_). An alternate form of this 
+      option allows you to specify the set of legal word characters. Its form
+      is -w[set], where set is any valid regular expression set definition. 
+      If alphabetic characters are used to define the set, the set will 
+      automatically be defined to contain both the uppercase and lowercase 
+      values for each letter in the set, regardless of how it is typed, even 
+      if the search is case-sensitive. If the -w option is used in combination
+      with the -u option, the new set of legal characters is saved as the 
+      default set.
+
+  -z  Verbose: GREP prints the file name of every file searched. Each matching 
+      line is preceded by its line number. A count of matching lines in each 
+      file is given, even if the count is zero.
+
+  Remember that each of GREP's options is a switch: its state reflects the way 
+  you last "flipped" it. At any given time, each option can only be on or off. 
+  Each occurrence of a given option on the command line overrides its previous
+  definition. For example,
+
+    grep -r -i- -d -i -r-  main( my*.asm
+
+  Given this command line, GREP will run with the -d option on, the -i option 
+  on, and the -r option off.
+
+  You can install your preferred default setting for each option in GREP.COM 
+  with the -u option. For example, if you want GREP to always do a verbose 
+  search (-z on), you can install it with the following command:
+
+    grep -u -z
+
+
+3. THE SEARCH STRING
+--------------------
+
+  The value of the search string defines the pattern GREP will search for. 
+  A search string can be either a regular expression or a literal string. In 
+  a regular expression, certain characters have special meanings: they are 
+  operators that govern the search. In a literal string, there are no 
+  operators; each character is treated literally.
+
+  You can enclose the search string in quotation marks to prevent spaces and 
+  tabs from being treated as delimiters. Matches will not cross line boundaries
+  (a match must be contained in a single line).
+
+  An expression is either a single character or a set of characters enclosed 
+  in brackets. A concatenation of regular expressions is a regular expression.
+
+
+4. OPERATORS IN REGULAR EXPRESSIONS
+-----------------------------------
+
+  When you use the -r option, the search string is treated as a regular 
+  expression (not a literal expression) and the following characters take on 
+  special meanings:
+
+  ^  A circumflex at the start of the expression matches the start of a line.
+
+  $  A dollar sign at the end of the expression matches the end of a line.
+
+  .  A period matches any character.
+
+  *  An expression followed by an asterisk wildcard matches zero or more 
+     occurrences of that expression. For example, in fo*, the * operates on 
+     the expression o; it matches f, fo, foo, and so on. (f followed by zero 
+     or more os), but doesn't match fa.
+
+  +  An expression followed by a plus sign matches one or more occurrences 
+     of that expression: fo+ matches fo, foo, and so on, but not f.
+
+  [] A string enclosed in brackets matches any character in that string, 
+     but no others. If the first character in the string is a circumflex (^), 
+     the expression matches any character except the characters in the string. 
+     For example, [xyz] matches x, y, or z, while [^xyz} matches a and b, but 
+     not x, y, or z. You can specify a range of characters with two characters
+     separated by a hyphen (-). These can be combined to form expressions (like 
+     [a-bd-z?] to match ? and any lowercase letter except c).
+
+  \  The backslash escape character tells GREP to seach for the literal 
+     character that follows it. For example, \. matches a period instead of 
+    "any character."
+
+  Note: Four of the previously described characters ($, ., *, and +) do not 
+  have any special meaning when used within a bracketed set. In addition, 
+  the character ^ is only treated specially if it immediately follows the 
+  beginning of the set definition (that is, immediately after the [).
+
+  Any ordinary character not mentioned in the preceding list matches that 
+  character. (> matches >, # matches #, and so on.)
+
+
+5. THE FILE SPECIFICATION
+-------------------------
+
+  The third item in the GREP command line is filespec, the file specification; 
+  it tells GREP which files (or groups of files) to search. filespec can be an 
+  explicit file name, or a generic file name incorporating the DOS ? and * 
+  wildcards. In addition, you can enter a path (drive and directory 
+  information) as part of filespec. If you give filespec without a path, 
+  GREP only searches the current directory.
+
+
+6. GREP EXAMPLES
+----------------
+
+  The following examples assume that all of GREP's options default to off:
+
+  Example 1
+  ---------
+  Command line:    grep start: *.asm
+
+  Matches:         start:
+                   restart:
+
+  Does not match:  restarted:
+                   ClockStart:
+
+  Files Searched:  *.ASM in current directory.
+
+  Note: By default, the search is case-sensitive.
+
+
+  Example 2
+  ---------
+  Command line:    grep -r [^a-z]main\ *( *.asm
+
+  Matches:         main(i:integer)
+                   main(i,j:integer)
+                   if (main  ()) halt;
+
+  Does not match:  mymain()
+                   MAIN(i:integer);
+
+  Files Searched:  *.ASM in current directory.
+
+  Note: GREP searches for the word main with no preceding lowercase letters 
+  ([^a-z]), followed by zero or more occurrences of blank spaces (\ *), then 
+  a left parenthesis.
+
+  Since spaces and tabs are normally considered to be command line delimiters, 
+  you must quote them if you want to include them as part of a regular 
+  expression. In this case, the space after main is quoted with the backslash 
+  escape character. You could also accomplish this by placing the space in 
+  double quotes
+
+    [^a-z]main" "*
+
+
+  Example 3
+  ---------
+  Command line:    grep -ri [a-c]:\\data\.fil *.asm *.inc
+
+  Matches:         A:\data.fil
+                   c:\Data.Fil
+                   B:\DATA.FIL
+
+  Does not match:  d:\data.fil
+                   a:data.fil
+
+  Files Searched:  *.ASM and *.INC in current directory.
+
+  Note: Because the backslash and period characters (\ and .) usually have 
+  special meaning, if you want to search for them, you must quote them by 
+  placing the backslash escape character immediately in front of them.
+
+
+  Example 4
+  ---------
+  Command line:    grep -ri [^a-z]word[^a-z] *.doc
+
+  Matches:         every new word must be on a new line.
+                   MY WORD!
+                   word--smallest unit of speech.
+                   In the beginning there was the WORD, and the WORD
+
+  Does not match:  Each file has at least 2000 words.
+                   He misspells toward as toword.
+
+  Files Searched:  *.DOC in the current directory.
+
+  Note: This format basically defines how to search for a given word.
+
+
+  Example 5
+  ---------
+  Command line:    grep -iw word *.doc
+
+  Matches:         every new word must be on a new line However,
+                   MY WORD!
+                   word: smallest unit of speech that conveys meaning.
+                   In the beginning there was the WORD, and the WORD
+
+  Does not match:  each document contains at least 2000 words!
+                   He seems to continually misspell "toward" as "toword."
+
+  Files searched:  *.doc in the current directory.
+
+  Note: This format defines a basic "word" search.
+
+
+  Example 6
+  ---------
+  Command line:    grep "search string with spaces" *.doc *.asm
+                   a:\work\myfile.*
+
+  Matches:         This is a search string with spaces in it.
+
+  Does not match:  THIS IS A SEARCH STRING WITH SPACES IN IT.
+                   This is a search string with many spaces in it.
+
+  Files Searched:  *.DOC and *.ASM in the current directory, and MYFILE.*
+                     in a directory called \WORK on drive A:.
+
+  Note: This is an example of how to search for a string with embedded spaces.
+
+
+  Example 7
+  ---------
+  Command line:    grep -rd "[ ,.:?'\"]"$ \*.doc
+
+  Matches:         He said hi to me.
+                   Where are you going?
+                   Happening in anticipation of a unique situation,
+                   Examples include the following:
+                   "Many men smoke, but fu man chu."
+
+  Does not match:  He said "Hi" to me
+                   Where are you going? I'm headed to the beach this
+
+  Files Searched:  *.DOC in the root directory and all its subdirectories
+                   on the current drive.
+
+  Note: This example searches for the characters ,.:?' and " at the end of a 
+  line. Notice that the double quote within the range is preceded by an 
+  escape character so it is treated as a normal character instead of as the 
+  ending quote for the string. Also, notice how the $ character appears 
+  outside of the quoted string. This demonstrates how regular expressions can 
+  be concatenated to form a longer expression.
+
+
+  Example 8
+  ---------
+  Command line:    grep -ild " the " \*.doc
+                   or grep -i -l -d " the " \*.doc
+                   or grep -il -d " the " \*.doc
+
+  Matches:         Anyway, this is the time we have
+                   do you think? The main reason we are
+
+  Does not match:  He said "Hi" to me just when I
+                   Where are you going? I'll bet you're headed to
+
+  Files Searched:  *.DOC in the root directory and all its subdirectories
+                   on the current drive.
+
+  Note: This example ignores case and just prints the names of any files that 
+  contain at least one match. The three examples show different ways of 
+  specifying multiple options.
+

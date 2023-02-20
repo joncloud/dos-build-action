@@ -1,0 +1,1462 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 00296H 00297H _TEXT              CODE
+ 00297H 016CBH 01435H 1_MAIN_TEXT        CODE
+ 016CCH 02B74H 014A9H 1_INIT_TEXT        CODE
+ 02B75H 041EEH 0167AH 1_BACK_TEXT        CODE
+ 041EFH 04A16H 00828H 1_BOSS1_TEXT       CODE
+ 04A17H 05129H 00713H 1_FILE_TEXT        CODE
+ 0512AH 0579DH 00674H 1_GRP_TEXT         CODE
+ 0579EH 062ADH 00B10H 1_IMAGE_TEXT       CODE
+ 062AEH 06C58H 009ABH 1_MOVE_TEXT        CODE
+ 06C59H 0AB07H 03EAFH 1_MOVPAT_TEXT      CODE
+ 0AB08H 0AB99H 00092H 1_MUSIC_TEXT       CODE
+ 0AB9AH 0BF6BH 013D2H 1_OBJECT_TEXT      CODE
+ 0BF6CH 0CC0EH 00CA3H 1_PANEL_TEXT       CODE
+ 0CC0FH 0CE1DH 0020FH 1_SBFX_TEXT        CODE
+ 0CE1EH 0EC26H 01E09H 1_SCRIPT_TEXT      CODE
+ 0EC27H 0F8A6H 00C80H 1_SHTMOV_TEXT      CODE
+ 0F8A7H 0FCF1H 0044BH 1_SHTPAT_TEXT      CODE
+ 0FCF2H 0FF61H 00270H 1_SOUND_TEXT       CODE
+ 0FF62H 10420H 004BFH 1_SPTILE_TEXT      CODE
+ 10421H 10476H 00056H FX_MANC_TEXT       CODE
+ 10477H 104E0H 0006AH MU_MANC_TEXT       CODE
+ 104E1H 104F4H 00014H MU_MANCA_TEXT      CODE
+ 104F5H 10592H 0009EH SB_MANC_TEXT       CODE
+ 10593H 105C4H 00032H LZSS_TEXT          CODE
+ 105C5H 10830H 0026CH RES_MAN_TEXT       CODE
+ 10832H 1140EH 00BDDH G_ASM_TEXT         CODE
+ 11410H 11410H 00000H _FARDATA           FAR_DATA
+ 11410H 14F3FH 03B30H 1_MAIN5_DATA       FAR_DATA
+ 14F40H 15A00H 00AC1H 1_SCRIPT5_DATA     FAR_DATA
+ 15A10H 15A10H 00000H _FARBSS            FAR_BSS
+ 15A10H 15A10H 00000H _OVERLAY_          OVRINFO
+ 15A10H 15A10H 00000H _1STUB_            STUBSEG
+ 15A10H 16BA8H 01199H _DATA              DATA
+ 16BAAH 16BAAH 00000H _CVTSEG            DATA
+ 16BAAH 16BAAH 00000H _SCNSEG            DATA
+ 16BAAH 16BAAH 00000H _CONST             CONST
+ 16BAAH 16BAAH 00000H _INIT_             INITDATA
+ 16BAAH 16BAAH 00000H _INITEND_          INITDATA
+ 16BAAH 16BAAH 00000H _EXIT_             EXITDATA
+ 16BAAH 16BAAH 00000H _EXITEND_          EXITDATA
+ 16BAAH 20123H 0957AH _BSS               BSS
+ 20124H 20124H 00000H _BSSEND            BSSEND
+ 20130H 201AFH 00080H _STACK             STACK
+
+
+Detailed map of segments
+
+ 0000:0000 0297 C=CODE   S=_TEXT          G=(none)  M=c0.ASM     ACBP=28
+ 0029:0007 1435 C=CODE   S=1_MAIN_TEXT    G=(none)  M=1_main.c   ACBP=28
+ 016C:000C 14A9 C=CODE   S=1_INIT_TEXT    G=(none)  M=1_init.c   ACBP=28
+ 02B7:0005 167A C=CODE   S=1_BACK_TEXT    G=(none)  M=1_back.c   ACBP=28
+ 041E:000F 0828 C=CODE   S=1_BOSS1_TEXT   G=(none)  M=1_boss1.c  ACBP=28
+ 04A1:0007 0713 C=CODE   S=1_FILE_TEXT    G=(none)  M=1_file.c   ACBP=28
+ 0512:000A 0674 C=CODE   S=1_GRP_TEXT     G=(none)  M=1_grp.c    ACBP=28
+ 0579:000E 0B10 C=CODE   S=1_IMAGE_TEXT   G=(none)  M=1_image.c  ACBP=28
+ 062A:000E 09AB C=CODE   S=1_MOVE_TEXT    G=(none)  M=1_move.c   ACBP=28
+ 06C5:0009 3EAF C=CODE   S=1_MOVPAT_TEXT  G=(none)  M=1_movpat.c ACBP=28
+ 0AB0:0008 0092 C=CODE   S=1_MUSIC_TEXT   G=(none)  M=1_music.c  ACBP=28
+ 0AB9:000A 13D2 C=CODE   S=1_OBJECT_TEXT  G=(none)  M=1_object.c ACBP=28
+ 0BF6:000C 0CA3 C=CODE   S=1_PANEL_TEXT   G=(none)  M=1_panel.c  ACBP=28
+ 0CC0:000F 020F C=CODE   S=1_SBFX_TEXT    G=(none)  M=1_sbfx.c   ACBP=28
+ 0CE1:000E 1E09 C=CODE   S=1_SCRIPT_TEXT  G=(none)  M=1_script.c ACBP=28
+ 0EC2:0007 0C80 C=CODE   S=1_SHTMOV_TEXT  G=(none)  M=1_shtmov.c ACBP=28
+ 0F8A:0007 044B C=CODE   S=1_SHTPAT_TEXT  G=(none)  M=1_shtpat.c ACBP=28
+ 0FCF:0002 0270 C=CODE   S=1_SOUND_TEXT   G=(none)  M=1_sound.c  ACBP=28
+ 0FF6:0002 04BF C=CODE   S=1_SPTILE_TEXT  G=(none)  M=1_sptile.c ACBP=28
+ 1042:0001 0056 C=CODE   S=FX_MANC_TEXT   G=(none)  M=fx_manc.c  ACBP=28
+ 1047:0007 006A C=CODE   S=MU_MANC_TEXT   G=(none)  M=mu_manc.c  ACBP=28
+ 104E:0001 0014 C=CODE   S=MU_MANCA_TEXT  G=(none)  M=mu_manca.c ACBP=28
+ 104F:0005 009E C=CODE   S=SB_MANC_TEXT   G=(none)  M=sb_manc.c  ACBP=28
+ 1059:0003 0032 C=CODE   S=LZSS_TEXT      G=(none)  M=lzss.c     ACBP=28
+ 105C:0005 026C C=CODE   S=RES_MAN_TEXT   G=(none)  M=res_man.c  ACBP=28
+ 1083:0002 0BDD C=CODE   S=G_ASM_TEXT     G=(none)  M=G_ASM.ASM  ACBP=48
+ 1141:0000 0000 C=FAR_DATA S=_FARDATA       G=(none)  M=c0.ASM     ACBP=68
+ 1141:0000 3B30 C=FAR_DATA S=1_MAIN5_DATA   G=(none)  M=1_main.c   ACBP=68
+ 14F4:0000 0AC1 C=FAR_DATA S=1_SCRIPT5_DATA G=(none)  M=1_script.c ACBP=68
+ 15A1:0000 0000 C=FAR_BSS S=_FARBSS        G=(none)  M=c0.ASM     ACBP=68
+ 15A1:0000 0000 C=OVRINFO S=_OVERLAY_      G=(none)  M=c0.ASM     ACBP=68
+ 15A1:0000 0000 C=STUBSEG S=_1STUB_        G=(none)  M=c0.ASM     ACBP=68
+ 15A1:0000 00AA C=DATA   S=_DATA          G=DGROUP  M=c0.ASM     ACBP=68
+ 15A1:00AA 00FF C=DATA   S=_DATA          G=DGROUP  M=1_main.c   ACBP=48
+ 15A1:01AA 020F C=DATA   S=_DATA          G=DGROUP  M=1_init.c   ACBP=48
+ 15A1:03BA 00C2 C=DATA   S=_DATA          G=DGROUP  M=1_back.c   ACBP=48
+ 15A1:047C 0000 C=DATA   S=_DATA          G=DGROUP  M=1_boss1.c  ACBP=48
+ 15A1:047C 006E C=DATA   S=_DATA          G=DGROUP  M=1_file.c   ACBP=48
+ 15A1:04EA 0008 C=DATA   S=_DATA          G=DGROUP  M=1_grp.c    ACBP=48
+ 15A1:04F2 0018 C=DATA   S=_DATA          G=DGROUP  M=1_image.c  ACBP=48
+ 15A1:050A 0000 C=DATA   S=_DATA          G=DGROUP  M=1_move.c   ACBP=48
+ 15A1:050A 00F8 C=DATA   S=_DATA          G=DGROUP  M=1_movpat.c ACBP=48
+ 15A1:0602 0000 C=DATA   S=_DATA          G=DGROUP  M=1_music.c  ACBP=48
+ 15A1:0602 0022 C=DATA   S=_DATA          G=DGROUP  M=1_object.c ACBP=48
+ 15A1:0624 018B C=DATA   S=_DATA          G=DGROUP  M=1_panel.c  ACBP=48
+ 15A1:07B0 000F C=DATA   S=_DATA          G=DGROUP  M=1_sbfx.c   ACBP=48
+ 15A1:07C0 04B4 C=DATA   S=_DATA          G=DGROUP  M=1_script.c ACBP=48
+ 15A1:0C74 0030 C=DATA   S=_DATA          G=DGROUP  M=1_shtmov.c ACBP=48
+ 15A1:0CA4 0024 C=DATA   S=_DATA          G=DGROUP  M=1_shtpat.c ACBP=48
+ 15A1:0CC8 0038 C=DATA   S=_DATA          G=DGROUP  M=1_sound.c  ACBP=48
+ 15A1:0D00 0000 C=DATA   S=_DATA          G=DGROUP  M=1_sptile.c ACBP=48
+ 15A1:0D00 0034 C=DATA   S=_DATA          G=DGROUP  M=fx_manc.c  ACBP=48
+ 15A1:0D34 0034 C=DATA   S=_DATA          G=DGROUP  M=mu_manc.c  ACBP=48
+ 15A1:0D68 0035 C=DATA   S=_DATA          G=DGROUP  M=mu_manca.c ACBP=48
+ 15A1:0D9E 0034 C=DATA   S=_DATA          G=DGROUP  M=sb_manc.c  ACBP=48
+ 15A1:0DD2 0031 C=DATA   S=_DATA          G=DGROUP  M=lzss.c     ACBP=48
+ 15A1:0E04 0034 C=DATA   S=_DATA          G=DGROUP  M=res_man.c  ACBP=48
+ 15A1:0E38 0361 C=DATA   S=_DATA          G=DGROUP  M=G_ASM.ASM  ACBP=48
+ 15A1:119A 0000 C=DATA   S=_CVTSEG        G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 0000 C=DATA   S=_SCNSEG        G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 0000 C=CONST  S=_CONST         G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 0000 C=INITDATA S=_INIT_         G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 0000 C=INITDATA S=_INITEND_      G=DGROUP  M=c0.ASM     ACBP=28
+ 15A1:119A 0000 C=EXITDATA S=_EXIT_         G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 0000 C=EXITDATA S=_EXITEND_      G=DGROUP  M=c0.ASM     ACBP=28
+ 15A1:119A 0000 C=BSS    S=_BSS           G=DGROUP  M=c0.ASM     ACBP=48
+ 15A1:119A 75A4 C=BSS    S=_BSS           G=DGROUP  M=1_main.c   ACBP=48
+ 15A1:873E 0009 C=BSS    S=_BSS           G=DGROUP  M=1_init.c   ACBP=48
+ 15A1:8748 0000 C=BSS    S=_BSS           G=DGROUP  M=1_back.c   ACBP=48
+ 15A1:8748 0000 C=BSS    S=_BSS           G=DGROUP  M=1_boss1.c  ACBP=48
+ 15A1:8748 0000 C=BSS    S=_BSS           G=DGROUP  M=1_file.c   ACBP=48
+ 15A1:8748 0300 C=BSS    S=_BSS           G=DGROUP  M=1_grp.c    ACBP=48
+ 15A1:8A48 003C C=BSS    S=_BSS           G=DGROUP  M=1_image.c  ACBP=48
+ 15A1:8A84 0000 C=BSS    S=_BSS           G=DGROUP  M=1_move.c   ACBP=48
+ 15A1:8A84 0002 C=BSS    S=_BSS           G=DGROUP  M=1_movpat.c ACBP=48
+ 15A1:8A86 0000 C=BSS    S=_BSS           G=DGROUP  M=1_music.c  ACBP=48
+ 15A1:8A86 03F0 C=BSS    S=_BSS           G=DGROUP  M=1_object.c ACBP=48
+ 15A1:8E76 0000 C=BSS    S=_BSS           G=DGROUP  M=1_panel.c  ACBP=48
+ 15A1:8E76 0014 C=BSS    S=_BSS           G=DGROUP  M=1_sbfx.c   ACBP=48
+ 15A1:8E8A 017C C=BSS    S=_BSS           G=DGROUP  M=1_script.c ACBP=48
+ 15A1:9006 0000 C=BSS    S=_BSS           G=DGROUP  M=1_shtmov.c ACBP=48
+ 15A1:9006 0000 C=BSS    S=_BSS           G=DGROUP  M=1_shtpat.c ACBP=48
+ 15A1:9006 0002 C=BSS    S=_BSS           G=DGROUP  M=1_sound.c  ACBP=48
+ 15A1:9008 0000 C=BSS    S=_BSS           G=DGROUP  M=1_sptile.c ACBP=48
+ 15A1:9008 0000 C=BSS    S=_BSS           G=DGROUP  M=fx_manc.c  ACBP=48
+ 15A1:9008 0000 C=BSS    S=_BSS           G=DGROUP  M=mu_manc.c  ACBP=48
+ 15A1:9008 0000 C=BSS    S=_BSS           G=DGROUP  M=mu_manca.c ACBP=48
+ 15A1:9008 0001 C=BSS    S=_BSS           G=DGROUP  M=sb_manc.c  ACBP=48
+ 15A1:900A 0000 C=BSS    S=_BSS           G=DGROUP  M=lzss.c     ACBP=48
+ 15A1:900A 170A C=BSS    S=_BSS           G=DGROUP  M=res_man.c  ACBP=48
+ 15A1:A714 0000 C=BSSEND S=_BSSEND        G=DGROUP  M=c0.ASM     ACBP=28
+ 2013:0000 0080 C=STACK  S=_STACK         G=(none)  M=c0.ASM     ACBP=74
+
+  Address         Publics by Name
+
+ 15A1:0000 idle  DATASEG@
+ 0000:0293 idle  DGROUP@
+ 0000:027C idle  _abort
+ 15A1:7A4E       _abuff
+ 15A1:574C       _actor
+ 062A:0736       _actor_always_shoots
+ 062A:02A2       _actor_damaged
+ 062A:0458       _actor_destroyed
+ 062A:0748       _actor_shoots
+ 02B7:0737       _actor_speaks
+ 0579:0876       _actor_visible
+ 0BF6:0331       _add_health
+ 0BF6:0271       _add_jewels
+ 0BF6:037F       _add_keys
+ 0BF6:02FB       _add_magic
+ 0BF6:0299       _add_score
+ 15A1:7A4C       _ami_buff
+ 15A1:8A52 idle  _ami_store1
+ 15A1:8A50 idle  _ami_store2
+ 15A1:83CA       _apple_drop
+ 15A1:2A39       _apple_flag
+ 15A1:83C8       _area
+ 0BF6:09D2       _ask_exit
+ 016C:0EC2 idle  _ask_joystick
+ 15A1:11A5       _auto_load
+ 02B7:1639       _bgtile
+ 15A1:85C0       _bg_pics
+ 15A1:83D6 idle  _bleep
+ 15A1:2A37       _bomb_flag
+ 15A1:050A idle  _bomb_x
+ 15A1:051C idle  _bomb_y
+ 041E:000F       _boss1_movement
+ 15A1:2133       _boss_active
+ 15A1:2AC3       _boss_dead
+ 041E:052F idle  _boss_dead1
+ 041E:04ED       _boss_level1
+ 15A1:83CB       _boss_loaded
+ 15A1:2A99       _boss_pcsound
+ 15A1:2AA5       _boss_sound
+ 0BF6:04A1       _boss_status
+ 15A1:8608       _break_code
+ 15A1:8E98 idle  _buffer
+ 15A1:8E9C idle  _buff_end
+ 15A1:8EA0 idle  _buff_ptr
+ 02B7:0005 idle  _build_screen
+ 15A1:8740 idle  _byte
+ 0EC2:0AFD idle  _calc_angle
+ 0CE1:037D idle  _calc_string
+ 0CE1:0536 idle  _calc_value
+ 0AB9:13B0 idle  _cannot_carry_more
+ 15A1:21D3       _carry_inform
+ 15A1:21DB       _cash1_inform
+ 15A1:21D9       _cash2_inform
+ 0FF6:0456 idle  _cash_door1
+ 15A1:83C9       _cheat
+ 041E:03F8       _check_boss1_hit
+ 06C5:0009 idle  _check_move0
+ 06C5:04E3 idle  _check_move1
+ 06C5:07B7       _check_move2
+ 06C5:0AD3       _check_move3
+ 06C5:0D8E       _check_move4
+ 06C5:135F idle  _check_special_move1
+ 06C5:0E18 idle  _check_thor_move
+ 041E:0719       _closing_sequence1
+ 0CE1:10A8 idle  _cmd_addhealth
+ 0CE1:1088 idle  _cmd_addjewels
+ 0CE1:10E8 idle  _cmd_addkeys
+ 0CE1:10C8 idle  _cmd_addmagic
+ 0CE1:1108 idle  _cmd_addscore
+ 0CE1:11E1 idle  _cmd_ask
+ 0CE1:1A5E idle  _cmd_exec
+ 0CE1:0E3A idle  _cmd_goto
+ 0CE1:0ED8 idle  _cmd_if
+ 0CE1:1487 idle  _cmd_itemgive
+ 0CE1:14DE idle  _cmd_itemtake
+ 0CE1:153C idle  _cmd_ltoa
+ 0CE1:15C8 idle  _cmd_pause
+ 0CE1:1652 idle  _cmd_random
+ 0CE1:1065 idle  _cmd_run
+ 0CE1:1128 idle  _cmd_say
+ 0CE1:14E6 idle  _cmd_setflag
+ 0CE1:13AD idle  _cmd_settile
+ 0CE1:1365 idle  _cmd_sound
+ 0CE1:160D idle  _cmd_visible
+ 02B7:064B idle  _copy_bg_icon
+ 15A1:819A       _current_area
+ 15A1:81A0       _current_level
+ 15A1:9006 idle  _current_priority
+ 0AB9:13CB       _delete_object
+ 15A1:131B       _demo
+ 15A1:131C       _demo_cnt
+ 15A1:1319 idle  _demo_enable
+ 15A1:131E       _demo_key
+ 016C:06C0       _demo_key_set
+ 15A1:8605       _diag
+ 15A1:8A85 idle  _diag_flag
+ 15A1:00B0       _dialog_color
+ 15A1:2135       _dig_sound
+ 016C:0EC1 idle  _display_copyright
+ 0BF6:000C       _display_health
+ 0BF6:01BB       _display_item
+ 0BF6:007A       _display_jewels
+ 0BF6:014C       _display_keys
+ 0BF6:0045       _display_magic
+ 15A1:873C       _display_page
+ 0BF6:00E5       _display_score
+ 02B7:0851       _display_speech
+ 15A1:21D7       _door_inform
+ 15A1:873A       _draw_page
+ 0AB9:0424       _drop_object
+ 02B7:06CE       _d_restore
+ 15A1:119E       _end_tile
+ 15A1:474C       _enemy
+ 15A1:8A5A idle  _enemy_ami
+ 15A1:8A5C idle  _enemy_lm
+ 15A1:8A5E idle  _enemy_mb
+ 15A1:373C       _enemy_type
+ 0FF6:036D idle  _erase_door
+ 15A1:0094 idle  _errno
+ 15A1:01AA idle  _err_msg
+ 15A1:8A64 idle  _etype
+ 0CE1:000E       _execute_script
+ 0CE1:1AA2 idle  _exec_command
+ 016C:0447       _exit_code
+ 15A1:8735       _exit_flag
+ 15A1:2C37       _explosion
+ 15A1:85EC       _extra_cnt
+ 0512:059C       _fade_in
+ 0512:05A8       _fade_out
+ 15A1:11A3 idle  _fast_exit
+ 04A1:0007       _file_size
+ 0BF6:03B4       _fill_health
+ 0BF6:03BF       _fill_magic
+ 0BF6:03CA       _fill_score
+ 15A1:8EA4 idle  _for_ptr
+ 15A1:8ED7 idle  _for_stack
+ 15A1:8EAF idle  _for_val
+ 15A1:8EA5 idle  _for_var
+ 1042:0041       _FX_PCPlaying
+ 1042:0029       _FX_PlayPC
+ 1042:0015       _FX_ServicePC
+ 1042:0001       _FX_StopPC
+ 15A1:11F9       _game_over
+ 0CE1:021B idle  _get_command
+ 0CE1:0723 idle  _get_internal_variable
+ 0CE1:0957 idle  _get_line
+ 0CE1:063C idle  _get_next_val
+ 016C:082F       _get_response
+ 0CE1:04E4 idle  _get_str
+ 0CE1:0DAA idle  _get_string
+ 15A1:8EFF idle  _gosub_ptr
+ 15A1:8F00 idle  _gosub_stack
+ 15A1:047C idle  _gotres
+ 15A1:11A1 idle  _gr
+ 15A1:2D37       _hammer
+ 0BF6:0BFA idle  _hammer_smack
+ 15A1:21E5       _hampic
+ 04A1:0351       _help
+ 15A1:2A43       _hourglass_flag
+ 15A1:11A4 idle  _ide_run
+ 15A1:85DC       _in
+ 016C:000C       _initialize
+ 0BF6:0223       _init_status_panel
+ 15A1:0838 idle  _internal_variable
+ 15A1:03D8 idle  _item_name
+ 15A1:2A27       _joyhx
+ 15A1:2A25       _joyhy
+ 15A1:2A2B       _joylx
+ 15A1:2A29       _joyly
+ 15A1:2A2D       _joystick
+ 15A1:2A30       _joy_b1
+ 15A1:2A2F       _joy_b2
+ 15A1:866D       _joy_flag
+ 016C:08DD       _joy_key
+ 15A1:2A33       _joy_x
+ 15A1:2A31       _joy_y
+ 016C:058C idle  _keyboard_int
+ 15A1:2ACD       _key_down
+ 15A1:2AD1       _key_fire
+ 15A1:86D1       _key_flag
+ 15A1:2ACB       _key_left
+ 15A1:2AC7       _key_magic
+ 15A1:2AC9       _key_right
+ 15A1:2AC5       _key_select
+ 15A1:2ACF       _key_up
+ 15A1:21D1       _killgg_inform
+ 02B7:1288 idle  _kill_enemies
+ 062A:0273 idle  _kill_good_guy
+ 15A1:2A45       _last_oracle
+ 15A1:8606       _last_scan_code
+ 15A1:83A8       _last_setup
+ 15A1:8A62 idle  _latch_mem
+ 15A1:83D1       _level_type
+ 15A1:2A3D       _lightning_used
+ 14F4:00FF idle  _line_label
+ 15A1:8F86 idle  _line_ptr
+ 04A1:0154       _load_actor
+ 04A1:005A       _load_bg_data
+ 0579:0689 idle  _load_enemy
+ 04A1:0461       _load_game
+ 15A1:21E3       _load_game_flag
+ 04A1:066B       _load_music
+ 0579:0A0C       _load_new_thor
+ 04A1:0131       _load_objects
+ 0512:02F0       _load_palette
+ 04A1:00A7       _load_sd_data
+ 04A1:01B3 idle  _load_speech
+ 0579:02BD       _load_standard_actors
+ 15A1:8E8A idle  _ltemp
+ 15A1:8E8E idle  _lvalue
+ 15A1:11FA       _lzss_buff
+ 1059:001B idle  _LZSS_compress
+ 1059:0003 idle  _LZSS_decompress
+ 15A1:8A58 idle  _magic_ami
+ 15A1:85EE       _magic_cnt
+ 15A1:21D5       _magic_inform
+ 15A1:353C       _magic_item
+ 15A1:8A54 idle  _magic_mask_buff
+ 15A1:2D3C       _magic_pic
+ 0029:0007       _main
+ 15A1:119F       _main_loop
+ 0579:022A idle  _make_actor_mask
+ 0579:000E idle  _make_mask
+ 15A1:815A       _mask_buff
+ 15A1:8156       _mask_buff_start
+ 15A1:8A4C idle  _mask_store1
+ 15A1:8A48 idle  _mask_store2
+ 15A1:85F4 idle  _max_shot
+ 016C:0997       _merge_keys
+ 06C5:2114 idle  _movement_eight
+ 06C5:28B6 idle  _movement_eighteen
+ 06C5:2379 idle  _movement_eleven
+ 06C5:26B2 idle  _movement_fifteen
+ 06C5:1D74 idle  _movement_five
+ 06C5:3CB4 idle  _movement_forty
+ 06C5:1C69 idle  _movement_four
+ 06C5:25E4 idle  _movement_fourteen
+ 15A1:0532       _movement_func
+ 06C5:215B idle  _movement_nine
+ 06C5:29AA idle  _movement_nineteen
+ 06C5:1AA6 idle  _movement_one
+ 06C5:20DF idle  _movement_seven
+ 06C5:274D idle  _movement_seventeen
+ 06C5:207A idle  _movement_six
+ 06C5:26C2 idle  _movement_sixteen
+ 06C5:2264 idle  _movement_ten
+ 06C5:2568 idle  _movement_thirteen
+ 06C5:372D idle  _movement_thirty
+ 06C5:3A11 idle  _movement_thirtyeight
+ 06C5:38A9 idle  _movement_thirtyfive
+ 06C5:389D idle  _movement_thirtyfour
+ 06C5:3B9F idle  _movement_thirtynine
+ 06C5:3797 idle  _movement_thirtyone
+ 06C5:3908 idle  _movement_thirtyseven
+ 06C5:38C1 idle  _movement_thirtysix
+ 06C5:3891 idle  _movement_thirtythree
+ 06C5:3885 idle  _movement_thirtytwo
+ 06C5:1B7F idle  _movement_three
+ 06C5:24E2 idle  _movement_twelve
+ 06C5:29B9 idle  _movement_twenty
+ 06C5:34DB idle  _movement_twentyeight
+ 06C5:33E0 idle  _movement_twentyfive
+ 06C5:2FBF idle  _movement_twentyfour
+ 06C5:3706 idle  _movement_twentynine
+ 06C5:29C9 idle  _movement_twentyone
+ 06C5:346F idle  _movement_twentyseven
+ 06C5:3460 idle  _movement_twentysix
+ 06C5:2B9E idle  _movement_twentythree
+ 06C5:29D8 idle  _movement_twentytwo
+ 06C5:1ABF idle  _movement_two
+ 06C5:1006 idle  _movement_zero
+ 062A:0886       _move_actor
+ 15A1:83CC       _music_current
+ 15A1:21E1       _music_flag
+ 0AB0:0008       _music_init
+ 0AB0:0087 idle  _music_is_on
+ 0AB0:0069       _music_pause
+ 0AB0:001E       _music_play
+ 0AB0:0078       _music_resume
+ 104E:0001 idle  _MU_MU
+ 1047:001D       _MU_MusicOff
+ 1047:0031       _MU_MusicOn
+ 1047:0007       _MU_MusicPlaying
+ 1047:005D       _MU_Service
+ 1047:0045       _MU_StartMusic
+ 15A1:819E       _new_level
+ 15A1:819C       _new_level_tile
+ 15A1:8F82 idle  _new_ptr
+ 062A:000E       _next_frame
+ 0EC2:0007 idle  _next_shot_frame
+ 15A1:11F8       _noal
+ 15A1:11A2 idle  _nojoy
+ 15A1:11F7       _nosb
+ 0AB9:1386 idle  _not_enough_magic
+ 15A1:8F80 idle  _num_labels
+ 14F4:0A59 idle  _num_var
+ 1141:0000       _objects
+ 15A1:83DA       _object_index
+ 15A1:84CA       _object_map
+ 15A1:03BA       _object_names
+ 15A1:25FD       _odin
+ 02B7:0694       _odin_speaks
+ 15A1:85BA       _of
+ 15A1:08EA idle  _offense
+ 15A1:119A idle  _old_timer_int
+ 0FF6:0413 idle  _open_door1
+ 15A1:0640 idle  _options_menu
+ 15A1:0624 idle  _options_onoff
+ 15A1:0652 idle  _options_quit
+ 15A1:0632 idle  _options_skill
+ 15A1:063A idle  _options_slow
+ 15A1:062A idle  _options_sound
+ 15A1:00C2       _options_yesno
+ 0BF6:09C2       _option_menu
+ 15A1:85CC       _out
+ 062A:0064       _overlap
+ 15A1:85BE       _ox
+ 15A1:85BC       _oy
+ 15A1:00AA       _page
+ 15A1:8738       _page3_offset
+ 1083:0A98       _pal_fade_in
+ 1083:0AA8       _pal_fade_out
+ 0029:13AF       _pause
+ 15A1:8748       _pbuff
+ 15A1:21DD       _pcsound_flag
+ 15A1:2A4D       _pcsound_length
+ 15A1:2AB1       _pcstd_sounds
+ 15A1:2AB9       _pcstd_sound_start
+ 15A1:2181       _pc_sound
+ 15A1:8737       _pge
+ 02B7:05E2 idle  _phase_level
+ 0AB9:00C0       _pick_up_object
+ 15A1:8A86 idle  _pixel_c
+ 15A1:8A8E idle  _pixel_p
+ 15A1:8CE6 idle  _pixel_x
+ 15A1:8B56 idle  _pixel_y
+ 0AB9:0B41 idle  _place_pixel
+ 02B7:1573       _place_tile
+ 0FCF:0213 idle  _play_pc_sound
+ 0FCF:01A1       _play_sound
+ 062A:003A       _point_within
+ 0029:0E3E idle  _printt
+ 15A1:2A4B       _rand1
+ 15A1:2A49       _rand2
+ 15A1:124E idle  _rdemo
+ 1083:02B2       _read_joystick
+ 0CE1:0994 idle  _read_script_file
+ 15A1:0902 idle  _reason
+ 15A1:131A       _record
+ 02B7:14B5 idle  _remove_objects
+ 0AB9:113B idle  _replace_pixel
+ 15A1:815E idle  _reps
+ 15A1:2A47       _restore_screen
+ 105C:007D idle  _res_abort
+ 15A1:9010 idle  _res_active
+ 105C:0183 idle  _res_add_file
+ 15A1:900E idle  _res_changed
+ 105C:0037       _res_close
+ 105C:0093 idle  _res_create
+ 105C:00C9 idle  _res_decode
+ 105C:0065 idle  _res_decrypt
+ 105C:01B7 idle  _res_delete_file
+ 105C:00AD idle  _res_encode
+ 105C:004D idle  _res_encrypt
+ 105C:0257 idle  _res_error
+ 105C:019D idle  _res_extract_file
+ 105C:0167       _res_falloc_read
+ 15A1:2A15 idle  _res_file
+ 105C:00FF idle  _res_find_empty
+ 105C:00E5       _res_find_name
+ 15A1:A712 idle  _res_fp
+ 15A1:9012       _res_header
+ 105C:0005       _res_init
+ 105C:0205 idle  _res_length
+ 15A1:900A idle  _res_lzss_buff
+ 105C:001D       _res_open
+ 105C:0221 idle  _res_original_size
+ 105C:01D1 idle  _res_pack
+ 105C:012F       _res_read
+ 105C:014B idle  _res_read_element
+ 105C:023D idle  _res_rename_file
+ 105C:01EB idle  _res_replace_file
+ 105C:0115 idle  _res_write
+ 15A1:11F6 idle  _ret
+ 062A:0161       _reverse_direction
+ 0029:13EA       _rnd
+ 15A1:124F       _rnd_array
+ 15A1:1317 idle  _rnd_index
+ 02B7:11E3       _rotate_arrows
+ 0029:13C9       _rotate_pal
+ 15A1:052E idle  _rotate_pat
+ 0029:0CCB idle  _run_gotm
+ 15A1:00C0       _save_filename
+ 04A1:035F       _save_game
+ 0CC0:01A4       _sbfx_exit
+ 0CC0:0099       _sbfx_init
+ 104F:0005       _SB_ALOut
+ 104F:004B       _SB_DetectAdLib
+ 104F:0077       _SB_PlayVOC
+ 104F:001D       _SB_Shutdown
+ 104F:0031       _SB_Startup
+ 104F:008F       _SB_StopVOC
+ 104F:0061       _SB_VOCPlaying
+ 15A1:8607       _scan_code
+ 0BF6:03FB       _score_for_inv
+ 15A1:212E idle  _scr
+ 0512:05D2       _screen_dump
+ 0CE1:01D5 idle  _script_entry
+ 0CE1:0CE7 idle  _script_error
+ 0CE1:01D6 idle  _script_exit
+ 15A1:81A8       _scrn
+ 15A1:81A6       _scrnp
+ 02B7:056E idle  _scroll_level_down
+ 02B7:0412 idle  _scroll_level_left
+ 02B7:04FA idle  _scroll_level_right
+ 02B7:0486 idle  _scroll_level_up
+ 15A1:07C0 idle  _scr_command
+ 15A1:08A4 idle  _scr_error
+ 15A1:091A idle  _scr_func
+ 0CE1:16E2 idle  _scr_func1
+ 0CE1:1779 idle  _scr_func2
+ 0CE1:17BE idle  _scr_func3
+ 0CE1:1A30 idle  _scr_func4
+ 0CE1:1A37 idle  _scr_func5
+ 15A1:8E94 idle  _scr_index
+ 15A1:8E92 idle  _scr_pic
+ 15A1:81A2       _sd_data
+ 15A1:85C4 idle  _seg
+ 0BF6:0BA6       _select_fastmode
+ 02B7:0C4A       _select_item
+ 0BF6:0A75       _select_music
+ 0BF6:0596       _select_option
+ 0BF6:0B5A idle  _select_scroll
+ 0BF6:0BB3       _select_skill
+ 0BF6:0B08 idle  _select_slow
+ 0BF6:09E2       _select_sound
+ 15A1:8162       _setup
+ 0579:0147       _setup_actor
+ 016C:0B32       _setup_boss
+ 04A1:0347 idle  _setup_filenames
+ 016C:0A28 idle  _setup_level
+ 0029:11FB idle  _setup_load
+ 0579:096C       _setup_magic_item
+ 016C:0A4D idle  _setup_player
+ 016C:0EC3       _set_joy
+ 016C:0F59 idle  _set_palette
+ 06C5:347E       _set_thor_vars
+ 15A1:2A3F       _shield_on
+ 15A1:374C       _shot
+ 0EC2:087F idle  _shot_movement_eight
+ 0EC2:0B9F idle  _shot_movement_eleven
+ 0EC2:06F5 idle  _shot_movement_five
+ 0EC2:0342 idle  _shot_movement_four
+ 15A1:0C74       _shot_movement_func
+ 0EC2:0A0D idle  _shot_movement_nine
+ 0EC2:004E idle  _shot_movement_none
+ 0EC2:00A8 idle  _shot_movement_one
+ 0EC2:0775 idle  _shot_movement_seven
+ 0EC2:0717 idle  _shot_movement_six
+ 0EC2:0A4E idle  _shot_movement_ten
+ 0EC2:0260 idle  _shot_movement_three
+ 0EC2:0184 idle  _shot_movement_two
+ 15A1:8602       _shot_ok
+ 0F8A:03F5 idle  _shot_pattern_eight
+ 0F8A:02C3 idle  _shot_pattern_five
+ 0F8A:0212 idle  _shot_pattern_four
+ 15A1:0CA4       _shot_pattern_func
+ 0F8A:0007 idle  _shot_pattern_none
+ 0F8A:0013 idle  _shot_pattern_one
+ 0F8A:03E9 idle  _shot_pattern_seven
+ 0F8A:0352 idle  _shot_pattern_six
+ 0F8A:01BF idle  _shot_pattern_three
+ 0F8A:010E idle  _shot_pattern_two
+ 0512:0658       _show_all_actors
+ 0579:0524       _show_enemies
+ 02B7:00AE       _show_level
+ 0AB9:000A       _show_objects
+ 0CE1:01F0 idle  _skip_colon
+ 15A1:8604       _slow_mode
+ 15A1:83CD       _song
+ 15A1:9008       _SoundBlasterPresent
+ 0FCF:0152       _sound_exit
+ 15A1:21DF       _sound_flag
+ 0FCF:0002       _sound_init
+ 0FCF:026C       _sound_playing
+ 15A1:0CC8 idle  _sound_priority
+ 15A1:2B37       _sparkle
+ 06C5:19F9 idle  _special_movement_eight
+ 06C5:1927 idle  _special_movement_five
+ 06C5:1905 idle  _special_movement_four
+ 15A1:05D6 idle  _special_movement_func
+ 06C5:1A2A idle  _special_movement_nine
+ 06C5:1678 idle  _special_movement_one
+ 06C5:19D7 idle  _special_movement_seven
+ 06C5:19C5 idle  _special_movement_six
+ 06C5:1A5B idle  _special_movement_ten
+ 06C5:18AD idle  _special_movement_three
+ 06C5:1768 idle  _special_movement_two
+ 0FF6:02E6       _special_tile
+ 0FF6:0002       _special_tile_thor
+ 15A1:8742 idle  _spic1
+ 15A1:8741 idle  _spic2
+ 0512:02D2       _split_screen
+ 15A1:8603       _startup
+ 15A1:2AB5 idle  _std_sound
+ 15A1:21CD       _std_sounds
+ 15A1:2ABD       _std_sound_start
+ 016C:0FC1 idle  _story
+ 016C:0F39 idle  _story_animate
+ 15A1:2132       _story_flag
+ 016C:0F3A idle  _story_wait
+ 14F4:021F idle  _str_var
+ 15A1:2A35       _switch_flag
+ 02B7:110B       _switch_icons
+ 15A1:8E86 idle  _t0OldService
+ 0CC0:000F idle  _t0Service
+ 14F4:0000 idle  _temps
+ 15A1:11A6       _tempstr
+ 15A1:11FE idle  _test_sdf
+ 1141:20C0       _text
+ 15A1:2D39       _thor
+ 062A:0372       _thor_damaged
+ 0029:0E82 idle  _thor_dies
+ 15A1:83D5       _thor_icon1
+ 15A1:83D4       _thor_icon2
+ 15A1:83D3       _thor_icon3
+ 15A1:83D2       _thor_icon4
+ 15A1:2AD3       _thor_info
+ 15A1:85F6       _thor_pos
+ 15A1:85F8       _thor_real_y1
+ 062A:0191       _thor_shoots
+ 15A1:8A84 idle  _thor_special_flag
+ 0029:10E6 idle  _thor_spins
+ 15A1:8600       _thor_x1
+ 15A1:85FC       _thor_x2
+ 15A1:85FE       _thor_y1
+ 15A1:85FA       _thor_y2
+ 0AB9:11C8 idle  _throw_lightning
+ 15A1:2A41       _thunder_flag
+ 15A1:8E76 idle  _TickCount
+ 15A1:8E7A idle  _TickCount2
+ 15A1:8E7E idle  _TimerCount
+ 15A1:8E82 idle  _TimerDivisor
+ 15A1:85F2       _timer_cnt
+ 15A1:8160       _tmp_buff
+ 15A1:8609       _tmp_flag
+ 15A1:2A3B       _tornado_used
+ 0512:05B4 idle  _unsplit_screen
+ 0AB9:05B8 idle  _use_apple
+ 0AB9:0768 idle  _use_boots
+ 0AB9:06B8 idle  _use_hourglass
+ 0AB9:0A62       _use_item
+ 0AB9:08B5 idle  _use_lightning
+ 0AB9:09E2 idle  _use_object
+ 0AB9:07ED idle  _use_shield
+ 0AB9:065D idle  _use_thunder
+ 0AB9:08E4 idle  _use_tornado
+ 15A1:85F0       _vbl_cnt
+ 016C:089A       _wait_not_key
+ 016C:0762       _wait_not_response
+ 016C:07B9       _wait_response
+ 15A1:2AC1       _warp_flag
+ 15A1:2D3B       _warp_scroll
+ 15A1:873E idle  _word
+ 0512:0417       _xbox
+ 1083:059F       _xcopyd2d
+ 1083:09AE       _xcopys2d
+ 1083:0002       _xdisplay_actors
+ 15A1:11A0 idle  _xdos
+ 1083:0127       _xerase_actors
+ 1083:08EC       _xfarput
+ 1083:08D4 idle  _xfarput_plane
+ 1083:066C       _xfillrectangle
+ 1083:0814       _xfput
+ 1083:07F4 idle  _xfput_plane
+ 1083:0B17 idle  _xget
+ 1083:040E idle  _xgetpal
+ 1083:0AFC idle  _xget_plane
+ 0512:047E idle  _xline
+ 1083:0A64       _xpoint
+ 0512:000A       _xprint
+ 0512:00DE       _xprintx
+ 1083:0A2C       _xpset
+ 1083:01E9       _xput
+ 1083:01CD idle  _xput_plane
+ 1083:03D7 idle  _xrawpalset
+ 1083:07A6       _xsetmode
+ 1083:03EE idle  _xsetpal
+ 1083:02F7       _xshowpage
+ 1083:06F7       _xtext
+ 1083:045E       _xtext1
+ 1083:0511       _xtextx
+ 1083:0444 idle  _xtext_plane
+ 062A:0576 idle  __actor_shoots
+ 0000:1000 idle  __AHINCR
+ 0000:000C idle  __AHSHIFT
+ 15A1:00A2 idle  __brklvl
+ 15A1:0084 idle  __C0argc
+ 15A1:0086 idle  __C0argv
+ 15A1:0088 idle  __C0environ
+ 0000:0173 idle  __checknull
+ 0000:0160 idle  __cleanup
+ 0AB9:0488       __drop_obj
+ 15A1:008A idle  __envLng
+ 15A1:008C idle  __envseg
+ 15A1:008E idle  __envSize
+ 15A1:009E idle  __heapbase
+ 15A1:00A6 idle  __heaptop
+ 15A1:0074 idle  __Int0Vector
+ 15A1:0078 idle  __Int4Vector
+ 15A1:007C idle  __Int5Vector
+ 15A1:0080 idle  __Int6Vector
+ 0000:0295 idle  __MMODEL
+ 15A1:0092 idle  __osmajor
+ 15A1:0093 idle  __osminor
+ 15A1:0092 idle  __osversion
+ 15A1:0090 idle  __psp
+ 15A1:119A idle  __RealCvtVector
+ 0000:01F0 idle  __restorezero
+ 15A1:119A idle  __ScanTodVector
+ 15A1:0096 idle  __StartTime
+ 0000:019B idle  __terminate
+ 15A1:0092 idle  __version
+ 15A1:009C idle  ___brklvl
+ 15A1:009A idle  ___heapbase
+
+  Address         Publics by Value
+
+ 0000:000C idle  __AHSHIFT
+ 0000:1000 idle  __AHINCR
+ 0000:0160 idle  __cleanup
+ 0000:0173 idle  __checknull
+ 0000:019B idle  __terminate
+ 0000:01F0 idle  __restorezero
+ 0000:027C idle  _abort
+ 0000:0293 idle  DGROUP@
+ 0000:0295 idle  __MMODEL
+ 0029:0007       _main
+ 0029:0CCB idle  _run_gotm
+ 0029:0E3E idle  _printt
+ 0029:0E82 idle  _thor_dies
+ 0029:10E6 idle  _thor_spins
+ 0029:11FB idle  _setup_load
+ 0029:13AF       _pause
+ 0029:13C9       _rotate_pal
+ 0029:13EA       _rnd
+ 016C:000C       _initialize
+ 016C:0447       _exit_code
+ 016C:058C idle  _keyboard_int
+ 016C:06C0       _demo_key_set
+ 016C:0762       _wait_not_response
+ 016C:07B9       _wait_response
+ 016C:082F       _get_response
+ 016C:089A       _wait_not_key
+ 016C:08DD       _joy_key
+ 016C:0997       _merge_keys
+ 016C:0A28 idle  _setup_level
+ 016C:0A4D idle  _setup_player
+ 016C:0B32       _setup_boss
+ 016C:0EC1 idle  _display_copyright
+ 016C:0EC2 idle  _ask_joystick
+ 016C:0EC3       _set_joy
+ 016C:0F39 idle  _story_animate
+ 016C:0F3A idle  _story_wait
+ 016C:0F59 idle  _set_palette
+ 016C:0FC1 idle  _story
+ 02B7:0005 idle  _build_screen
+ 02B7:00AE       _show_level
+ 02B7:0412 idle  _scroll_level_left
+ 02B7:0486 idle  _scroll_level_up
+ 02B7:04FA idle  _scroll_level_right
+ 02B7:056E idle  _scroll_level_down
+ 02B7:05E2 idle  _phase_level
+ 02B7:064B idle  _copy_bg_icon
+ 02B7:0694       _odin_speaks
+ 02B7:06CE       _d_restore
+ 02B7:0737       _actor_speaks
+ 02B7:0851       _display_speech
+ 02B7:0C4A       _select_item
+ 02B7:110B       _switch_icons
+ 02B7:11E3       _rotate_arrows
+ 02B7:1288 idle  _kill_enemies
+ 02B7:14B5 idle  _remove_objects
+ 02B7:1573       _place_tile
+ 02B7:1639       _bgtile
+ 041E:000F       _boss1_movement
+ 041E:03F8       _check_boss1_hit
+ 041E:04ED       _boss_level1
+ 041E:052F idle  _boss_dead1
+ 041E:0719       _closing_sequence1
+ 04A1:0007       _file_size
+ 04A1:005A       _load_bg_data
+ 04A1:00A7       _load_sd_data
+ 04A1:0131       _load_objects
+ 04A1:0154       _load_actor
+ 04A1:01B3 idle  _load_speech
+ 04A1:0347 idle  _setup_filenames
+ 04A1:0351       _help
+ 04A1:035F       _save_game
+ 04A1:0461       _load_game
+ 04A1:066B       _load_music
+ 0512:000A       _xprint
+ 0512:00DE       _xprintx
+ 0512:02D2       _split_screen
+ 0512:02F0       _load_palette
+ 0512:0417       _xbox
+ 0512:047E idle  _xline
+ 0512:059C       _fade_in
+ 0512:05A8       _fade_out
+ 0512:05B4 idle  _unsplit_screen
+ 0512:05D2       _screen_dump
+ 0512:0658       _show_all_actors
+ 0579:000E idle  _make_mask
+ 0579:0147       _setup_actor
+ 0579:022A idle  _make_actor_mask
+ 0579:02BD       _load_standard_actors
+ 0579:0524       _show_enemies
+ 0579:0689 idle  _load_enemy
+ 0579:0876       _actor_visible
+ 0579:096C       _setup_magic_item
+ 0579:0A0C       _load_new_thor
+ 062A:000E       _next_frame
+ 062A:003A       _point_within
+ 062A:0064       _overlap
+ 062A:0161       _reverse_direction
+ 062A:0191       _thor_shoots
+ 062A:0273 idle  _kill_good_guy
+ 062A:02A2       _actor_damaged
+ 062A:0372       _thor_damaged
+ 062A:0458       _actor_destroyed
+ 062A:0576 idle  __actor_shoots
+ 062A:0736       _actor_always_shoots
+ 062A:0748       _actor_shoots
+ 062A:0886       _move_actor
+ 06C5:0009 idle  _check_move0
+ 06C5:04E3 idle  _check_move1
+ 06C5:07B7       _check_move2
+ 06C5:0AD3       _check_move3
+ 06C5:0D8E       _check_move4
+ 06C5:0E18 idle  _check_thor_move
+ 06C5:1006 idle  _movement_zero
+ 06C5:135F idle  _check_special_move1
+ 06C5:1678 idle  _special_movement_one
+ 06C5:1768 idle  _special_movement_two
+ 06C5:18AD idle  _special_movement_three
+ 06C5:1905 idle  _special_movement_four
+ 06C5:1927 idle  _special_movement_five
+ 06C5:19C5 idle  _special_movement_six
+ 06C5:19D7 idle  _special_movement_seven
+ 06C5:19F9 idle  _special_movement_eight
+ 06C5:1A2A idle  _special_movement_nine
+ 06C5:1A5B idle  _special_movement_ten
+ 06C5:1AA6 idle  _movement_one
+ 06C5:1ABF idle  _movement_two
+ 06C5:1B7F idle  _movement_three
+ 06C5:1C69 idle  _movement_four
+ 06C5:1D74 idle  _movement_five
+ 06C5:207A idle  _movement_six
+ 06C5:20DF idle  _movement_seven
+ 06C5:2114 idle  _movement_eight
+ 06C5:215B idle  _movement_nine
+ 06C5:2264 idle  _movement_ten
+ 06C5:2379 idle  _movement_eleven
+ 06C5:24E2 idle  _movement_twelve
+ 06C5:2568 idle  _movement_thirteen
+ 06C5:25E4 idle  _movement_fourteen
+ 06C5:26B2 idle  _movement_fifteen
+ 06C5:26C2 idle  _movement_sixteen
+ 06C5:274D idle  _movement_seventeen
+ 06C5:28B6 idle  _movement_eighteen
+ 06C5:29AA idle  _movement_nineteen
+ 06C5:29B9 idle  _movement_twenty
+ 06C5:29C9 idle  _movement_twentyone
+ 06C5:29D8 idle  _movement_twentytwo
+ 06C5:2B9E idle  _movement_twentythree
+ 06C5:2FBF idle  _movement_twentyfour
+ 06C5:33E0 idle  _movement_twentyfive
+ 06C5:3460 idle  _movement_twentysix
+ 06C5:346F idle  _movement_twentyseven
+ 06C5:347E       _set_thor_vars
+ 06C5:34DB idle  _movement_twentyeight
+ 06C5:3706 idle  _movement_twentynine
+ 06C5:372D idle  _movement_thirty
+ 06C5:3797 idle  _movement_thirtyone
+ 06C5:3885 idle  _movement_thirtytwo
+ 06C5:3891 idle  _movement_thirtythree
+ 06C5:389D idle  _movement_thirtyfour
+ 06C5:38A9 idle  _movement_thirtyfive
+ 06C5:38C1 idle  _movement_thirtysix
+ 06C5:3908 idle  _movement_thirtyseven
+ 06C5:3A11 idle  _movement_thirtyeight
+ 06C5:3B9F idle  _movement_thirtynine
+ 06C5:3CB4 idle  _movement_forty
+ 0AB0:0008       _music_init
+ 0AB0:001E       _music_play
+ 0AB0:0069       _music_pause
+ 0AB0:0078       _music_resume
+ 0AB0:0087 idle  _music_is_on
+ 0AB9:000A       _show_objects
+ 0AB9:00C0       _pick_up_object
+ 0AB9:0424       _drop_object
+ 0AB9:0488       __drop_obj
+ 0AB9:05B8 idle  _use_apple
+ 0AB9:065D idle  _use_thunder
+ 0AB9:06B8 idle  _use_hourglass
+ 0AB9:0768 idle  _use_boots
+ 0AB9:07ED idle  _use_shield
+ 0AB9:08B5 idle  _use_lightning
+ 0AB9:08E4 idle  _use_tornado
+ 0AB9:09E2 idle  _use_object
+ 0AB9:0A62       _use_item
+ 0AB9:0B41 idle  _place_pixel
+ 0AB9:113B idle  _replace_pixel
+ 0AB9:11C8 idle  _throw_lightning
+ 0AB9:1386 idle  _not_enough_magic
+ 0AB9:13B0 idle  _cannot_carry_more
+ 0AB9:13CB       _delete_object
+ 0BF6:000C       _display_health
+ 0BF6:0045       _display_magic
+ 0BF6:007A       _display_jewels
+ 0BF6:00E5       _display_score
+ 0BF6:014C       _display_keys
+ 0BF6:01BB       _display_item
+ 0BF6:0223       _init_status_panel
+ 0BF6:0271       _add_jewels
+ 0BF6:0299       _add_score
+ 0BF6:02FB       _add_magic
+ 0BF6:0331       _add_health
+ 0BF6:037F       _add_keys
+ 0BF6:03B4       _fill_health
+ 0BF6:03BF       _fill_magic
+ 0BF6:03CA       _fill_score
+ 0BF6:03FB       _score_for_inv
+ 0BF6:04A1       _boss_status
+ 0BF6:0596       _select_option
+ 0BF6:09C2       _option_menu
+ 0BF6:09D2       _ask_exit
+ 0BF6:09E2       _select_sound
+ 0BF6:0A75       _select_music
+ 0BF6:0B08 idle  _select_slow
+ 0BF6:0B5A idle  _select_scroll
+ 0BF6:0BA6       _select_fastmode
+ 0BF6:0BB3       _select_skill
+ 0BF6:0BFA idle  _hammer_smack
+ 0CC0:000F idle  _t0Service
+ 0CC0:0099       _sbfx_init
+ 0CC0:01A4       _sbfx_exit
+ 0CE1:000E       _execute_script
+ 0CE1:01D5 idle  _script_entry
+ 0CE1:01D6 idle  _script_exit
+ 0CE1:01F0 idle  _skip_colon
+ 0CE1:021B idle  _get_command
+ 0CE1:037D idle  _calc_string
+ 0CE1:04E4 idle  _get_str
+ 0CE1:0536 idle  _calc_value
+ 0CE1:063C idle  _get_next_val
+ 0CE1:0723 idle  _get_internal_variable
+ 0CE1:0957 idle  _get_line
+ 0CE1:0994 idle  _read_script_file
+ 0CE1:0CE7 idle  _script_error
+ 0CE1:0DAA idle  _get_string
+ 0CE1:0E3A idle  _cmd_goto
+ 0CE1:0ED8 idle  _cmd_if
+ 0CE1:1065 idle  _cmd_run
+ 0CE1:1088 idle  _cmd_addjewels
+ 0CE1:10A8 idle  _cmd_addhealth
+ 0CE1:10C8 idle  _cmd_addmagic
+ 0CE1:10E8 idle  _cmd_addkeys
+ 0CE1:1108 idle  _cmd_addscore
+ 0CE1:1128 idle  _cmd_say
+ 0CE1:11E1 idle  _cmd_ask
+ 0CE1:1365 idle  _cmd_sound
+ 0CE1:13AD idle  _cmd_settile
+ 0CE1:1487 idle  _cmd_itemgive
+ 0CE1:14DE idle  _cmd_itemtake
+ 0CE1:14E6 idle  _cmd_setflag
+ 0CE1:153C idle  _cmd_ltoa
+ 0CE1:15C8 idle  _cmd_pause
+ 0CE1:160D idle  _cmd_visible
+ 0CE1:1652 idle  _cmd_random
+ 0CE1:16E2 idle  _scr_func1
+ 0CE1:1779 idle  _scr_func2
+ 0CE1:17BE idle  _scr_func3
+ 0CE1:1A30 idle  _scr_func4
+ 0CE1:1A37 idle  _scr_func5
+ 0CE1:1A5E idle  _cmd_exec
+ 0CE1:1AA2 idle  _exec_command
+ 0EC2:0007 idle  _next_shot_frame
+ 0EC2:004E idle  _shot_movement_none
+ 0EC2:00A8 idle  _shot_movement_one
+ 0EC2:0184 idle  _shot_movement_two
+ 0EC2:0260 idle  _shot_movement_three
+ 0EC2:0342 idle  _shot_movement_four
+ 0EC2:06F5 idle  _shot_movement_five
+ 0EC2:0717 idle  _shot_movement_six
+ 0EC2:0775 idle  _shot_movement_seven
+ 0EC2:087F idle  _shot_movement_eight
+ 0EC2:0A0D idle  _shot_movement_nine
+ 0EC2:0A4E idle  _shot_movement_ten
+ 0EC2:0AFD idle  _calc_angle
+ 0EC2:0B9F idle  _shot_movement_eleven
+ 0F8A:0007 idle  _shot_pattern_none
+ 0F8A:0013 idle  _shot_pattern_one
+ 0F8A:010E idle  _shot_pattern_two
+ 0F8A:01BF idle  _shot_pattern_three
+ 0F8A:0212 idle  _shot_pattern_four
+ 0F8A:02C3 idle  _shot_pattern_five
+ 0F8A:0352 idle  _shot_pattern_six
+ 0F8A:03E9 idle  _shot_pattern_seven
+ 0F8A:03F5 idle  _shot_pattern_eight
+ 0FCF:0002       _sound_init
+ 0FCF:0152       _sound_exit
+ 0FCF:01A1       _play_sound
+ 0FCF:0213 idle  _play_pc_sound
+ 0FCF:026C       _sound_playing
+ 0FF6:0002       _special_tile_thor
+ 0FF6:02E6       _special_tile
+ 0FF6:036D idle  _erase_door
+ 0FF6:0413 idle  _open_door1
+ 0FF6:0456 idle  _cash_door1
+ 1042:0001       _FX_StopPC
+ 1042:0015       _FX_ServicePC
+ 1042:0029       _FX_PlayPC
+ 1042:0041       _FX_PCPlaying
+ 1047:0007       _MU_MusicPlaying
+ 1047:001D       _MU_MusicOff
+ 1047:0031       _MU_MusicOn
+ 1047:0045       _MU_StartMusic
+ 1047:005D       _MU_Service
+ 104E:0001 idle  _MU_MU
+ 104F:0005       _SB_ALOut
+ 104F:001D       _SB_Shutdown
+ 104F:0031       _SB_Startup
+ 104F:004B       _SB_DetectAdLib
+ 104F:0061       _SB_VOCPlaying
+ 104F:0077       _SB_PlayVOC
+ 104F:008F       _SB_StopVOC
+ 1059:0003 idle  _LZSS_decompress
+ 1059:001B idle  _LZSS_compress
+ 105C:0005       _res_init
+ 105C:001D       _res_open
+ 105C:0037       _res_close
+ 105C:004D idle  _res_encrypt
+ 105C:0065 idle  _res_decrypt
+ 105C:007D idle  _res_abort
+ 105C:0093 idle  _res_create
+ 105C:00AD idle  _res_encode
+ 105C:00C9 idle  _res_decode
+ 105C:00E5       _res_find_name
+ 105C:00FF idle  _res_find_empty
+ 105C:0115 idle  _res_write
+ 105C:012F       _res_read
+ 105C:014B idle  _res_read_element
+ 105C:0167       _res_falloc_read
+ 105C:0183 idle  _res_add_file
+ 105C:019D idle  _res_extract_file
+ 105C:01B7 idle  _res_delete_file
+ 105C:01D1 idle  _res_pack
+ 105C:01EB idle  _res_replace_file
+ 105C:0205 idle  _res_length
+ 105C:0221 idle  _res_original_size
+ 105C:023D idle  _res_rename_file
+ 105C:0257 idle  _res_error
+ 1083:0002       _xdisplay_actors
+ 1083:0127       _xerase_actors
+ 1083:01CD idle  _xput_plane
+ 1083:01E9       _xput
+ 1083:02B2       _read_joystick
+ 1083:02F7       _xshowpage
+ 1083:03D7 idle  _xrawpalset
+ 1083:03EE idle  _xsetpal
+ 1083:040E idle  _xgetpal
+ 1083:0444 idle  _xtext_plane
+ 1083:045E       _xtext1
+ 1083:0511       _xtextx
+ 1083:059F       _xcopyd2d
+ 1083:066C       _xfillrectangle
+ 1083:06F7       _xtext
+ 1083:07A6       _xsetmode
+ 1083:07F4 idle  _xfput_plane
+ 1083:0814       _xfput
+ 1083:08D4 idle  _xfarput_plane
+ 1083:08EC       _xfarput
+ 1083:09AE       _xcopys2d
+ 1083:0A2C       _xpset
+ 1083:0A64       _xpoint
+ 1083:0A98       _pal_fade_in
+ 1083:0AA8       _pal_fade_out
+ 1083:0AFC idle  _xget_plane
+ 1083:0B17 idle  _xget
+ 1141:0000       _objects
+ 1141:20C0       _text
+ 14F4:0000 idle  _temps
+ 14F4:00FF idle  _line_label
+ 14F4:021F idle  _str_var
+ 14F4:0A59 idle  _num_var
+ 15A1:0000 idle  DATASEG@
+ 15A1:0074 idle  __Int0Vector
+ 15A1:0078 idle  __Int4Vector
+ 15A1:007C idle  __Int5Vector
+ 15A1:0080 idle  __Int6Vector
+ 15A1:0084 idle  __C0argc
+ 15A1:0086 idle  __C0argv
+ 15A1:0088 idle  __C0environ
+ 15A1:008A idle  __envLng
+ 15A1:008C idle  __envseg
+ 15A1:008E idle  __envSize
+ 15A1:0090 idle  __psp
+ 15A1:0092 idle  __osversion
+ 15A1:0092 idle  __osmajor
+ 15A1:0092 idle  __version
+ 15A1:0093 idle  __osminor
+ 15A1:0094 idle  _errno
+ 15A1:0096 idle  __StartTime
+ 15A1:009A idle  ___heapbase
+ 15A1:009C idle  ___brklvl
+ 15A1:009E idle  __heapbase
+ 15A1:00A2 idle  __brklvl
+ 15A1:00A6 idle  __heaptop
+ 15A1:00AA       _page
+ 15A1:00B0       _dialog_color
+ 15A1:00C0       _save_filename
+ 15A1:00C2       _options_yesno
+ 15A1:01AA idle  _err_msg
+ 15A1:03BA       _object_names
+ 15A1:03D8 idle  _item_name
+ 15A1:047C idle  _gotres
+ 15A1:050A idle  _bomb_x
+ 15A1:051C idle  _bomb_y
+ 15A1:052E idle  _rotate_pat
+ 15A1:0532       _movement_func
+ 15A1:05D6 idle  _special_movement_func
+ 15A1:0624 idle  _options_onoff
+ 15A1:062A idle  _options_sound
+ 15A1:0632 idle  _options_skill
+ 15A1:063A idle  _options_slow
+ 15A1:0640 idle  _options_menu
+ 15A1:0652 idle  _options_quit
+ 15A1:07C0 idle  _scr_command
+ 15A1:0838 idle  _internal_variable
+ 15A1:08A4 idle  _scr_error
+ 15A1:08EA idle  _offense
+ 15A1:0902 idle  _reason
+ 15A1:091A idle  _scr_func
+ 15A1:0C74       _shot_movement_func
+ 15A1:0CA4       _shot_pattern_func
+ 15A1:0CC8 idle  _sound_priority
+ 15A1:119A idle  __ScanTodVector
+ 15A1:119A idle  __RealCvtVector
+ 15A1:119A idle  _old_timer_int
+ 15A1:119E       _end_tile
+ 15A1:119F       _main_loop
+ 15A1:11A0 idle  _xdos
+ 15A1:11A1 idle  _gr
+ 15A1:11A2 idle  _nojoy
+ 15A1:11A3 idle  _fast_exit
+ 15A1:11A4 idle  _ide_run
+ 15A1:11A5       _auto_load
+ 15A1:11A6       _tempstr
+ 15A1:11F6 idle  _ret
+ 15A1:11F7       _nosb
+ 15A1:11F8       _noal
+ 15A1:11F9       _game_over
+ 15A1:11FA       _lzss_buff
+ 15A1:11FE idle  _test_sdf
+ 15A1:124E idle  _rdemo
+ 15A1:124F       _rnd_array
+ 15A1:1317 idle  _rnd_index
+ 15A1:1319 idle  _demo_enable
+ 15A1:131A       _record
+ 15A1:131B       _demo
+ 15A1:131C       _demo_cnt
+ 15A1:131E       _demo_key
+ 15A1:212E idle  _scr
+ 15A1:2132       _story_flag
+ 15A1:2133       _boss_active
+ 15A1:2135       _dig_sound
+ 15A1:2181       _pc_sound
+ 15A1:21CD       _std_sounds
+ 15A1:21D1       _killgg_inform
+ 15A1:21D3       _carry_inform
+ 15A1:21D5       _magic_inform
+ 15A1:21D7       _door_inform
+ 15A1:21D9       _cash2_inform
+ 15A1:21DB       _cash1_inform
+ 15A1:21DD       _pcsound_flag
+ 15A1:21DF       _sound_flag
+ 15A1:21E1       _music_flag
+ 15A1:21E3       _load_game_flag
+ 15A1:21E5       _hampic
+ 15A1:25FD       _odin
+ 15A1:2A15 idle  _res_file
+ 15A1:2A25       _joyhy
+ 15A1:2A27       _joyhx
+ 15A1:2A29       _joyly
+ 15A1:2A2B       _joylx
+ 15A1:2A2D       _joystick
+ 15A1:2A2F       _joy_b2
+ 15A1:2A30       _joy_b1
+ 15A1:2A31       _joy_y
+ 15A1:2A33       _joy_x
+ 15A1:2A35       _switch_flag
+ 15A1:2A37       _bomb_flag
+ 15A1:2A39       _apple_flag
+ 15A1:2A3B       _tornado_used
+ 15A1:2A3D       _lightning_used
+ 15A1:2A3F       _shield_on
+ 15A1:2A41       _thunder_flag
+ 15A1:2A43       _hourglass_flag
+ 15A1:2A45       _last_oracle
+ 15A1:2A47       _restore_screen
+ 15A1:2A49       _rand2
+ 15A1:2A4B       _rand1
+ 15A1:2A4D       _pcsound_length
+ 15A1:2A99       _boss_pcsound
+ 15A1:2AA5       _boss_sound
+ 15A1:2AB1       _pcstd_sounds
+ 15A1:2AB5 idle  _std_sound
+ 15A1:2AB9       _pcstd_sound_start
+ 15A1:2ABD       _std_sound_start
+ 15A1:2AC1       _warp_flag
+ 15A1:2AC3       _boss_dead
+ 15A1:2AC5       _key_select
+ 15A1:2AC7       _key_magic
+ 15A1:2AC9       _key_right
+ 15A1:2ACB       _key_left
+ 15A1:2ACD       _key_down
+ 15A1:2ACF       _key_up
+ 15A1:2AD1       _key_fire
+ 15A1:2AD3       _thor_info
+ 15A1:2B37       _sparkle
+ 15A1:2C37       _explosion
+ 15A1:2D37       _hammer
+ 15A1:2D39       _thor
+ 15A1:2D3B       _warp_scroll
+ 15A1:2D3C       _magic_pic
+ 15A1:353C       _magic_item
+ 15A1:373C       _enemy_type
+ 15A1:374C       _shot
+ 15A1:474C       _enemy
+ 15A1:574C       _actor
+ 15A1:7A4C       _ami_buff
+ 15A1:7A4E       _abuff
+ 15A1:8156       _mask_buff_start
+ 15A1:815A       _mask_buff
+ 15A1:815E idle  _reps
+ 15A1:8160       _tmp_buff
+ 15A1:8162       _setup
+ 15A1:819A       _current_area
+ 15A1:819C       _new_level_tile
+ 15A1:819E       _new_level
+ 15A1:81A0       _current_level
+ 15A1:81A2       _sd_data
+ 15A1:81A6       _scrnp
+ 15A1:81A8       _scrn
+ 15A1:83A8       _last_setup
+ 15A1:83C8       _area
+ 15A1:83C9       _cheat
+ 15A1:83CA       _apple_drop
+ 15A1:83CB       _boss_loaded
+ 15A1:83CC       _music_current
+ 15A1:83CD       _song
+ 15A1:83D1       _level_type
+ 15A1:83D2       _thor_icon4
+ 15A1:83D3       _thor_icon3
+ 15A1:83D4       _thor_icon2
+ 15A1:83D5       _thor_icon1
+ 15A1:83D6 idle  _bleep
+ 15A1:83DA       _object_index
+ 15A1:84CA       _object_map
+ 15A1:85BA       _of
+ 15A1:85BC       _oy
+ 15A1:85BE       _ox
+ 15A1:85C0       _bg_pics
+ 15A1:85C4 idle  _seg
+ 15A1:85CC       _out
+ 15A1:85DC       _in
+ 15A1:85EC       _extra_cnt
+ 15A1:85EE       _magic_cnt
+ 15A1:85F0       _vbl_cnt
+ 15A1:85F2       _timer_cnt
+ 15A1:85F4 idle  _max_shot
+ 15A1:85F6       _thor_pos
+ 15A1:85F8       _thor_real_y1
+ 15A1:85FA       _thor_y2
+ 15A1:85FC       _thor_x2
+ 15A1:85FE       _thor_y1
+ 15A1:8600       _thor_x1
+ 15A1:8602       _shot_ok
+ 15A1:8603       _startup
+ 15A1:8604       _slow_mode
+ 15A1:8605       _diag
+ 15A1:8606       _last_scan_code
+ 15A1:8607       _scan_code
+ 15A1:8608       _break_code
+ 15A1:8609       _tmp_flag
+ 15A1:866D       _joy_flag
+ 15A1:86D1       _key_flag
+ 15A1:8735       _exit_flag
+ 15A1:8737       _pge
+ 15A1:8738       _page3_offset
+ 15A1:873A       _draw_page
+ 15A1:873C       _display_page
+ 15A1:873E idle  _word
+ 15A1:8740 idle  _byte
+ 15A1:8741 idle  _spic2
+ 15A1:8742 idle  _spic1
+ 15A1:8748       _pbuff
+ 15A1:8A48 idle  _mask_store2
+ 15A1:8A4C idle  _mask_store1
+ 15A1:8A50 idle  _ami_store2
+ 15A1:8A52 idle  _ami_store1
+ 15A1:8A54 idle  _magic_mask_buff
+ 15A1:8A58 idle  _magic_ami
+ 15A1:8A5A idle  _enemy_ami
+ 15A1:8A5C idle  _enemy_lm
+ 15A1:8A5E idle  _enemy_mb
+ 15A1:8A62 idle  _latch_mem
+ 15A1:8A64 idle  _etype
+ 15A1:8A84 idle  _thor_special_flag
+ 15A1:8A85 idle  _diag_flag
+ 15A1:8A86 idle  _pixel_c
+ 15A1:8A8E idle  _pixel_p
+ 15A1:8B56 idle  _pixel_y
+ 15A1:8CE6 idle  _pixel_x
+ 15A1:8E76 idle  _TickCount
+ 15A1:8E7A idle  _TickCount2
+ 15A1:8E7E idle  _TimerCount
+ 15A1:8E82 idle  _TimerDivisor
+ 15A1:8E86 idle  _t0OldService
+ 15A1:8E8A idle  _ltemp
+ 15A1:8E8E idle  _lvalue
+ 15A1:8E92 idle  _scr_pic
+ 15A1:8E94 idle  _scr_index
+ 15A1:8E98 idle  _buffer
+ 15A1:8E9C idle  _buff_end
+ 15A1:8EA0 idle  _buff_ptr
+ 15A1:8EA4 idle  _for_ptr
+ 15A1:8EA5 idle  _for_var
+ 15A1:8EAF idle  _for_val
+ 15A1:8ED7 idle  _for_stack
+ 15A1:8EFF idle  _gosub_ptr
+ 15A1:8F00 idle  _gosub_stack
+ 15A1:8F80 idle  _num_labels
+ 15A1:8F82 idle  _new_ptr
+ 15A1:8F86 idle  _line_ptr
+ 15A1:9006 idle  _current_priority
+ 15A1:9008       _SoundBlasterPresent
+ 15A1:900A idle  _res_lzss_buff
+ 15A1:900E idle  _res_changed
+ 15A1:9010 idle  _res_active
+ 15A1:9012       _res_header
+ 15A1:A712 idle  _res_fp
+
+Error: Undefined symbol __stklen in module c0.ASM
+Error: Undefined symbol __heaplen in module c0.ASM
+Error: Undefined symbol __nfile in module c0.ASM
+Error: Undefined symbol _exit in module c0.ASM
+Error: Undefined symbol __exit in module c0.ASM
+Error: Undefined symbol _strstr in module 1_main.c
+Error: Undefined symbol _atol in module 1_main.c
+Error: Undefined symbol _strcmp in module 1_main.c
+Error: Undefined symbol _strcpy in module 1_main.c
+Error: Undefined symbol _strchr in module 1_main.c
+Error: Undefined symbol _strupr in module 1_main.c
+Error: Undefined symbol F_SCOPY@ in module 1_main.c
+Error: Undefined symbol _itoa in module 1_main.c
+Error: Undefined symbol _srand in module 1_main.c
+Error: Undefined symbol _memset in module 1_main.c
+Error: Undefined symbol _movedata in module 1_main.c
+Error: Undefined symbol _fclose in module 1_main.c
+Error: Undefined symbol _fread in module 1_main.c
+Error: Undefined symbol _fopen in module 1_main.c
+Error: Undefined symbol _delay in module 1_main.c
+Error: Undefined symbol _execv in module 1_main.c
+Error: Undefined symbol _strcat in module 1_main.c
+Error: Undefined symbol _ltoa in module 1_main.c
+Error: Undefined symbol _fwrite in module 1_main.c
+Error: Undefined symbol _memcpy in module 1_main.c
+Error: Undefined symbol _rand in module 1_main.c
+Error: Undefined symbol _farmalloc in module 1_init.c
+Error: Undefined symbol _malloc in module 1_init.c
+Error: Undefined symbol _setvect in module 1_init.c
+Error: Undefined symbol _getvect in module 1_init.c
+Error: Undefined symbol _outportb in module 1_init.c
+Error: Undefined symbol _inportb in module 1_init.c
+Error: Undefined symbol _printf in module 1_init.c
+Error: Undefined symbol _int86 in module 1_init.c
+Error: Undefined symbol _farfree in module 1_init.c
+Error: Undefined symbol _free in module 1_init.c
+Error: Undefined symbol _strtok in module 1_init.c
+Error: Undefined symbol F_LXMUL@ in module 1_back.c
+Error: Undefined symbol _toupper in module 1_back.c
+Error: Undefined symbol __ctype in module 1_back.c
+Error: Undefined symbol _strlen in module 1_back.c
+Error: Undefined symbol __dos_write in module 1_file.c
+Error: Undefined symbol __dos_open in module 1_file.c
+Error: Undefined symbol __dos_close in module 1_file.c
+Error: Undefined symbol __dos_read in module 1_file.c
+Error: Undefined symbol __fmemcpy in module 1_file.c
+Error: Undefined symbol __fstrncpy in module 1_file.c
+Error: Undefined symbol _ftell in module 1_file.c
+Error: Undefined symbol _fseek in module 1_file.c
+Error: Undefined symbol F_LDIV@ in module 1_grp.c
+Error: Undefined symbol _ultoa in module 1_panel.c
+Error: Undefined symbol _getch in module 1_sbfx.c
+Error: Undefined symbol _getenv in module 1_sbfx.c
+Error: Undefined symbol _AdLibPresent in module 1_sbfx.c
+Error: Undefined symbol __fstrcat in module 1_script.c
+Error: Undefined symbol __fstrlen in module 1_script.c
+Error: Undefined symbol __fstrcpy in module 1_script.c
+Error: Undefined symbol __fstrncmp in module 1_script.c
+Error: Undefined symbol __fmemset in module 1_script.c
+Error: Undefined symbol __fstrcmp in module 1_script.c
+Error: Undefined symbol ___assertfail in module fx_manc.c
+Program entry point at 0000:0000
+

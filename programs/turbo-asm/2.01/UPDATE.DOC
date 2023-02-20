@@ -1,0 +1,527 @@
+
+                TURBO ASSEMBLER 2.0 NEW FEATURES
+                --------------------------------
+
+  Borland's Turbo Assembler 2.0 is now a multi-pass assembler that has 
+  forward-reference resolution, assembly speeds of up to 48,000 lines per 
+  minute, MASM compatibility, and an optional Ideal mode extended syntax.
+
+  In addition to all the features of version 1.0, Turbo Assembler 2.0 offers 
+  you these:
+
+    o PUBLICDLL statement
+    o Multiple pass capability - NOP removal
+    o CALL extensions
+    o PUSH, POP instruction extensions
+    o COMM extension
+    o Generalized line-continuation character
+    o Language-specific procedures, extrns, publics
+    o New MODEL identifiers - WINDOWS
+    o Virtual segments
+    o QASM Compatibility Additions
+    o 486 instruction support
+    o New TASM 2.0 error messages
+    o CODEPTR type
+    o RETCODE instruction
+    o SMART/NOSMART directives
+    o Overlay object code
+
+
+  PUBLICDLL Statement
+ --------------------
+  The PUBLICDLL directive lets you define program labels and procedures to 
+  be dynamic link entry points as well as publicizing them to your other 
+  modules, which allows you to build dynamic link libraries in assembly code.
+  For example,
+
+           PUBLICDLL XYPROC       ;make procedure XYPROC
+    XYPROC PROC NEAR              ;accessible as dynamic
+                                  ;link entry point
+
+  The syntax for PUBLICDLL follows:
+
+    PUBLICDLL [language] symbol [,[language] symbol]...}
+
+  symbol is published in the object file as a dynamic link entry point so 
+  that it can be accessed by programs under OS/2. This statement is used 
+  only to help build an OS/2 dynamic link library. If you don't make a 
+  symbol public, it can only be accessed from the current source file.
+
+  In most cases, you declare only PROC labels to be PUBLICDLL. Other program
+  labels, data variable names, and numeric constants defined with EQU can 
+  also be declared to be PUBLICDLL.
+
+  The optional language specifier causes any language-specific conventions 
+  to be applied to the symbol name. For instance, using the C language 
+  specifier would cause the symbol name to be preceded by an underscore 
+  character when published in the object file. Valid language specifiers 
+  are C, PASCAL, BASIC, FORTRAN, PROLOG, and NOLANGUAGE.
+
+  COMM, EXTRN, GLOBAL, and PUBLIC are related instructions.
+
+
+  Multiple Pass Capability: NOP Removal
+  -------------------------------------
+  Turbo Assembler 2.0 can pass over your source code more than once either 
+  for compatibility with some of MASM's pass-dependent constructions or to 
+  remove NOP instructions that were added to the code because of forward 
+  references. This feature is enabled by the command-line switch /m#, where #
+  is the maximum number of passes allowed. Turbo Assembler automatically 
+  assesses the need to perform extra passes up to the maximum that you specify.
+
+  The command-line switch /m sets the maximum number of assembly passes:
+
+    /M[npasses]
+
+  For maximum compatibility with MASM, two passes (/m2) should be used. If you
+   don't specify the number of passes, a default of five is used.
+
+  TASM 2.0's new multiple pass capability enhances compatibility with MASM in 
+  the following areas:
+ 
+    1) Any construction that generates a "Pass-dependent construction" 
+       warning in TASM 1.0. These include constructions containing the IF2 
+       directive, and some constructions with IFDEF or IFNDEF. If the /m 
+       option is enabled, Turbo Assembler will assemble this module correctly
+       but will not optimize the code by removing NOPs, no matter how many
+       passes are allowed. The warning "Module is pass dependent-compatibility
+       pass was done" is displayed if this occurs.
+
+    2) Forward-referenced macros.
+ 
+  The NOP-squishing capability also enhances the use of other TASM features, 
+  namely the JUMPS mode of operation. For example,
+ 
+      jumps
+              jnz foobar
+      foobar:
+ 
+  Under TASM 1.0, the JNZ generates 3 NOPs, because FOOBAR is 
+  forward-referenced. With the /m switch enabled in TASM 2.0, these NOPs 
+  are eliminated: The JUMPS mode can be enabled with no wasteful NOPs being
+  generated.
+ 
+  Usually, two passes are sufficient to squish out all NOPs. Occasionally, 
+  however, more passes may be required. If you need better compilation speed,
+  place the correct overrides everywhere so that a single pass will produce 
+  optimal code.
+
+
+  CALL Extensions
+  ---------------
+  The CALL instruction has been extended in Turbo Assembler to allow 
+  high-level language routines to be called in a language-independent manner.
+  Any CALL instruction can now specify a language and an argument list for 
+  the routine being called. Turbo Assembler automatically generates the 
+  necessary stack setup and cleanup code required to pass the arguments to 
+  a high-level routine written in the specified language. The syntax is as
+  follows:
+ 
+    CALL <destination> <optional language>,
+         <first argument>,<second argument>,...
+ 
+  For example,
+ 
+    call far ptr abc pascal,      ax dx,word ptr wordval
+ 
+  This example generates a far call to the Pascal-style routine ABC, which 
+  takes two arguments: a DWORD and a WORD. The DWORD argument is considered 
+  to be in AX and DX, and the WORD argument is assumed to be in WORDVAL.
+ 
+  If the optional language is not specified, the current default language 
+  is assumed.
+ 
+  Formerly, to call a higher-level language routine, the arguments needed to
+  be explicitly PUSHed onto the stack, and the stack needed to be explicitly 
+  adjusted (after the call) depending on the language. The new CALL 
+  extensions save you the tedium of doing all this explicitly.
+
+
+  PUSH, POP Instruction Extensions
+  --------------------------------
+  The PUSH and POP instructions have been extended in Turbo Assembler to 
+  allow more than one argument to appear in a single PUSH or POP instruction.
+  For example,
+
+    push ax dx       ;equivalent to PUSH AX then PUSH DX
+    pop  dx ax       ;equivalent to POP DX then POP AX
+
+  In addition, the PUSH instruction allows constant arguments even when 
+  generating code for the 8086 processor. Such instructions are replaced in 
+  the object code by a 10-byte sequence that simulates the 80186/286/386 
+  PUSH immediate value instruction.
+
+
+  COMM Extension
+  --------------
+  The COMM directive has been extended to allow the array element size and 
+  the array element count to be selected independently of each other for FAR
+  communal variables. This supports Turbo C++'s inline code generation, and
+  can be used advantageously by a native assembly language programmer. The 
+  syntax is as follows:
+ 
+    COMM FAR <id>{[<array element size multiplier>]}:<basic element
+             size>{:<array count>}
+ 
+  For example, this code fragment reserves an array of size 410: 10 elements 
+  each of size 41 bytes:
+
+    COMM FAR ABC[41]:BYTE:10
+
+
+  Generalized Line-continuation Character
+  ---------------------------------------
+  In TASM 2.0, a line-continuation feature has been added that works in TASM's
+  Ideal mode and is available even when the MASM 5.1 mode is off. A backslash 
+  (\) can be placed almost anywhere as a line-continuation character. It 
+  cannot be used to break up strings or identifiers. Its meaning is "read the
+  next line in at this point and continue processing." It can thus be used in
+  a natural way without losing the ability to comment each line as desired. For
+  example,
+
+    foo mystructure  \    ;Start of structure fill.
+    <0               \    ;Zero value is first.
+    1,               \    ;One value.
+    2>                    ;Two value and end of structure.
+
+  There are contexts where the line-continuation character is not recognized.
+  In general, it isn't recognized in any context where characters are treated
+  as text rather than identifiers, numbers, or strings, or in MASM mode when 
+  the line continuation is used in the first two symbols in the statement. 
+  For example,
+
+    ifdif <123\>,<456\>
+
+  does not recognize the two enclosed line-continuation characters.
+
+    comment \
+    :
+
+  begins a comment block, but does not define a near symbol
+  called COMMENT.
+
+  The line-continuation character is also not recognized inside of macro 
+  definitions. It is recognized, however, when the macro is expanded.
+
+
+  Additional Display
+  -------------------
+  TASM 2.0 displays the number of passes as well as the error and warning 
+  counts and remaining space. This allows you to assess the amount of work 
+  TASM is putting into the compilation process.
+ 
+ 
+  Language-specific Procedures, Extrns, Publics, Calls
+  -----------------------------------------------------
+  TASM 2.0 allows procedures, publics, extrns, and calls to be overridden 
+  with a language specifier. This causes wide flexibility in writing assembler
+  code that interfaces with multiple language models. The MODEL statement has
+  also been extended.
+ 
+  Here are some syntax examples:
+
+    <procname> PROC {<language modifier>} {<language>} {NEAR | FAR}
+                                                          {args and uses}
+    EXTRN {<language>} <symbol>:<distance>, {<language>} 
+                                                  <symbol>:<distance>,...
+    PUBLIC {<language>} <symbol>, ...
+    COMM {<language>} <symbol>:<distance>, ...
+    GLOBAL {<language>} <symbol>:<distance>, ...
+    PUBLICDLL {<language>} <symbol>, ...
+    CALL <procname> {{<language>}, {args}}
+    .MODEL {<model modifier>} <model> {<module name>} {, 
+        {<language modifier>} <language> {, <language modifier> } }
+
+   Here's the syntax for the IDEAL mode PROC statement:
+
+    PROC {<language modifier>} {<language>} <procname> {NEAR | FAR}
+                                                          {args and uses}
+
+    Legal models are TINY, SMALL, MEDIUM, COMPACT, LARGE, and HUGE.
+    Note that TPASCAL is also a legal model.
+
+    Legal model modifiers are
+
+    o FARSTACK (Selects model where SS is not assumed to be in DGROUP)
+
+    o NEARSTACK (Selects model where SS is in DGROUP. This is the default)
+
+    Legal languages are NOLANGUAGE, C, PASCAL, BASIC, FORTRAN, and PROLOG.
+
+    Legal language modifiers are
+
+    o NORMAL (Selects normal procedure entry/exit sequences)
+
+    o WINDOWS (Selects MSWindows procedure entry/exit sequences)
+
+  You don't need the .MODEL statement to make use of any of these language 
+  specifiers; the .MODEL statement simply serves to set the default language.
+
+
+  New MODEL Identifiers: WINDOWS
+  ------------------------------
+  Here is a description of the model modifier SS_NE_DS and the language 
+  modifiers NORMAL and WINDOWS.
+      
+  The model modifier can precede any use of a model keyword. This only happens
+  in the .MODEL statement. For example,
+      
+     .MODEL SS_NE_DS LARGE   ;Equivalent to TC's default large model
+      
+  This modifier causes SS to be assumed to NOTHING and the stack, if any, to 
+  not be part of DGROUP.
+      
+  The language modifiers can precede any use of a language keyword. A language
+  keyword can be used in any of the following places:
+
+  .MODEL, EXTRN, GLOBAL, PUBLIC, PUBLICDLL, COMM, PROC, CALL.
+
+  A language modifier affects the type of stack frame that's generated for 
+  procedure entry and exit. When used in EXTRN, GLOBAL, PUBLIC, PUBLICDLL, 
+  COMM, and CALL, a language modifier is allowed but will have no effect.
+
+  The stack frames actually generated for each modifier are as follows:
+      
+    NORMAL: ;No entry/exit sequence generated if no args or locals.
+            ;8086 version (186 version uses ENTER/LEAVE).
+            push bp
+            mov bp,sp
+            sub sp,local_size       ;If any locals.
+            <push uses registers>
+            ...
+            <pop uses registers>
+            mov sp,bp               ;If any locals.
+            pop bp
+            ret
+
+  WINDOWS: push ds
+           pop ax
+           xchg ax,ax
+           inc bp
+           push bp
+           mov bp,sp
+           push ds
+           mov ds,ax
+           sub sp,local_size       ;If any locals.
+           <push uses registers>
+           ...
+           <pop uses registers>
+           sub bp,2                ;If any locals.
+           mov sp,bp               ;If any locals.
+           pop ds
+           pop bp
+           dec bp
+           ret
+
+  Here's an example:
+
+    .MODEL large,windows pascal
+    .code
+
+    foo proc
+    arg abc:word,def:word
+            xor ax,ax       ;Generates FAR WINDOWS PASCAL sequences.
+            ret
+    endp
+
+    foo proc normal c
+    arg ghi:word,jkl:word
+            xor ax,ax       ;Generates FAR NORMAL C sequences.
+            ret
+    endp
+
+
+  VIRTUAL Segments
+  ----------------
+  A new keyword VIRTUAL has been added to the SEGMENT
+  statement. VIRTUAL defines a special kind of segment
+  that will be treated as a common area and attached to
+  another segment at link time.
+
+    <segname> SEGMENT VIRTUAL   ;In MASM mode.
+    ...
+    ENDS
+
+    SEGMENT <segname> VIRTUAL   ;In Ideal mode.
+    ...
+    ENDS
+
+  In TASM, the VIRTUAL segment is assumed to be attached to the enclosing 
+  segment. The VIRTUAL segment also inherits its attributes from the 
+  enclosing segment.
+
+  A VIRTUAL segment is treated as normal except that it is considered part of
+  its parent segment for the purposes of ASSUMEs.
+
+  The linker treats virtual segments as a common area that will be combined 
+  across modules. This permits static data that comes into many modules from
+  include files to be shared.
+
+
+  QASM Compatibility Additions
+  ----------------------------
+  TASM 2.0 has new and modified directives to support source code
+  for QASM:
+
+  .STARTUP and STARTUPCODE
+     These commands generate startup code for the particular model in effect 
+     at the time. These also define the near label @@Startup and cause the 
+     END statement at the end of the module to generate the equivalent of 
+    'END @@Startup'. Note that only the 'STARTUPCODE' directive is available
+     in IDEAL mode.
+
+  .MODEL and MODEL
+     It is now possible to select a third field in the .MODEL statement to 
+     specify the stack association with DGROUP: NEARSTACK or FARSTACK. 
+     For example, .MODEL SMALL,C,FARSTACK would specify that the stack not be 
+     included in DGROUP. This capability is already provided in TASM through 
+     the language modifiers of the same name. The additional field is provided
+     only for MASM compatibility.
+
+  Two new predefined variables have been added:
+
+    Startup: Defined by the .STARTUP and STARTUPCODE directives.
+
+    @Model: An integer representing the model currently in effect.
+            0 = TINY   1 = SMALL    2 = COMPACT    3 = MEDIUM
+            4 = LARGE  5 = HUGE
+
+
+  486 Instruction Support
+  -----------------------
+  The following directives have been added to TASM 2.0 to support the 
+  Intel 486 microprocessor:
+
+  .486,.486c (Masm mode only)
+
+  P486N: Enables assembly of non-protected instructions for the 486 processor.
+
+  .486p (Masm mode only)
+
+  P486: Enables assembly of protected instructions for the 486 processor.
+
+  BSWAP <32-bit register>: 486 byte swap instruction. 
+  XADD <r/m>,<reg>: 486 exchange and add instruction.
+  CMPXCHG <r/m>,<reg>: 486 compare and exchange instruction.
+  INVD: 486 invalidate data cache instruction.
+  WBINVD: 486 write back and invalidate data cache inst.
+  INVLPG <memptr>: 486 invalidate TLB entry for address inst.
+
+  The following test registers have also been added:
+
+  TR3,TR4,TR5
+
+
+  New TASM 2.0 Error Messages
+  ---------------------------
+  TASM 2.0 reports several new error messages:
+
+  Global type doesn't match symbol type
+    This warning is given when a symbol is declared using the GLOBAL 
+    statement and is also defined in the same module, but the type specified 
+    in the GLOBAL and the actual type of the symbol don't agree.
+
+  Illegal segment address
+    This error appears if an address greater than 65,535 is specified as a 
+    constant segment address; for example,
+ 
+       FOO SEGMENT AT 12345h
+
+  Module is pass-dependent--compatibility pass was done.
+    This warning occurs if a pass-dependent construction was encountered and 
+    the /m command-line switch was specified. A MASM-compatible pass was done.
+
+  Near jump or call to different CS
+    This error occurs if the user attempts to perform a NEAR CALL or JMP to a 
+    symbol that's defined in an area where CS is assumed to a different segment.
+
+  Only one startup sequence allowed
+    This error appears if you have more than one .STARTUP or STARTUPCODE 
+    statement in a module.
+
+  Smart code generation must be enabled
+    Certain special features of code generation require SMART code generation 
+    to be enabled. These include PUSH of a pointer, POP of a pointer, and PUSH
+    of a constant (8086 only).
+
+  Text macro expansion exceeds maximum line length
+    This error occurs when expansion of a text macro causes the maximum 
+    allowable line length to be exceeded.
+
+  USES has no effect without language
+    This warning appears if you specify a USES statement when no language is
+    in effect.
+
+
+  CODEPTR Type
+  ------------
+
+  CODEPTR returns the default procedure address size depending on the current
+  model (WORD for models with NEAR code; DWORD for models with FAR code). 
+  CODEPTR can be used wherever DATAPTR is used. Here is its syntax:
+
+    CODEPTR expression
+
+
+  RETCODE Instruction
+  -------------------
+  The RETCODE instruction is exactly equivalent to RETN or RETF, depending on 
+  the specified model. RETCODE syntax follows:
+
+  RETCODE {<expression>}
+
+  RETCODE is available in both MASM and Ideal modes.
+
+
+  SMART/NOSMART
+  -------------
+  The SMART/NOSMART directives control the generation of optimized object code.
+  These are the areas that the SMART  and NOSMART directives apply to:
+
+    1) OR, AND, or XOR of a signed immediate byte
+    2) PUSH <constant>
+    3) PUSH <large pointer>
+       POP <large pointer>
+    4) CALL <far address in same segment>
+    5) JMP <far address in same segment>
+    6) LEA <constant effective address>
+
+  The default condition is SMART enabled. When SMART is enabled, a qualifying
+  FAR jump will be replaced by a NEAR or a SHORT jump. Also, when SMART is 
+  enabled, a qualifying FAR call will be replaced by a PUSH CS instruction 
+  and a NEAR call. 
+
+  When NOSMART is  selected, the following code generation changes occur:
+ 
+    a) AND, OR, XOR of an immediate word value are no longer done using the 
+       signed-extended immediate byte version of these instructions where 
+       possible, but rather the longer immediate word version that MASM uses.
+ 
+    b) PUSH of a constant value on the 8086 processor using the special 
+       10-byte code sequence (which preserves all registers and flags) is 
+       not allowed.
+ 
+    c) PUSH and POP of a DWORD memory variable (or PWORD variable on a 386) 
+      are not allowed.
+ 
+    d) Far JMPs and CALLs within the same segment are no longer optimized by 
+       replacing the FAR JMP or CALL with the NEAR version.
+
+    e) LEA instructions that refer to a constant effective address will no 
+       longer be converted to the equivalent MOV operations.
+
+  For maximum MASM compatibility, you must select NOSMART and QUIRKS.
+
+  Overlay Object Code
+  -------------------
+  The /o commmand-line option
+
+  Function   Generates overlay code
+
+  Syntax     {/o}
+
+  Remarks    Turbo Assembler 2.0 supports overlays. Specifying the /o switch 
+             on the command line causes overlay-compatible fixups to be 
+             generated. When this switch is used, 386 references to USE32 
+             segments should not be made since they won't link properly.
+

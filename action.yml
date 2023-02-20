@@ -1,0 +1,24 @@
+name: 'dos-build'
+description: 'Build DOS Programs using DOSBox-X'
+inputs:
+  run:
+    description: 'Batch program to run inside of DOSBox-X'
+    required: true
+
+  programs:
+    description: 'Program mount paths'
+    required: false
+    default: ''
+
+  conf:
+    description: 'Configuration for DOSBox-X'
+    required: false
+    default: ''
+
+runs:
+  using: 'node16'
+  main: 'src/index.js'
+
+branding:
+  icon: 'book-open'
+  color: 'green'

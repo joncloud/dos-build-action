@@ -1,0 +1,469 @@
+            WELCOME TO TURBO ASSEMBLER VERSION 2.01
+            ---------------------------------------
+
+  This README file contains important information about Turbo
+  Assembler Version 2.01. For the latest information about
+  Turbo Assembler 2.01, the accompanying programs, and the manual,
+  read this file in its entirety. The UPDATE.DOC file contains
+  information on the new features in Turbo Assembler version 2.01.
+  The HELPME!.DOC file answers many common Technical Support
+  questions.
+
+
+TABLE OF CONTENTS
+-----------------
+1.  How to Get Help
+2.  Installation
+3.  Important Notes
+4.  Files on the Disks
+
+
+1.  HOW TO GET HELP
+-------------------
+
+  If you have any problems, please read this file, HELPME!.DOC,
+  UPDATE.DOC, and the Turbo Assembler manuals first. If you still
+  have a question and need assistance, help is available from the
+  following sources:
+
+  1. Type GO BOR on the CompuServe bulletin board system for
+     instant access to the Borland forums with their libraries of
+     technical information and answers to common questions.
+
+     If you are not a member of CompuServe, see the enclosed
+     special offer, and write for full details on how to receive
+     a free IntroPak containing a $15 credit toward your first
+     month's online charges.
+
+  2. Check with your local software dealer or users' group.
+
+  3. Write to us at the following address:
+
+     Borland International
+     Turbo Assembler Technical Support
+     1800 Green Hills Road
+     P.O. Box 660001
+     Scotts Valley, CA  95066-0001
+
+     Please remember to include your serial number or we will be
+     unable to process your letter.
+
+  4. If you have an urgent problem that cannot wait and you have
+     sent in the license agreement, you may call the Borland
+     Technical Support Department at (408) 438-5300 Monday through
+     Friday between the hours of 6 a.m. and 5 p.m. Pacific Time.
+     Please have the following information ready before calling:
+
+     a. Product name and serial number on your original
+        distribution disk. Please have your serial number ready
+        or we will be unable to process your call.
+
+     b. Product version number. The version number for Turbo
+        Assembler is displayed when you run the program.
+
+     c. Computer brand, model, and the brands and model numbers
+        of any additional hardware.
+
+     d. Operating system and version number. (The version number
+        can be determined by typing VER at the DOS prompt.)
+
+     e. Contents of your AUTOEXEC.BAT and CONFIG.SYS files.
+
+
+2.  INSTALLATION
+----------------
+
+  You should read the rest of this README file to get further
+  information about this release before you do the installation.
+
+  The Turbo Assembler/INSTALLATION disk contains a program called
+  INSTALL.EXE that will assist you with the installation of Turbo
+  Assembler 2.01.
+
+  To start the installation, change your current drive to the one
+  that has the install program on it and type INSTALL. You will
+  be given instructions in a box at the bottom of the screen for
+  each prompt. For example, if you will be installing from drive
+  A:, type
+
+    A: <Enter>
+    INSTALL <Enter>
+
+  If you have difficulty reading the text displayed by the INSTALL
+  program, use the /B command-line parameter to force it to use
+  black and white colors:
+
+    a:install /B      - Forces INSTALL into BW80 mode
+
+  Specifying the /B parameter may be necessary if you are using an
+  LCD screen or a system that has a color graphics adapter and a
+  monochrome or composite monitor.
+
+  Notes for installation:
+
+    INSTALL copies all Turbo Assembler files onto your hard disk
+    and puts them into subdirectories. The default subdirectories
+    are
+
+      Turbo Assembler Directory:                   C:\TASM
+      Examples Subdirectory:                       C:\TASM
+
+  By default, all files from the distribution disks are placed in
+  the Turbo Assembler Directory. If you would rather separate the
+  examples programs into their own subdirectory, edit the default
+  example files path before selecting START INSTALLATION.
+
+  The Turbo Assembler distribution disks contain several files
+  with a .ZIP file extension: TASM.ZIP, MANUAL.ZIP, etc. These
+  files contain one or more other files that have been compressed
+  and placed inside an archive. You can de-archive them yourself
+  by using the UNZIP.EXE utility. For example,
+
+    unzip /o tasm
+
+  unpacks all the files stored in the TASM.ZIP archive into the
+  current directory.
+
+  INSTALL gives you a choice of copying the .ZIP files intact or
+  de-archiving and copying all the individual files onto your hard
+  disk during the installation process.
+
+
+3.  IMPORTANT NOTES
+-------------------
+
+o Updated QUIRKS mode list
+ 
+    The following apply to QUIRKS mode:
+    1)  NEAR or SHORT jumps are generated even if FAR is specified,
+        if source and destination segments are the same.
+    2)  Type checking for some two-argument instructions is disabled,
+        for example, MOV ES,BYTEPTR is allowed.
+    3)  Forces an EQU to an expression with PTR in it to be a text
+        macro.
+    4)  Forces an EQU to an expression with : in it to be a
+        text macro. 
+    5)  Forces an EQU to an expression with OFFSET in it to be a text
+        macro. 
+    6)  Forces SHL operator to lose track of sign info.
+    7)  Forces numeric equates (= or numeric EQU) to lose complex
+        expression information such as segment, fixup type.
+    8)  Reduces priority of GLOBAL, UNION keywords so that they may
+        be overridden.
+    9)  Causes warning instead of error to be generated if the second
+        argument is missing in a two-argument instruction.
+    10) Allows REPT without argument to be interpreted as REPT 0.
+    11) Disables test for extra stuff on line after IF conditional.
+ 
+    The following apply to QUIRKS with MASM51:
+    1)  @@, @F, and @B are enabled.
+    2)  Trailing language ID after NEAR or FAR in procedure
+        declaration is allowed.
+    3)  All procedure symbols are published globally.
+    4)  :: label definitions are allowed.
+
+
+o MASM compatibility pass
+
+    Using TASM's /m command-line switch will generate a MASM-style
+    second pass (compatibility pass) when the following
+    constructions are present:
+
+      o IF1 and IF2 directives
+      o .ERR1 and .ERR2 directives
+      o ELSEIF1 and ELSEIF2 directives
+      o Forward references with IFDEF or IFNDEF
+      o Forward references with the .TYPE operator
+      o Recursively defined numbers (FOO=FOO+1)
+      o Forward-referenced or recursively defined text macros 
+          (FOO CATSTR FOO,<1>) 
+      o Forward referenced macros
+
+    The execution of the compatibility pass effectively disables
+    the advantages associated with Turbo Assembler's multiple pass
+    capabilities.
+
+
+o Updated example files
+
+    The WHEREIS example file has been updated to reflect some of
+    the new TASM 2.01 features. In addition, IWHGLOBL.INC and
+    IWHEREIS.ASM in TAEXMPL1.ZIP and GLOBALS.INC in TAEXMPL2.ZIP
+    have been changed to remove the warning message "Global type
+    doesn't match symbol type."
+
+
+o SMART/NOSMART directives
+
+    One of the optimizations that TASM 2.01 performs is to change
+    FAR calls to an address in the same segment into a PUSH CS
+    followed by a CALL NEAR.  Any FAR procedures that have an
+    EXTRN definition declared inside a segment are considered to
+    be in that segment, and TASM will generate the PUSH CS, CALL
+    NEAR instructions for them.  To avoid this, put a procedure's
+    EXTRN definition inside of a segment only if the procedure
+    is actually in that segment, or put NOSMART and SMART
+    directives around calls to the procedure in that segment.
+
+
+o Turbo Assembler 2.01 Reference Guide corrections
+
+    P. 187  In the section titled "Examples," make the following
+    changes:
+
+      prog.exe: myprog.asm prog2.asm include\stdio.inc
+      tasm /t myprog.asm   # Recompile myprog using Turbo Assembler
+      tasm /t prog2.asm # Recompile prog2 using Turbo Assembler
+      tlink myprog prog2, prog
+
+        Here are some better examples:
+
+        prog.exe: myprog.obj prog2.obj
+        tlink myprog prog2, prog
+
+        myprog.obj: myprog.asm include\stdio.inc
+        tasm myprog.asm
+
+        prog2.obj: prog2.asm include\stdio.inc
+        tasm prog2.asm
+
+P. 196  The directives in Table D.1 should be uppercase.
+
+P. 212  Ignore the second paragraph under the section "Turbo Link";
+        TASM does not call TLINK.
+
+ 
+4.  FILES ON THE DISK
+---------------------
+
+  TURBO ASSEMBLER/INSTALLATION
+  ----------------------------
+  INSTALL  EXE  -  Turbo Assembler installation program
+  README   COM  -  Reads this README
+  UNZIP    EXE  -  Program to unzip the .ZIP files
+  TASM     ZIP  -  Turbo Assembler 2.01 and Utilities
+    TASM     EXE  -  Turbo Assembler 2.01
+    TLINK    EXE  -  Borland Turbo Linker
+    MAKE     EXE  -  Program for managing projects
+    GREP     COM  -  Turbo GREP program
+    TCREF    EXE  -  Turbo Assembler cross-reference utility
+    OBJXREF  COM  -  Object file cross-reference utility
+    TOUCH    COM  -  Program that updates a file's date and time
+    TLIB     EXE  -  Borland Turbo Librarian
+
+  MANUAL   ZIP  -  Turbo Assembler 2.01 Documentation files.
+    UPDATE   DOC  -  Complete description of new TASM 2.01 features
+    TLINK    DOC  -  Updated information on TLINK.EXE
+    GREP     DOC  -  Updated information on GREP.COM
+    TCREF    DOC  -  Updated information on TCREF.EXE
+    OBJXREF  DOC  -  Updated information on OBJXREF.COM
+    HELPME!  DOC  -  Text file with the answers to many common
+                     questions. Please read HELPME!.DOC before
+                     contacting Technical Support
+    BASIC    DOC  -  Interfacing Turbo Assembler with Turbo Basic
+    PROLOG   DOC  -  Interfacing Turbo Assembler with Turbo Prolog
+
+  MMACROS  ZIP  -  MASM Mode Macros
+    BIOS     INC  -  Equates representing the BIOS services
+    DOS      INC  -  Equates representing the DOS services
+    KBD      INC  -  Equates representing the IBM PC keyboard keystrokes
+    MBIOS    MAC  -  Macros used to interface with the IBM PC BIOS. 
+                     MASM Mode
+    MDOS     MAC  -  Macros to interface with DOS. MASM Mode
+    MMACROS  MAC  -  General macros. MASM Mode
+
+  README        -  This file
+
+
+  TURBO ASSEMBLER/EXAMPLES
+  ------------------------
+  TAEXMPL1 ZIP  -  Ideal mode example and macros
+    BIOS     INC  -  Equates representing the BIOS services
+    BIOSMAC  DOC  -  Documentation for macros implemented in ?BIOS.MAC
+    DEMO1    BAT  -  Batch file to make Whereis.exe
+    DOS      INC  -  Equates representing the DOS services
+    DOSMAC   DOC  -  Documentation for macros implemented in ?DOS.MAC
+    IASCIIZS ASM  -  Routine to display an ASCIIZ string
+    IBIOS    MAC  -  Ideal mode macros used to interface with the 
+                     IBM PC BIOS
+    IBYTECPY ASM  -  Routine that copies an array of bytes from one
+                     location to another
+    IDELCHAR ASM  -  Routine that deletes n characters from a
+                     Pascal-style string starting at position i
+    IDOS     INC  -  Type declarations used to interface with DOS
+    IDOS     MAC  -  Macros to interface with DOS. Ideal Mode
+    IEXECDOS ASM  -  Routines to handle calling DOS to perform a
+                     command on a file
+    IFINDBYT ASM  -  Routine that searches an array of bytes, looking
+                     for a value; routine that returns the length of
+                     an ASCIIZ string.
+    IFINDFIL ASM  -  Routine that does a recursive search of a hard disk
+                     looking for a file
+    IFINDREP ASM  -  Routine that searches through an array of
+                     bytes, replacing all instances of a value
+                     with another value.
+    ILOCSTRG ASM  -  Routine that searches through memory looking
+                     for the nth Pascal-style string
+    IMACROS  MAC  -  General macros. Ideal Mode
+    IPARAM   ASM  -  Routines to return the # of command-line
+                     parameters and the contents of an individual
+                     parameter
+    IPARSEFN ASM  -  Routine that parses a file name into Drive,
+                     Path, and File spec
+    ISKPWHIT ASM  -  Routine to advance a pointer past any whitespace
+                     in an array of bytes
+    IWHEREIS ASM  -  Main module for Whereis program
+    IWHGLOBL INC  -  Global declarations for Whereis
+    IWRITEPS ASM  -  Routine to display a Pascal-style string
+    KBD      INC  -  Equates representing the IBM PC keyboard keystrokes
+    WHEREIS  DOC  -  Documentation for Whereis file locator program
+    WHEREIS  MAK  -  Make file for creating Whereis.exe using the Make
+                     utility
+    WHUSAGE  INC  -  Usage screen text
+
+  TAEXMPL2 ZIP  -  FILT and standard segmentation (SHOW87) examples
+    CONVERT1 INC  -  Converts from binary numbers to strings
+    CONVERT2 INC  -  Converts from floating point to integer numbers
+    DEMO3    BAT  -  Batch file to make Filt.exe text filter program
+    DEMO2    BAT  -  Batch file to build Show87
+    FILT     ASM  -  Text filter main file
+    FILT     DOC  -  Documentation file for Filt.exe text filter
+                     program
+    FILT     MAK  -  Make file for creating Filt.exe using the
+                     make utility
+    FILT     RSP  -  Linker response file for linking Filt.exe
+    GLOBALS  INC  -  Declares procedures and symbols needed by
+                     the modules of FILT
+    OBYTEHI  ASM  -  Processes the current high byte value in AL
+    OBYTELOW ASM  -  Processes the current low byte value in AL
+    OBYTENRM ASM  -  Processes the current normal byte value in AL
+    OCMDNUM  ASM  -  Parses the command line
+    OERREXIT ASM  -  Handles the printing of error messages
+    OFCREATE ASM  -  Creates or truncates a file; the file is opened
+                     for writing
+    OFILALOC ASM  -  Allocates a read/write buffer
+    OFILCLOS ASM  -  Closes a file
+    OFILEFIL ASM  -  Fills a read buffer
+    OFILFREE ASM  -  Deallocates a read/write buffer
+    OFILREAD ASM  -  Reads from a file
+    OFILWRIT ASM  -  Writes to a file
+    OFLFLUSH ASM  -  Flushes the write buffer
+    OFOPENR  ASM  -  Opens a file for reading
+    OFOPENW  ASM  -  Opens a file for writing
+    OLOCASE  ASM  -  Routine converts a letter to lowercase
+    OPARSCMD ASM  -  Parses the command line
+    OPRCBYTE ASM  -  Processes a byte
+    OPROCDOC ASM  -  Processes an entire document, one line at a time
+    OPROCLIN ASM  -  Processes a line
+    OSETOPTN ASM  -  Sets options for FILT
+    OSPACES  ASM  -  Stores a specified number of spaces at
+                     particular location
+    OSTORSPC ASM  -  Stores any currently stored spaces
+    OSTORTAB ASM  -  Stores a tab character if there are any spaces
+                     to compress
+    OTABCLR  ASM  -  Clears all tab stops
+    OTABNEXT ASM  -  Returns the number of spaces to the next tab stop
+    OTABRSET ASM  -  Sets tab stops every eight columns
+    OTABSET  ASM  -  Sets a tab stop at a specified column location
+    OUPCASE  ASM  -  Converts a letter to uppercase
+    SHOW87   ASM  -  Standard Segmentation Demo Program
+    SHOW87   DOC  -  Documentation for Show87 8087 register display
+                     program
+    VIDEO1   INC  -  Routines to display text and control the screen
+    VIDEO2   INC  -  Routines to display formatted text strings
+
+  CHAPXMPL ZIP  -  Example Programs from the Manual
+
+     Note: This file is not automatically unzipped when Turbo Assembler
+           is installed to a hard disk. To unzip these files you
+           will first need to switch to the drive and
+           subdirectory containing this file and then give the
+           command
+
+           unzip /o chapxmpl
+
+    Example         Pre-2.01 Doc        2.01 Doc
+    
+    HELLO    ASM  -  Pg   9             Pg   11
+    HELLO2   ASM  -  Pg  13             Pg   15
+    HELLOPRN ASM  -  Pg  15             Pg   17
+    REVERSE  ASM  -  Pg  16             Pg   18
+    ECHOCHAR ASM  -  Pg  55             Pg   72
+    MODCHAR  ASM  -  Pg  80             Pg   78
+    DELAY    ASM  -  Pg  88             Pg   87
+    DSLYSTR  ASM  -  Pg 109             Pg  105
+    USE_ES   ASM  -  Pg 110             Pg  107
+    STDSEG   ASM  -  Pg 115             Pg  111
+    STRINGS  ASM  -  Pg 132             Pg  127
+    PRNTSTR  ASM  -  Pg 175             Pg  163
+    CNTWORDS ASM  -  Pg 181             Pg  168
+    MAIN     ASM  -  Pg 207             Pg  191
+    SUB1     ASM  -  Pg 208             Pg  191
+    PLUSONE  C    -  Pg 282             Pg  262
+    SQRETBLE C    -  Pg 287             Pg  266
+    SQRTBLE2 C    -  Pg 287             Pg  266
+    STRINGUP C    -  Pg 293             Pg  271
+    DOTOTAL  ASM  -  Pg 305             Pg  283
+    SHOWTOT  C    -  Pg 306             Pg  284
+    DOTOTAL2 ASM  -  Pg 307             Pg  285
+    TOGLFLAG C    -  Pg 313             Pg  290
+    TOGFLAG  ASM  -  Pg 313             Pg  290
+    COUNT    ASM  -  Pg 327             Pg  304
+    CALLCT   C    -  Pg 328             Pg  305
+    COUNTLG  ASM  -  Pg 329             Pg  305
+    CALCAVG  C    -  Pg 334             Pg  311
+    AVERAGE  ASM  -  Pg 334             Pg  312
+    SAMPLE   PAS  -  Pg 344             Pg  322
+    ASMPROC  ASM  -  Pg 344             Pg  322
+    TSAMPLE  PAS  -  Pg 345             Pg  323
+    HEXSTR   ASM  -  Pg 357             Pg  334
+    HEXTEST  PAS  -  Pg 358             Pg  336
+    XCHANGE  ASM  -  Pg 360             Pg  337
+    XCHANGE  PAS  -  Pg 361             Pg  338
+    ENVSTR   ASM  -  Pg 362             Pg  340
+    ENVTEST  PAS  -  Pg 364             Pg  342
+    SCROLLH  PRO  -  Pg 387             see Prolog.doc
+    SCROL    ASM  -  Pg 388             see Prolog.doc
+    MYPROLOG PRO  -  Pg 391             see Prolog.doc
+    MYASM    ASM  -  Pg 391             see Prolog.doc
+    ADDPRO   PRO  -  Pg 393             see Prolog.doc
+    ADD      ASM  -  Pg 393             see Prolog.doc
+    SHOWMESS PRO  -  Pg 395             see Prolog.doc
+    FROM_ASM ASM  -  Pg 395             see Prolog.doc
+    SHOWNEW  PRO  -  Pg 396             see Prolog.doc
+    FROM_NEW ASM  -  Pg 396             see Prolog.doc
+    FUNC     PRO  -  Pg 398             see Prolog.doc
+    IFUNC    ASM  -  Pg 398             see Prolog.doc
+    MULT_C&D ASM  -  Pg 469             Pg  404
+    PRIMES   ASM  -  Pg 521             Pg  449
+    MASEXMPL ASM  -  Pg 548             Pg  476
+    IDLEXMPL ASM  -  Pg 549             Pg  477
+
+  THELP    ZIP  -  Turbo Help files for Turbo Assembler 2.01
+    THELP    COM  -  Borland Turbo Help
+    TASM     TAH  -  Turbo Assembler Help text file
+    THELP    DOC  -  Information about THELP.COM
+
+  TFEXMPL2 ZIP  -  Turbo Profiler example files
+    PRIME0   C
+    PRIME0   EXE
+    PRIME1   C
+    PRIME1   EXE
+    PRIME2   C
+    PRIME2   EXE
+    PRIME3   C
+    PRIME3   EXE
+    PRIME4   C
+    PRIME4   EXE
+    PRIME5   C
+    PRIME5   EXE
+    PRIME6   C
+    PRIME6   EXE
+
+  TFHELP   ZIP  -  Turbo Help file for Turbo Profiler 1.01
+    TFHELP   TFH
+
+
+NOTE: If you have the 3.5" version of Turbo Assembler, you can
+      find all files on one disk.
+ 

@@ -1,0 +1,87 @@
+
+                         TLINK: TURBO LINK
+                         -----------------
+
+
+  Turbo Link (TLINK) is an extremely fast and compact linker; it's invoked
+  as a separate program and can also be used as a standalone linker. For 
+  instructions on using TLINK as a standalone linker, look in Appendix D
+  of the Turbo Assembler Reference Guide. This file contains extra information
+  that is not in Appendix D.
+
+  /s switch
+  ---------
+  When a detailed map is requested through use of the /s switch, the list of 
+  public symbols (if it appears) has public symbols flagged with "idle" if 
+  there are no references to that symbol. For example, this fragment from the 
+  public symbol section of a map file indicates that symbols Symbol1 and 
+  Symbol3 are not referenced by the image being linked:
+
+    0C7F:031E    idle    Symbol1
+    0000:3EA2            Symbol2
+    0C7F:0320    idle    Symbol3
+
+
+  /o switch (overlays)
+  --------------------
+  The /o option causes the code in all modules or libraries specified after 
+  the option to be overlaid. It remains in effect until the next comma 
+  (explicit or implicit) or /o- in the command stream. /o- turns off 
+  overlaying.
+
+  The /o option can be optionally followed by a segment class name; this 
+  will cause all segments of that class to be overlaid. When no such name 
+  is specified, all segments of classes ending with CODE will be overlaid. 
+  Multiple /o options can be given, thus overlaying segments of several 
+  classes; all /o options remain in effect until the next comma or /o- 
+  is encountered.
+
+  The syntax /o#xx, where xx is a two-digit hexadecimal number, overrides 
+  the overlay interrupt number, which by default is 3FH.
+
+  Here are some examples of /o options:
+
+    /o             Overlay all code segments until next comma or /o-.
+
+    /o-            Stop overlaying.
+
+    /oOVY          Overlay segments of class OVY until the next comma
+                   or /o-.
+
+    /oCODE /oOVLY  Overlay segments of class CODE or class OVLY until next
+                   comma or /o-.
+
+    /o#F0          Use interrupt vector 0F0H for overlays.
+
+  You can use the /o option in response files. If you use the /o option in a 
+  response file, it will be turned off automatically before the libraries are 
+  processed. If you want to overlay a library, you must use another /o right 
+  before all the libraries or right before the library you want to overlay.
+
+
+  /y (expanded or extended memory)
+  --------------------------------
+  This switch controls TLINK's use of expanded or extended memory for I/O 
+  buffering. If, while reading object files or while writing the executable
+  file, TLINK needs more memory for active data structures, it will either 
+  purge buffers or swap them to expanded or extended memory.
+
+  In the case of input file buffering, purging simply means throwing away the
+  input buffer so that its space can be used for other data structures. In 
+  the case of output file buffering, purging means writing the buffer to its 
+  correct place in the executable file. In either case, you can substantially 
+  increase the speed of a link by allowing these buffers to be swapped to 
+  expanded or extended memory.
+
+  TLINK's capacity is not increased by swapping; only its performance is 
+  improved. By default, swapping to expanded memory is enabled, while 
+  swapping to extended memory is disabled. If swapping is enabled and no 
+  appropriate memory exists in which to swap, then swapping does not occur.
+
+  This switch has several forms, shown below
+
+    /ye   enable expanded memory swapping (default)
+    /ye   disable expanded memory swapping
+    /yx   enable extended memory swapping
+    /yx-  disable extended memory swapping (default)
+
