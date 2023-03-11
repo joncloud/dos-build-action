@@ -1,5 +1,5 @@
 name: 'dos-build'
-description: 'Build DOS Programs using DOSBox-X'
+description: 'Build DOS Programs using DOSBox-X programs like Borland Turbo C'
 inputs:
   run:
     description: 'Batch program to run inside of DOSBox-X'

@@ -1,6 +1,6 @@
-# Dos Build GitHub action
+# DOS Build GitHub action
 
-This action calls `dosbox-x`, and provides several compilers in order to compile in DOS.
+This action calls `dosbox-x`, and provides several compilers (like Borland Turbo C) in order to compile in DOS.
 
 ## Inputs
 
