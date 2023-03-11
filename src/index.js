@@ -21,7 +21,7 @@ const programs = await Promise.all(
       join(__dirname, '..', 'programs'),
     ))
 );
-const conf = getInput('conf')
+const conf = getInput('conf', { reqiured: false })
   .trim()
   .split(/[\r\n]/g)
   .map(x => x.trim())
