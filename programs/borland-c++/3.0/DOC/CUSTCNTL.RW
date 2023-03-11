@@ -1,0 +1,544 @@
+Creating Custom Control Classes
+-------------------------------
+
+  Windows provides standard control classes, such as list boxes and
+  radio buttons, that you can add to your dialog box resources. In
+  addition to these standard classes, Resource Workshop also lets you
+  create and use custom control classes. This file describes the
+  functions you'll need to use to make your custom controls accessible
+  to Resource Workshop.
+
+  See Chapter 4 in the Resource Workshop User's guide for descriptions
+  of the standard menu controls and how to load and use a custom control
+  library. 
+
+  For an example of how to use the custom control application program
+  interface described in this file, see the BITBTN demo programs on
+  your Resource Workshop distribution disks. These programs come in a
+  Pascal version and a C version.
+
+  If you design your own controls, you'll store them in a dynamic-link
+  library (DLL) file. This DLL file must also contain functions that
+  enable Resource Workshop to work with the custom controls just as it
+  works with any of the standard Windows controls.
+
+  There is one function you must include in your DLL file and export by
+  a specific name, the ListClasses function. This function provides
+  information to Resource Workshop about the custom control classes in the
+  DLL.
+
+  For each custom control window class, you must also provide the following
+  three functions
+
+	Info
+
+	Style
+
+	Flags
+
+
+  These functions can have any name, but they must be exported by the DLL
+  and pointers to them must be supplied in the ListClasses function.
+
+  The remainder of this file is divided into two major sections, one for
+  C programmers and one for Pascal programmers. It starts with the C
+  information. To skip to the Pascal portion, seach for "PASCAL PROGRAMMING
+  SECTION".
+
+
+                       C PROGRAMMING SECTION
+                       ---------------------
+
+
+  THE LISTCLASSES FUNCTION
+  ------------------------
+
+  The ListClasses function specifies the number of classes contained
+  in the DLL. For each control class, the ListClasses function must
+  specify the name of the class and the addresses of each of the three
+  required functions: Info, Style, and Flags.
+
+  Use this function even if you have only a single control in the DLL,
+  because RW uses the presence or absence of this function to enable
+  its extensions to the custom control API.
+
+  Because Resource Workshop automatically frees the handle return, it doesn't
+  need to be freed by the custom control library.
+
+  Return value:
+
+    Returns a global handle to the data structure.
+
+  Syntax:
+
+   HANDLE FAR _export PASCAL ListClasses( LPSTR szAppClass, WORD wVersion,
+   LPFNLOADRES fnLoad, LPFNEDITRES fnEdit);
+
+  Parameters:
+
+    There are four parameters:
+
+    szAppClass	is the class name of the main Resource Workshop window.
+		This class name can be used by the custom control to 
+		determine if it is running under Resource Workshop.
+
+    wVersion	is the Resource Workshop version number, with the major 
+		version in the high-order byte and the minor version in 
+		the low-order byte. Version 1.01 is 0x0101.
+
+    fnLoad	points to a function a custom control can use to obtain a
+		binary version of any resource in the project being edited 
+		by Resource Workshop. It's the equivalent of the Windows API
+		function LoadResource(). The function takes two parameters, a
+		resource type name and a resource name. The custom control
+		is responsible for freeing the global handle (if any)
+		returned by this function.
+
+    fnEdit	points to a function a custom control can use to start a 
+		resource editor for any resource in the project being edited
+		by Resource Workshop. It takes two parameters, a resource type
+		name and a resource name.
+
+
+  Data structures:
+
+    typedef struct
+    {
+      LPFNINFO  fnRWInfo;             // Info function
+      LPFNSTYLE fnRWStyle;            // Style function
+      LPFNFLAGS fnFlags;              // Flags function
+      char  szClass[ CTLCLASS];       // Class name
+
+    } RWCTLCLASS, FAR *LPRWCTLCLASS;
+
+    typedef struct {
+      short        nClasses;          // Number of classes in list
+      RWCTLCLASS Classes[];           // Class list
+    } CTLCLASSLIST, FAR *LPCTLCLASSLIST;
+
+
+  THE INFO FUNCTION
+  -----------------
+
+  The Info function returns a Windows global memory handle to a
+  complex, variable-length data structure. Because Resource Workshop
+  automatically frees the handle returned, it doesn't need to be freed by
+  the custom control library.
+
+  This function is called once when Resource Workshop first loads the DLL
+  file.
+
+  Syntax:
+
+    HANDLE FAR _export PASCAL Info( void);
+
+  Parameters:
+
+    None.
+
+  Structure:
+
+    The structure, defined by a typedef in the file CUSTCNTL.H,
+    has two basic parts:
+
+    - The first part has a fixed length and provides information about the
+      whole control class.
+
+    - The second part is a variable-length array of fixed-length records.
+      Each record provides information about a particular type or subclass
+      of the control.
+
+    Here's the structure, with comments to help explain it:
+
+    /* general size definitions */
+    #define     CTLTYPES   12   /* number of control types   */
+    #define     CTLDESCR   22   /* size of control menu name */
+    #define     CTLCLASS   20   /* max size of class name    */
+    #define     CTLTITLE   94   /* max size of control text  */
+
+    /*
+     * CONTROL DATA STRUCTURE
+     *
+     * This data structure is returned by the control options function
+     * while inquiring about the capabilities of a particular control.
+     * Each control may contain various types (with predefined style
+     * bits) under one general class.
+     *
+     * The width and height fields provide the application with
+     * a suggested size. Use pixels or dialog units for the values
+     * in these fields. If you use pixels, turn on the most significant
+     * bit (MSB). If you use dialog units, turn off the MSB.
+     *
+     */
+
+     typedef struct {
+       WORD         wType;               /* type style */
+       WORD         wWidth;              /* suggested width */
+       WORD         wHeight;             /* suggested height */
+       DWORD        dwStyle;             /* default style */
+       char         szDescr[CTLDESCR];   /* menu name */
+       HBITMAP      hToolBit;            // Toolbox bitmap
+       HCURSOR      hDropCurs;           // Drag and drop cursor
+     } RWCTLTYPE, FAR * LPRWCTLTYPE;
+
+     typedef struct {
+       WORD         wVersion;            /* control version */
+       WORD         wCtlTypes;           /* control types */
+       char         szClass[CTLCLASS];   /* control class name */
+       char         szTitle[CTLTITLE];   /* control title */
+       char         szReserved[10];      /* reserved for future use */
+       RWCTLTYPE    Type[CTLTYPES];      /* control type list */
+     } RWCTLINFO;
+
+     typedef RWCTLINFO *RWPCTLINFO;
+     typedef RWCTLINFO FAR *LPRWCTLINFO;
+
+
+  THE STYLE FUNCTION
+  ------------------
+
+  The Style function displays a dialog box that allows a user to
+  change options for this control. Resource Workshop calls the Style 
+  function when you double-click the custom control in the Dialog editor.
+
+  Return value:
+
+  If the user changes any options for the control, this function's
+  return value is TRUE. If the user doesn't make any changes or if an
+  error prevents changes, the return value is FALSE.
+
+  Syntax:
+
+    BOOL FAR _export PASCAL Style( HWND hWnd, HANDLE hCtlStyle,
+       LPFNSTRTOID lpfnStrTold, LPFNIDTOSTR lpfnIdToStr);
+
+  Parameters:
+
+    There are four parameters:
+
+    hWnd	identifies the dialog box handle to the Dialog editor 
+		window.
+
+    hCtlStyle	identifies a global memory handle to a control style
+		data structure.
+
+    lpfnStrTold	points to the ID field verification function. This
+		function is provided by Resource Workshop and converts 
+		a string to a numerical ID value.
+
+    lpfnIdToStr	points to the ID source function. This function is
+		provided by Resource Workshop and converts a numerical ID
+		value to a string.
+
+  Data structure:
+
+    Here's the structure, with comments to help explain it:
+
+    /*
+     * CONTROL STYLE DATA STRUCTURE
+     *
+     * The class style function uses this data structure
+     * to set or reset various control attributes.
+     *
+     */
+
+    typedef struct {
+      WORD         wX;                  /* x origin of control */
+      WORD         wY;                  /* y origin of control */
+      WORD         wCx;                 /* width of control */
+      WORD         wCy;                 /* height of control */
+      WORD         wId;                 /* control child id */
+      DWORD        dwStyle;             /* control style */
+      char         szClass[CTLCLASS];   /* name of control class */
+      char         szTitle[CTLTITLE];   /* control text */
+      BYTE         CtlDataSize;         /* control data size */
+      BYTE         CtlData[ CTLDATALENGTH]; /* control data */
+    } RWCTLSTYLE;
+
+    typedef RWCTLSTYLE *   PRWCTLSTYLE;
+    typedef RWCTLSTYLE FAR *   LPRWCTLSTYLE;
+
+  The Style function first verifies the control's ID by passing the
+  numerical ID value to LPFNIDTOSTR, which converts the ID to a string.
+  If LPFNIDTOSTR returns a zero, the ID is illegal and is displayed in
+  the dialog box so that the user can change it to a valid ID. If
+  LPFNIDTOSTR returns a nonzero string, it is returned in the HIWORD of
+  the return value. The Style function then displays the string in the
+  dialog box.
+
+  If the user changes the string that's returned by LPFNIDTOSTR, the
+  Style function verifies the string by passing it to LPFNSTRTOID, which
+  determines if the string is a valid constant expression.
+
+
+  THE FLAGS FUNCTION
+  ------------------
+
+  The Flags function decompiles the binary-style data into a
+  symbolic expression and stores it in the resource script (.RC) file.
+
+  Return value:
+
+    If the function is successful, it returns the custom library's
+    instance handle. If there is an error, it returns a NULL.
+
+  Syntax:
+
+    WORD FAR _export PASCAL Flags(DWORD dwFlags, LPSTR lpStyle, 
+       WORD wMaxString);
+
+  Parameters:
+
+    There are three parameters:
+
+    dwFlags	is a binary-style word.
+
+    lpStyle	points to the destination buffer for the decompile.
+
+    wMaxString	specifies the maximum length of the destination buffer.
+
+
+
+                            PASCAL PROGRAMMING SECTION
+                            --------------------------
+
+
+  THE LISTCLASSES FUNCTION
+  ------------------------
+
+  The ListClasses function specifies the number of classes contained
+  in the DLL. For each control class, the ListClasses function must
+  specify the name of the class and the addresses of each of the three
+  required functions: Info, Style, and Flags.
+
+  Use this function even if you have only a single control in the DLL,
+  because RW uses the presence or absence of this function to enable
+  its extensions to the custom control API.
+
+  Because Resource Workshop automatically frees the handle return, it doesn't
+  need to be freed by the custom control library.
+
+  Return value:
+
+    Returns a global handle to the data structure.
+
+  Syntax:
+
+    function ListClasses(szAppName: PChar; wVersion: Word;
+      fnLoad: TLoad; fnEdit: TEdit): THandle; export;
+
+  Parameters:
+
+    There are four parameters:
+
+    szAppName	is the class name of the main Resource Workshop window.
+		This class name can be used by the custom control to 
+		determine if it is running under Resource Workshop.
+
+    wVersion	is the Resource Workshop version number, with the major 
+		version in the high-order byte and the minor version in 
+		the low-order byte. Version 1.01 is $0101.
+
+    fnLoad	points to a function a custom control can use to obtain a
+		binary version of any resource in the project being edited 
+		by Resource Workshop. It's the equivalent of the Windows API
+		function LoadResource(). The function takes two parameters, a
+		resource type name and a resource name. The custom control
+		is responsible for freeing the global handle (if any)
+		returned by this function.
+
+    fnEdit	points to a function a custom control can use to start a 
+		resource editor for any resource in the project being edited
+		by Resource Workshop. The function takes two parameters, a 
+		resource type name and a resource name.
+
+
+  Data structures:
+
+    PRWCtlClass = ^TRWCtlClass;
+    TRWCtlClass = record
+      fnInfo:  TFnInfo;                       { Info function }
+      fnStyle: TFnStyle;                      { Style function }
+      fnFlags: TFnFlags;                      { Flags function }
+      szClass: array[0..ctlClass-1] of Char;  { Class name }
+    end;
+
+    PCtlClassList = ^TCtlClassList;
+    TCtlClassList = record
+      nClasses: Integer;                       { Number of classes in list }
+      Classes: array[0..0] of TRWCtlClass;     { Class list }
+    end;
+
+
+  THE INFO FUNCTION
+  -----------------
+
+  The Info function returns a Windows global memory handle to a 
+  complex, variable-length data structure. Because Resource Workshop
+  automatically frees the handle returned, it doesn't need to be freed
+  by the custom control library.
+
+  This function is called once when Resource Workshop first loads the
+  DLL file.
+
+  Syntax:
+
+    function Info: Handle; export;
+
+  Parameters:
+
+    None.
+
+  Structure:
+
+    The structure, defined by a typedef in the CustCntl unit,
+    has two basic parts:
+
+    - The first part has a fixed length and provides information about the
+      whole control class.
+
+    - The second part is a variable-length array of fixed-length records.
+      Each record provides information about a particular type or subclass
+      of the control.
+
+    Here's the structure, with comments to help explain it:
+
+    const
+      ctlTypes = 12;   { number of control types }
+      ctlDescr = 22;   { size of control menu name }
+      ctlClass = 20;   { max size of class name }
+      ctlTitle = 94;   { max size of control text }
+
+  { CONTROL DATA STRUCTURE
+
+    This data structure is returned by the control options function
+    in response to an inquiry about the capabilities of a particular
+    control. Each control can contain various types (with predefined 
+    style bits) under one general class.
+
+    The width and height fields provide the application with
+    a suggested size. Use pixels or dialog units for the values
+    in these fields. If you use pixels, turn on the most significant
+    bit (MSB). If you use dialog units, turn off the MSB.}
+
+
+    PRWCtlType = ^TRWCtlType;
+    TRWCtlType = record
+      wType:   Word;                            { type style }
+      wWidth:  Word;                            { suggested width }
+      wHeight: Word;                            { suggested height }
+      dwStyle: LongInt;                         { default style }
+      szDescr: array[0..ctlDescr-1] of Char;    { menu name }
+      hToolBit:  HBitmap;                       { toolbox bitmap }
+      hDropCurs: HCursor;                       { drag and drop cursor }
+    end;
+
+    PRWCtlInfo = ^TRWCtlInfo;
+    TRWCtlInfo = record
+      wVersion:   Word;                           { control version }
+      wCtlTypes:  Word;                           { control types }
+      szClass:    array[0..ctlClass-1] of Char;   { control class name }
+      szTitle:    array[0..ctlTitle-1] of Char;   { control title }
+      szReserved: array[0..9] of Char;            { reserved for future use }
+      ctType:     array[0..ctlTypes] of TCtlType; { control type list }
+    end;
+
+
+  THE STYLE FUNCTION
+  ------------------
+
+  The Style function displays a dialog box that allows a user to
+  change options for this control. Resource Workshop calls the Style 
+  function when you double-click the custom control in the Dialog editor.
+
+  Return value:
+
+  If the user changes any options for the control, this function's
+  return value is True. If the user doesn't make any changes or if an
+  error prevents changes, the return value is False.
+
+  Syntax:
+
+    function Style(hWindow: HWnd; hCntlStyle: THandle; fnStrToId:
+      TStrToId; fnIdToStr: TIdToStr): Bool; export;
+
+  Parameters:
+
+    There are four parameters:
+
+    hWindow	identifies the dialog box handle to the Dialog editor
+		window.
+
+    hCtlStyle	identifies a global memory handle to a control style
+		data structure.
+
+    fnStrTold	points to the ID field verification function. This
+		function is provided by Resource Workshop and converts 
+		a string to a numerical ID value.
+
+    fnIdToStr	points to the ID source function. This function is
+		provided by Resource Workshop and converts a numerical ID
+		value to a string.
+
+  Data structure:
+
+    Here's the structure, with comments to help explain it:
+
+  {   CONTROL STYLE DATA STRUCTURE
+
+      The class style function uses this data structure
+      to set or reset various control attributes.      }
+
+    type
+      PRWCtlStyle = ^TRWCtlStyle;
+      TRWCtlStyle = record
+        wX:   Word;                                 { x origin of control }
+        wY:   Word;                                 { y origin of control }
+        wCx:  Word;                                 { width of control }
+        wCy:  Word;                                 { height of control }
+        wId:  Word;                                 { control child id }
+        dwStyle: LongInt;                           { control style }
+        szClass: array[0..ctlClass-1] of Char;      { name of control class }
+        szTitle: array[0..ctlTitle-1] of Char;      { control text }
+        CtlDataSize: Byte;                          { control data size }
+        CtlData: array[0..ctlDataLength-1] of Char; { control data }
+      end;
+
+  The Style function first verifies the control's ID by passing the
+  numerical ID value to IdToStr, which converts the ID to a string. If
+  IdToStr returns a zero, the ID is illegal and is displayed in the
+  dialog box so that the user can change it to a valid ID. If IdToStr
+  returns a nonzero string, it is returned in the high word of the
+  return value. The Style function then displays the string in the
+  dialog box.
+
+  If the user changes the string that's returned by the IdToStr, the
+  Style function verifies the string by passing it to StrToId, which
+  determines if the string is a valid constant expression.
+
+
+  THE FLAGS FUNCTION
+  ------------------
+
+  The Flags function decompiles the binary-style data into a
+  symbolic expression and stores it in the resource script (.RC) file.
+
+  Return value:
+
+    If the function is successful, it returns the custom library's
+    instance handle. If there is an error, it returns a NULL.
+
+  Syntax:
+
+    function Flags(dwFlags: LongInt; lpStyle: PChar;
+      wMaxString: Word): Word;
+
+  Parameters:
+
+    There are three parameters:
+
+    dwFlags	is a binary-style word.
+
+    lpStyle	points to the destination buffer for the decompile.
+
+    wMaxString	specifies the maximum length of the destination buffer.

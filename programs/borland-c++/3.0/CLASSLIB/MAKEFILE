@@ -1,0 +1,328 @@
+#--------------------------------------------------------------------------#
+#                                                                          #
+#   MAKEFILE for Class Libraries                                           #
+#                                                                          #
+#   Copyright (c) Borland International 1991                               #
+#   All Rights Reserved                                                    #
+#                                                                          #
+#   Usage:                                                                 #
+#                                                                          #
+#       make                                                               #
+#           builds all libraries for all memory models and for DLLs        #
+#                                                                          #
+#       make -DDLL                                                         #
+#           builds DLLs                                                    #
+#                                                                          #
+#       make -DMDL=x                                                       #
+#           builds all libraries for memory model x, where x               #
+#           should be replaced by s, c, m, l, or h.                        #
+#                                                                          #
+#       options:                                                           #
+#                                                                          #
+#           -DDBG specifies the debugging version, which enables           #
+#                 PRECONDITION and CHECK testing.  See CHECKS.H.           #
+#                                                                          #
+#           -DTEMPLATES specifies the template version of the library.     #
+#                                                                          #
+#           -DINCLUDE=... specifies the directories for include files.     #
+#                 Only needed if the class library was not installed in    #
+#                 in the default location, beneath the compiler root       #
+#                 directory.                                               #
+#                                                                          #
+#           -DLIB=... specifies the directory where the compiler libraries #
+#                 are located.  Only needed if the class library was not   #
+#                 installed in the default location, beneath the compiler  #
+#                 root directory.                                          #
+#                                                                          #
+#--------------------------------------------------------------------------#
+
+.autodepend
+.swap
+
+!if $d(DLL)
+MDL=l
+!endif
+
+all:
+!if $d(DLL)
+    make -DDLL lib
+    make -DDLL -DTEMPLATES lib
+!elif $d(MDL)
+    make -DMDL=$(MDL) lib
+    make -DMDL=$(MDL) -DDBG lib
+    make -DMDL=$(MDL) -DTEMPLATES lib
+    make -DMDL=$(MDL) -DDBG -DTEMPLATES lib
+!else
+    for %m in (s c m l h) do make -DMDL=%m
+    make -DDLL
+!endif
+
+!if $d(TEMPLATES)
+TFLAG = -DTEMPLATES
+!endif
+
+!if $(MDL) == h
+WFLAG =
+!elif $d(DLL)
+WFLAG = -WDE
+!else
+WFLAG = -WE
+!endif
+
+!if $d(DLL)
+
+DEBUG = -D__DEBUG=0
+.PATH.obj = objs\dll
+LIBR = tlib /0
+FLAGS = -v- -D_CLASSDLL
+BFLAG = -D_BUILDRTLDLL
+
+!if $d( TEMPLATES )
+LIBNAME = bidsdll.lib
+DLLNAME = bids.dll
+!else
+LIBNAME = tclasdll.lib
+DLLNAME = tclass.dll
+!endif
+
+!elif $d(DBG)
+
+DEBUG = -D__DEBUG=1
+.PATH.obj = objs\d$(MDL)
+LIBR = tlib /0
+FLAGS = -v-
+
+!if $d( TEMPLATES )
+LIBNAME = bidsdb$(MDL)
+!else
+LIBNAME = tclasdb$(MDL)
+!endif
+
+!else
+
+DEBUG = -D__DEBUG=0
+.PATH.obj = objs\$(MDL)
+LIBR = tlib /0
+FLAGS = -v-
+
+!if $d( TEMPLATES )
+LIBNAME = bids$(MDL)
+!else
+LIBNAME = tclass$(MDL)
+!endif
+
+!endif
+
+.PATH.cpp = source
+.PATH.lib = lib
+
+!if $d(INCLUDE)
+IFLAG = -I$(INCLUDE)
+!else
+IFLAG = -I..\include;include
+!endif
+
+!if !$d(LIB)
+LIB = \borlandc\lib
+!endif
+
+FLAGS = $(FLAGS) $(DEBUG) -m$(MDL) $(TFLAG)
+AFLAGS = -c -n$(.PATH.obj) $(IFLAG) $(BFLAG)
+CFLAGS = $(AFLAGS) $(FLAGS)
+
+CC = bcc
+
+lib: config dirs $(LIBNAME)
+
+config:
+    echo $(FLAGS) > turboc.cfg
+    echo $(AFLAGS) >> turboc.cfg
+
+dirs: makedummy objs\dummy.txt
+    if exist objs\dummy.txt del objs\dummy.txt
+
+makedummy:
+    echo dummy >objs\dummy.txt
+
+objs\dummy.txt:
+    md objs
+    md objs\s
+    md objs\c
+    md objs\m
+    md objs\l
+    md objs\h
+    md objs\ds
+    md objs\dc
+    md objs\dm
+    md objs\dl
+    md objs\dh
+    md objs\dll
+
+clean:
+    for %d in (s c m l h ds dc dm dl dh dll) do del objs\%d\*.obj
+
+timer.obj: timer.cpp
+  $(CC) $(CFLAGS) $(.PATH.cpp)\timer
+
+.cpp.obj:
+  $(CC) $(WFLAG) {$* }
+
+!if $d(TEMPLATES)
+
+OBJS =              \
+    babstary.obj    \
+    bdict.obj       \
+    bsortary.obj    \
+    assoc.obj       \
+    btree.obj       \
+    btreeinn.obj    \
+    btreelfn.obj    \
+    collect.obj     \
+    contain.obj     \
+    dbllist.obj     \
+    hashtbl.obj     \
+    ldate.obj       \
+    list.obj        \
+    ltime.obj       \
+    memmgr.obj      \
+    object.obj      \
+    strng.obj
+
+LINKOBJS =                      \
+    -+$(.PATH.obj)\babstary.obj \
+    -+$(.PATH.obj)\bdict.obj    \
+    -+$(.PATH.obj)\bsortary.obj \
+    -+$(.PATH.obj)\assoc.obj    \
+    -+$(.PATH.obj)\btree.obj    \
+    -+$(.PATH.obj)\btreeinn.obj \
+    -+$(.PATH.obj)\btreelfn.obj \
+    -+$(.PATH.obj)\collect.obj  \
+    -+$(.PATH.obj)\contain.obj  \
+    -+$(.PATH.obj)\dbllist.obj  \
+    -+$(.PATH.obj)\hashtbl.obj  \
+    -+$(.PATH.obj)\ldate.obj    \
+    -+$(.PATH.obj)\list.obj     \
+    -+$(.PATH.obj)\ltime.obj    \
+    -+$(.PATH.obj)\memmgr.obj   \
+    -+$(.PATH.obj)\object.obj   \
+    -+$(.PATH.obj)\strng.obj
+
+!else
+
+OBJS =              \
+    abstarry.obj    \
+    array.obj       \
+    deque.obj       \
+    sortarry.obj    \
+    stack.obj       \
+    assoc.obj       \
+    btree.obj       \
+    btreeinn.obj    \
+    btreelfn.obj    \
+    collect.obj     \
+    contain.obj     \
+    dbllist.obj     \
+    dict.obj        \
+    hashtbl.obj     \
+    ldate.obj       \
+    list.obj        \
+    ltime.obj       \
+    memmgr.obj      \
+    object.obj      \
+    strng.obj
+
+LINKOBJS =                      \
+    -+$(.PATH.obj)\abstarry.obj \
+    -+$(.PATH.obj)\array.obj    \
+    -+$(.PATH.obj)\deque.obj    \
+    -+$(.PATH.obj)\sortarry.obj \
+    -+$(.PATH.obj)\stack.obj    \
+    -+$(.PATH.obj)\assoc.obj    \
+    -+$(.PATH.obj)\btree.obj    \
+    -+$(.PATH.obj)\btreeinn.obj \
+    -+$(.PATH.obj)\btreelfn.obj \
+    -+$(.PATH.obj)\collect.obj  \
+    -+$(.PATH.obj)\contain.obj  \
+    -+$(.PATH.obj)\dbllist.obj  \
+    -+$(.PATH.obj)\dict.obj     \
+    -+$(.PATH.obj)\hashtbl.obj  \
+    -+$(.PATH.obj)\ldate.obj    \
+    -+$(.PATH.obj)\list.obj     \
+    -+$(.PATH.obj)\ltime.obj    \
+    -+$(.PATH.obj)\memmgr.obj   \
+    -+$(.PATH.obj)\object.obj   \
+    -+$(.PATH.obj)\strng.obj
+
+!endif
+
+!if $d(DLL)
+
+!if $d(TEMPLATES)
+LINKOBJS =          \
+    babstary.obj +  \
+    bdict        +  \
+    bsortary.obj +  \
+    tmplinst.obj +  \
+
+DEFNAME = bids.def
+
+!else
+
+LINKOBJS =          \
+    abstarry.obj +  \
+    array.obj    +  \
+    deque.obj    +  \
+    dict         +  \
+    sortarry.obj +  \
+    stack.obj    +
+
+DEFNAME = tclass.def
+
+!endif
+
+
+$(DLLNAME) : clasmain.obj tmplinst.obj $(OBJS)
+    cd $(.PATH.obj)
+    tlink @&&!
+$(LIB)\c0dl.obj+
+clasmain+
+$(LINKOBJS)
+assoc+
+btree+
+btreeinn+
+btreelfn+
+collect+
+contain+
+dbllist+
+hashtbl+
+ldate+
+list+
+ltime+
+memmgr+
+object+
+strng
+$(DLLNAME)
+/C/c/x/Twd
+$(LIB)\crtldll.LIB+
+$(LIB)\IMPORT.LIB+
+$(LIB)\mathwl.lib+
+$(LIB)\cwl.lib
+..\..\$(.PATH.cpp)\$(DEFNAME)
+!
+    rc $(DLLNAME)
+    cd ..\..
+    copy $(.PATH.obj)\$(DLLNAME) $(.PATH.lib)
+    del $(.PATH.obj)\$(DLLNAME)
+
+$(LIBNAME) : $(DLLNAME)
+    implib $(.PATH.lib)\$(LIBNAME) $(.PATH.lib)\$(DLLNAME)
+
+!else
+
+$(LIBNAME): $(OBJS) timer.obj
+    $(LIBR) $(.PATH.lib)\$(LIBNAME) @&&!
+    -+$(.PATH.obj)\timer.obj &
+$(LINKOBJS)
+!
+!endif
+

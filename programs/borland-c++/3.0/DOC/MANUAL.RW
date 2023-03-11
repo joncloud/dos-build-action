@@ -1,0 +1,422 @@
+      Additions and corrections to the Resource Workshop User's Guide
+      ===============================================================
+
+Chapter 4, Creating dialog boxes
+================================
+
+p. 64	There's an additional way to resize dialog boxes besides dragging
+	a corner of the box. Change the first bullet in the bulleted list
+	at the bottom of page 64 to the following:
+
+	- Resize the dialog box in one of the following ways:
+
+	    - Drag the mouse cursor from the appropriate edge or corner.
+
+			- Select the dialog box by clicking the dialog box's title
+	      bar, then choose Align|Size to display the Size Dialog
+	      dialog box. The options in this dialog box are identical
+	      to those in the Size Controls dialog box (see Figure 4.13
+	      on page 85), except that the size selections apply to
+	      the dimensions of the entire dialog box rather than to the
+	      dimensions of controls.
+
+p. 70	The following paragraph applies to Figure 4.6:
+
+		If you install a custom control library containing RW-aware controls,
+	  the Tools palette can have more than four columns. Bitmaps for
+	  RW-aware custom controls are added to the right side of the Tools 
+	  palette. (See page 99 and the file CUSTCTRL.RW on the installation 
+	  diskette for more information on custom controls.)
+
+p. 100	Add the following paragraphs to the first sentence after "Adding a 
+	custom control:"
+
+	  If you've added a custom control library containing RW-aware
+	  controls with their own custom bitmaps, you can pick your 
+	  controls directly from the custom bitmaps on the right side
+	  of the Tools palette. 
+
+	  If your custom controls aren't RW-aware, you must perform the 
+	  following steps to add them to your dialog boxes:
+
+
+Appendix A, Technical Notes
+===========================
+
+p. 266	The third paragraph on this page discusses one preprocessor 
+	incompatibility between RC and the Resource Workshop compiler,
+	complex parameterized #defines. This incompatibility no longer
+	exists.
+
+	However, there are three areas of incompatibility between the 
+	Microsoft RC compiler and Resource Workshop that you should 
+	know about. Those areas are 
+
+	- interpretation of numbers with leading zeros
+	- the #undef preprocessor directive
+	- preprocessor token pasting
+
+
+		Numbers with leading zeros
+	  --------------------------
+
+	  It's best not to use leading zeros with numbers used in preprocessor
+	  expressions or identifiers, because there are inconsistencies in the 
+	  RC compiler's treatment of numbers with leading zeros. The Resource 
+	  Workshop compiler is consistent: It interprets any numeric constant 
+	  used as part of an identifier or a preprocessor expression as an 
+	  octal number if it is preceded by a zero. However, this behavior is 
+	  different from that of RC. The Microsoft RC compiler interprets 
+	  numbers with leading zeros in preprocessor expressions as octal 
+	  numbers, but interprets the same numbers in identifiers as decimal 
+	  numbers.
+
+	  For example, the RC compiler would interpret the expression 010+1 as
+	  a 9 in the following preprocessor expression, but as an 11 in the
+	  string table identifier.
+
+			#if (9 == 010+1)
+				STRINGTABLE
+				BEGIN
+					010+1, "Bug"
+				END
+			#endif
+
+
+	The #undef preprocessor directive
+	---------------------------------
+
+	There is limited support in Resource Workshop for the #undef
+	preprocessor directive. You can use this directive only with a
+	#define that hasn't been referenced in a resource at the time
+	the compiler encounters the #undef. If you use #undef with a
+	#define that's been referenced in a resource before the #undef
+	and you try to compile the RC file under Resource Workshop, you
+	get a fatal compile error.
+
+
+	Token pasting
+	-------------
+
+	Resource Workshop doesn't support token pasting in preprocessor
+	statements. See the "Borland C++ Programmer's Guide" for more
+	information on token pasting.
+
+
+NEW INFORMATION ON CUSTOMIZING EXISTING APPLICATIONS
+====================================================
+
+Resource Workshop allows you to customize existing windows
+applications.  There are two basic steps to this process:
+
+- Modify your WIN.INI file to load the Borland Windows Custom
+	Control (BWCC) library each time you start Windows. Once this
+	library is loaded, you can use any application you've modified to
+	use Borland-style custom controls (3D buttons, dialog boxes with
+	the "chiseled steel" look, and so on).
+
+- Edit the application in Resource Workshop to change user interface
+  features like dialog boxes, menus, icons, and so on.  
+
+
+LOADING BWCC FOR APPLICATIONS WITH MODIFIED CUSTOM CONTROLS
+-----------------------------------------------------------
+
+The BWCC library is a loadable module that provides support for
+BWCC. After you've modified an application to use BWCC, you can't 
+actually use these controls until you instruct Windows to load the 
+file LOADBWCC.EXE, which loads the Borland Windows Custom Controls 
+into memory. The installation program installs this file in the 
+language compiler directory (default location is \BORLANDC\BIN) 
+and adds this directory to your PATH.
+
+To cause Windows to load this program on startup, you must edit the 
+WIN.INI file located in the Windows main directory as follows:
+
+WIN.INI contains a line that says
+
+    LOAD=
+
+Add LOADBWCC.EXE to the beginning of the list of files after the "=".
+For example, if the LOAD statement in your WIN.INI file looks
+like this
+
+    LOAD=NWPOPUP.EXE AD.EXE
+
+the statement must change as follows:
+
+    LOAD=loadbwcc.exe NWPOPUP.EXE AD.EXE
+
+Be sure to list the LOADBWCC statement first, in case you modify one of
+the applications on this list of applications. That way, Borland Windows
+Custom Controls are loaded into memory prior to execution of these Windows
+applications.
+
+
+CUSTOMIZING AN EXISTING APPLICATION
+-----------------------------------
+
+Resource Workshop operates on projects.  Projects can be just
+about any type of resource (or collection of resources).  Since
+any Windows application contains a collection of resources, you
+can open as a project the application you want to modify (choose
+File|Open Project).
+
+NOTE: It's important to edit only backup copies of an 
+      application.  When you've determined that your 
+			modified version functions correctly, you can
+      replace the original with the modified version.
+
+
+Opening a project
+-----------------
+
+To show you how to modify an application, we'll modify the Windows
+Program Manager. To open the Windows Program Manager as a project 
+in Resource Workshop,
+
+1. Make a backup copy of PROGMAN.EXE (Program Manager) by doing the
+   following:
+
+   a. Exit Windows.
+
+   b. In the C:\WINDOWS directory, type "copy PROGMAN.EXE MYSHELL.EXE" 
+      and press the Enter key.
+
+2. Start Resource Workshop under Windows.
+
+3. Choose File|Open Project to display the Open Project dialog box.
+
+4. In the File Type field, press the button on the right to display the
+   list of types, then select EXE Application.
+
+5. Use the Directories box to change to the directory containing
+   MYSHELL.EXE, then double click on the file name in the Files list
+   box to load MYSHELL.EXE as the project.
+
+
+Editing the application's controls
+----------------------------------
+
+Now that you've loaded the application into Resource Workshop, you're 
+ready to use the various editors to customize the application.
+
+The various editors are discussed in the Resource Workshop User's Guide. 
+We'll use the Dialog editor to convert one of the dialog boxes in Program 
+Manager to use BWCC.
+
+With MYSHELL.EXE loaded as the current project, you see the Project
+window appear with "myshell.exe" as the title. This window displays
+a list of resources contained in Program Manager.  You see a menu,
+several dialogs, a few string tables, an accelerator table, and a number 
+of icons.  You can edit any one of these resources by double-clicking 
+it with the mouse or by highlighting it and choosing Resource|Edit.  
+
+Select dialog number 9 by locating the "Dialog" section of the 
+resource list and double-clicking "9".  The dialog editor loads
+the Run dialog box, the dialog box displayed when you choose the
+Program Manager File|Run command.
+
+When the Dialog editor appears, you can begin editing the dialog box. 
+Check to see if you've installed the BWCC library by examining the Tools 
+palette. If this palette has four columns of tools, you can continue.
+If the palette has only three columns of tools, you need to install the 
+BWCC library as follows:
+
+1.  Choose Options|Install Control Library.
+
+2.  Locate the BWCC.DLL file (it should be in the C:\WORKSHOP
+    directory).  Highlight it and click OK.
+
+3.  You should now have a total of four columns of tools in the
+    Tools palette.
+
+
+  Changing the dialog's class name
+  --------------------------------
+
+  The first step in converting the dialog to a Borland-style dialog
+  box is to change the class name of the dialog.  Double-click on 
+  the dialog box's title (Run) to display the Window Style dialog
+  box, then type "BorDlg" in the Class field (near the top) and
+  click OK.
+
+  You'll notice a change in the File|Run dialog box: it now has
+  a gray background. You can now see the outlines around the
+  "Command Line:" static text and the "Run Minimized" check box. 
+  This is because these two types of controls are designed to be in
+  the recessed area of the three dimensional chiseled-steel dialog 
+  box. You'll need to do a little more to actually make them look 
+  recessed.
+
+
+  Giving controls that "recessed" look
+  ------------------------------------
+
+  To make these controls actually look recessed, you need to add
+  a recessed area (a group shade) around these controls.
+
+  Before adding the group shade, you need to make more room in the 
+  dialog box. There's a frame around the dialog box that allows you 
+  to resize it, as follows (if you don't see the frame, just click 
+  once on the dialog box caption "Run"):
+
+  1. Drag the bottom border down an inch or so. 
+
+  2. Click the mouse once on the OK button to select it, then, while 
+     holding down the Shift key, click the Cancel button to select them
+     both.  
+
+  3. Drag both buttons down to the bottom of the dialog box.  
+
+  Now that the dialog box is a bit roomier, you can add the group shade,
+  as follows:
+
+  1. Pick up the group shade tool (the one in the upper right hand corner
+     of the Tools palette) by clicking on it.   
+
+  2. Move the cursor just above and to the left of the "Command Line"
+     static text control, then click the mouse button once to place the
+     gray group shade box behind the static text.  
+
+  3. Enlarge the group box to encompass the "Command Line" static text, 
+     the edit control box, and the "Run Minimized" check box.
+
+  4. Move the static text and the edit control down a bit to make them 
+     fit more evenly in the group shade area.
+
+
+  Converting the buttons
+  ----------------------
+
+  Now you're ready to convert the button controls in the dialog box 
+  to Borland-style buttons.  
+
+  The first button to change is the Run Minimized check box.  While 
+  holding the Ctrl key, double-click the check box to display the
+  Generic Control Style dialog box.  Change the Class field from 
+  "BUTTON" to "BorCheck", then click OK.
+
+  Notice that the Run Minimized check box is now slightly smaller.  
+  Later if you test the dialog box, the check mark that appears in 
+  the check box will be different from the standard Windows check box.
+
+  The next buttons to change are the OK and Cancel buttons. Instead of
+  changing them, you'll delete them and replace them with new buttons.
+  To delete them, select each button and press the Del key.
+
+  To add new, Borland-style OK  and Cancel buttons,
+
+  1. Select the Button tool (in the center of the fourth column of 
+     the Tools palette). 
+
+  2. Place the new OK button by positioning the mouse close to where
+     the old OK button was and clicking the mouse button.  
+
+  3. Move the mouse to the right of the new button where the old
+     Cancel button was and click the RIGHT mouse button to duplicate
+     the button you just created.
+
+  4. Double-click on the left button to display the Borland Button Style
+     dialog box.
+
+  5. Type "IDOK" in the Control ID field, then select the "Defpushbutton"
+     item in the Button Type field and press OK to change the button to
+     the Borland-style OK button. 
+
+  6. Double-click on the right button to display the Borland Button Style
+     dialog box.
+
+  7. Type "IDCANCEL" in the Control ID field, then select the "Defpushbutton"
+     item in the Button Type field and press OK to change the button to
+     the Borland-style Cancel button. 
+
+  At this point, the OK and Cancel buttons are probably not aligned with 
+  each other and aren't centered in the dialog box. To correctly align the 
+  buttons, 
+
+  1. Select them both by first clicking one, and then holding down 
+     the Shift key and clicking on the other. 
+
+  2. Choose Align|Align to display the Align Controls dialog box.  
+
+  3. For Horizontal Alignment, select Center In Dialog.  
+
+  4. For Vertical Alignment, select Tops.  
+
+  5. Click OK to align and center the buttons.
+
+  6. Choose File|Save Project to save your work.  
+
+  You now have a version of Program Manager with a customized
+  Run dialog box. You can test it to ensure that it works correctly
+  (choose Options|Test Dialog), and you can run MYSHELL.EXE from 
+  Windows to see how the new dialog box looks under Program Manager.
+
+
+Tips on editing resources
+-------------------------
+
+This section discusses considerations to keep in mind when
+editing resources of existing applications.
+
+  ACCELERATORS
+  ------------
+  Be aware that any new accelerators you add must return ID 
+  values that correspond to menu items that previously existed in 
+  the unmodified application.  Otherwise, the accelerators might
+  run the wrong menu commands or just not work at all.
+
+  BITMAPS
+  -------
+  The application is not likely to work with any new bitmaps that 
+  you add.  You should modify only existing bitmaps.  You shouldn't
+  delete existing bitmaps from the application.
+
+  CURSORS
+  -------
+  As with bitmaps, you should modify only existing cursors.
+
+  DIALOGS
+  -------
+  You can reposition items in a dialog box.  You can also convert the 
+  various elements to corresponding Borland custom control styles. As 
+  you are editing, be sure to retain the correct type of control for 
+  each control ID value.  
+
+  For instance, if the item with control ID 100 is a check box, don't 
+  change it to a radio button, because the application will still treat
+  it as a check box.  
+
+  Also, be aware that any new controls that you add are likely to have 
+  no effect.  Depending on the application, it's probably safe to remove 
+  unwanted items, provided that doing so doesn't affect the overall 
+  performance of the application.  
+
+  For example, it's probably safe to remove a caption (a static text
+  item), but it isn't wise to remove an edit control.
+
+  ICONS
+  -----
+  As with bitmaps, you should modify only existing icons.
+
+  MENUS
+  -----
+  With most applications, it's safe to rearrange menu items within 
+  a sub-menu.  You shouldn't move items from one submenu to another. 
+  (For example, don't move File|Open... to the Edit menu.)  If you do, 
+  the application might be unable to display context-sensitive Help 
+  or to check or uncheck the menu items. 
+
+  You should definitely not rearrange the top level of the menu.
+  (For example, if File is the first menu choice, don't make it
+  the second choice.)
+
+  STRING TABLES
+  -------------
+  You should use caution when editing string tables. Of course, you 
+  shouldn't add new strings, but rather modify only existing strings.  
+  Some programs might load the strings into buffers of limited size, 
+  so exercise caution when adding text to an existing string.
+
+======================= END OF FILE MANUAL.RW =======================

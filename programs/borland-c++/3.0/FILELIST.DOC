@@ -1,0 +1,806 @@
+FILES ON DISKS
+--------------
+
+DISK 1
+------
+INSTALL   EXE - Installation program
+UNZIP     EXE - Program to unzip the .ZIP files
+README    COM - Reads the readme file
+BC        CA1 - Borland C++ compiler - IDE version
+   BC        EXE - Borland C++ compiler (IDE)
+
+CLASSBLD  ZIP - 
+   MAKEFILE      - Makefile for building class library
+
+CLASSINC  ZIP - Include files for C++ class library
+   ABSTARRY    H - Header file for classlibs
+   ARRAY       H - Header file for classlibs
+   ARRAYS      H - Header file for classlibs
+   ASSOC       H - Header file for classlibs
+   BAG         H - Header file for classlibs
+   BAGS        H - Header file for classlibs
+   BTREE       H - Header file for classlibs
+   CHECKS      H - Header file for class libs
+   CLSDEFS     H - Header file for classlibs
+   CLSTYPES    H - Header file for classlibs
+   COLLECT     H - Header file for classlibs
+   CONTAIN     H - Header file for classlibs
+   DBLLIST     H - Header file for classlibs
+   DEQUE       H - Header file for classlibs
+   DEQUES      H - Header file for classlibs
+   DICT        H - Header file for classlibs
+   DLISTIMP    H - Header file for classlibs
+   HASHTBL     H - Header file for classlibs
+   LDATE       H - Header file for classlibs
+   LIST        H - Header file for classlibs
+   LISTIMP     H - Header file for classlibs
+   LTIME       H - Header file for classlibs
+   MEMMGR      H - Header file for classlibs
+   OBJECT      H - Header file for classlibs
+   PRIORTYQ    H - Header file for classlibs
+   QUEUE       H - Header file for classlibs
+   QUEUES      H - Header file for classlibs
+   RESOURCE    H - Header file for classlibs
+   SET         H - Header file for classlibs
+   SETS        H - Header file for classlibs
+   SHDDEL      H - Header file for classlibs
+   SORTABLE    H - Header file for classlibs
+   SORTARRY    H - Header file for classlibs
+   STACK       H - Header file for classlibs
+   STACKS      H - Header file for classlibs
+   STDTEMPL    H - Header file for classlibs
+   STRNG       H - Header file for classlibs
+   TIMER       H - Header file for classlibs
+   VECTIMP     H - Header file for classlibs
+
+CLASSSRC  ZIP - Source files to C++ class library
+   ABSTARRY  CPP - Abstract array class definitions
+   ARRAY     CPP - Source file for classlibs
+   ASSOC     CPP - Association class (used by dictionary class)
+   BABSTARY  CPP - Source file for classlibs
+   BDICT     CPP - Source file for classlibs
+   BIDS      DEF - Source file for classlibs
+   BSORTARY  CPP - Source file for classlibs
+   BTREE     CPP - Source file for classlibs
+   BTREEINN  CPP - Source file for classlibs
+   BTREELFN  CPP - Source file for classlibs
+   CLASMAIN  CPP - Source file for classlibs
+   COLLECT   CPP - Ordered collection class definitions
+   CONTAIN   CPP - Container class definitions
+   DBLLIST   CPP - Doubly linked list class definitions
+   DEQUE     CPP - Source file for classlibs
+   DICT      CPP - Dictinary class definitiions
+   HASHTBL   CPP - Hash table class definitions
+   LDATE     CPP - Date class definitions
+   LIST      CPP - List class definitions
+   LTIME     CPP - Time class definitions
+   MEMMGR    CPP - Source file for classlibs
+   OBJECT    CPP - Base class for other objects
+   SORTARRY  CPP - Sorted array class definitions
+   STACK     CPP - Source file for classlibs
+   STRNG     CPP - String class definitions
+   TCLASS    DEF - Definition file for classlibs
+   TIMER     CPP - Source file for classlibs
+   TMPLINST  CPP - Source file for classlibs
+
+EXAMPLES  ZIP - Example programs
+   BARCHART    C - C example file
+   CPASDEMO    C - C example module for the Turbo Pascal - Borland C++
+                   interface demonstration
+   CPASDEMO  PAS - Pascal program that demonstrates Turbo Pascal - Borland
+                   C++ interface
+   CTOPAS    CFG - Config file for Pascal - Borland C++ interface demo
+   CTOPAS    PRJ - Project file for Turbo Pascal - Borland C++ interface demo
+   DEF2      CPP - C++ example - another version of DEF.CPP
+   DEF2        H - Header file for DEF.CPP
+   FILTER      H - Header file for TASM2MSG.C and GREP2MSG.C
+   GETOPT      C - Parses options in command line
+   GREP2MSG    C - Example program for Borland C++ filters
+   HELLO       C - Example Borland C++ program
+   IMPL2MSG    C - source for IMPLIB filter program
+   LIST2     CPP - Another version of LIST.CPP
+   LIST2       H - Header file for LIST2.CPP
+   MYFUNCS   CPP - C++ example file
+   MYFUNCS     H - C++ example header file
+   MYMAIN    CPP - C++ example file
+   MYPROG    DSK - C++ example file
+   RC2MSG      C - Example program for Borland C++ filters
+   TASM2MSG    C - Example program for Borland C++ filters
+   VCIRC     CPP - C++ example program
+   VCIRC     PRJ - Project file for VCIRC.CPP
+   VPOINT    CPP - C++ example program
+   VPOINT      H - Header file for VPOINT.CPP
+
+FILELIST  DOC - File List
+QUEUE     ZIP - 
+   LIST      ASM - Turbo Assembler queue example file
+   LIST      ASO - Turbo Assembler queue example file
+   NODE      ASM - Turbo Assembler queue example file
+   NODE      ASO - Turbo Assembler queue example file
+   OOP       ASM - Turbo Assembler queue example file
+   QUEUE     ASM - Turbo Assembler queue example file
+   QUEUE     ASO - Turbo Assembler queue example file
+   STACK     ASM - Turbo Assembler queue example file
+   STACK     ASO - Turbo Assembler queue example file
+
+RWBCINC   ZIP - Compressed Borland C example include files
+   BWCC        H - Header file for interface to Borland Window's Custom
+                   Controls
+   CUSTCNTL    H - Custom controls header file.
+
+RWBCLIB   ZIP - Compressed Borland C example library files
+   BWCC      LIB - Import library for Borland Window's Custom Controls
+
+STARTUP   ZIP - Startup code files
+   BUILD-C0  BAT - Batch file for building the startup code modules
+   C0        ASM - Assembler source for startup code
+   C0D       ASM - Assembler source  for startup code - Windows DLL
+   C0W       ASM - Assembler source for startup code - Windows EXE
+   RULES     ASI - Assembler include file for interfacing with Borland C++
+
+TASMEXMP  ZIP - zip file
+   ASMPSCL   ASM - Tasm example file
+   AVERAGE   ASM - Tasm example File
+   BIOS      INC - Tasm example file
+   CALCAVG   CPP - Tasm example File
+   CALLCT    CPP - Tasm example file
+   CALLPROC  ASM - Tasm example File
+   CASMLINK  ASM - Tasm example file
+   COMPROG   ASM - Tasm example File
+   CONCISE   ASM - Tasm example file
+   COUNT     ASM - Tasm example File
+   COUNTADD  ASM - Tasm example file
+   COUNTADD  CPP - Tasm example File
+   COUNTLG   ASM - Tasm example file
+   CSPEC     ASM - Tasm example File
+   DBLCOLON  ASM - Tasm example file
+   DLLPROG   ASM - Tasm example File
+   DOS       INC - Tasm example file
+   DOTOTAL   ASM - Tasm example File
+   ENVMOD    ASM - Tasm example file
+   ENVSTR    PAS - Tasm example File
+   EXCHMOD   ASM - Tasm example file
+   EXEPROG   ASM - Tasm example File
+   FINDCHAR  ASM - Tasm example file
+   HELLO1    ASM - Tasm example File
+   HELLO2    ASM - Tasm example file
+   HELLO3    ASM - Tasm example File
+   HEX       ASM - Tasm example file
+   HEX       PAS - Tasm example File
+   HEXMOD    ASM - Tasm example file
+   KBD       INC - Tasm example File
+   LINK2ASM  CPP - Tasm example file
+   MBIOS     MAC - Tasm example File
+   MDOS      MAC - Tasm example file
+   MMACROS   MAC - Tasm example File
+   PRIMES    ASM - Tasm example file
+   PRMSTACK  ASM - Tasm example File
+   REVERSE   ASM - Tasm example file
+   SHOWTOT   CPP - Tasm example File
+   SOMESTR   ASM - Tasm example file
+   VAREXCH   ASM - Tasm example File
+   VAREXCH   PAS - Tasm example file
+   WINPROG   ASM - Tasm example File
+
+TD        CA2 - Split File of TD.ZIP
+TDW       CA2 - Split File of TDW.ZIP
+WHELP2    CA3 - Split File of WHELP2.ZIP
+README        - File contains last minute information
+
+DISK 2
+------
+BIN       ZIP - Miscellaneous binary files
+   DPMI16BI  OVL - Borland C++ DPMI Server
+   DPMIINST  EXE - Borland C++ DPMI Configuration program
+   DPMILOAD  EXE - Borland C++ DPMI loader
+   DPMIMEM   DLL - Borland C++ DPMI memory manager
+   DPMIRES   EXE - Borland C++ DPMI resident loader(user executable)
+   EMSTEST   COM - Utility program for detecting expanded memory
+   GREP      COM - Turbo GREP program
+   IMPDEF    EXE - Utility to convert DEF files to LIB files
+   IMPLIB    EXE - Utility to convert LIB files to DEF files
+   OBJXREF   COM - Object file cross-reference utility
+   PRJ2MAK   EXE - Utility to convert a BC project file into a BCC make file
+   PRJCFG    EXE - Utility to convert a BC project file into a TURBOC.CFG
+                   file
+   TLIB      EXE - Borland Turbo Librarian
+   TOUCH     COM - Program that updates a file's date and time
+   TRANCOPY  EXE - Utility to copy Transfer items between .PRJ files
+   TRIGRAPH  EXE - Trigraph conversion utility
+
+CMDLINE   CA1 - Files in Borland C++ Compiler - Command-Line version
+   BCC       EXE - Command-line version of Borland C++ Compiler
+   BUILTINS  MAK - File containing default inference rules and macros for
+                   MAKE.EXE
+   CPP       EXE - Borland C++ preprocessor
+   MAKE      EXE - Protected mode version of program for managing projects
+   MAKER     EXE - Real mode version of program for managing projects
+   TLINK     EXE - Borland Turbo Linker
+
+RWDOC     ZIP - Compressed Resource Workshop documentation files
+   BWCCAPI    RW - Borland Custom Control API documentation
+   BWCCSTYL   RW - Borland custom control style guidelines
+   CUSTCNTL   RW - custom control api documentation
+   MANUAL     RW - manual corrections
+
+WHELP2    CA2 - Split File of WHELP2.ZIP
+WHELP2    CA4 - Split File of WHELP2.ZIP
+WINLIB    CA1 - Window libraries
+   C0WC      OBJ - Compact model startup code - Windows EXE
+   C0WL      OBJ - Large model startup code - Windows EXE
+   C0WM      OBJ - Medium model startup code - Windows EXE
+   C0WS      OBJ - Small model startup code - Windows EXE
+   CRTLDLL   LIB - Import library for BC30RTL.DLL
+   CWC       LIB - Compact model run-time library - Windows
+   CWL       LIB - Large model run-time library - Windows
+   CWM       LIB - Medium model run-time library - Windows
+   CWS       LIB - Small model run-time library - Windows
+   MATHWC    LIB - Compact model windows math library
+   MATHWL    LIB - Large model windows math library
+   MATHWM    LIB - Medium model windows math library
+   MATHWS    LIB - Small model windows math library
+
+
+DISK 3
+------
+BGI       ZIP - Graphics drivers
+   ATT       BGI - Graphics driver for ATT400 graphics card
+   BGIDEMO     C - Graphics demonstration program
+   BGIOBJ    EXE - Conversion program for fonts and drivers
+   BOLD      CHR - Font for Bold char set
+   CGA       BGI - Graphics driver for CGA
+   EGAVGA    BGI - Graphics driver for EGA and VGA
+   EURO      CHR - Font for European char set
+   GOTH      CHR - Font for gothic character set
+   HERC      BGI - Graphics driver for Hercules
+   IBM8514   BGI - Graphics driver for IBM 8514 graphics card
+   LCOM      CHR - Complex char font set
+   LITT      CHR - Font for small character set
+   PC3270    BGI - Graphics driver for PC3270
+   SANS      CHR - Font for sans serif character set
+   SCRI      CHR - Font for script char set
+   SIMP      CHR - Font for Simplex char set
+   TRIP      CHR - Font for triplex character set
+   TSCR      CHR - Font for tiny script char set
+
+CLASSEXM  ZIP - C++ class library example files
+   DIRECTRY  CPP - Directory class example file
+   DIRECTRY    H - Header file for DIRECTRY.CPP
+   DIRECTRY  PRJ - Project file for DIRECTRY.CPP
+   LOOKUP    PRJ - Project file for LOOKUP.CPP
+   FILEDATA  CPP - FileData class example file
+   FILEDATA    H - Header  file for FILEDATA.CPP
+   LOOKUP    CPP - Lookup table example
+   QUEUETST  CPP - Queue class example file
+   QUEUETST  PRJ - Project file for QUEUETST.CPP
+   REVERSE   CPP - String class example file
+   REVERSE   PRJ - Project file for REVERSE.CPP
+   STRNGMAX  CPP - String class example file
+   STRNGMAX  PRJ - Project file for STRNGMAX.CPP
+   TESTDIR   CPP - Directory example file
+
+CLASSLIB  ZIP - C++ class library
+   BIDSDBS   LIB - Library file for C++ classes with templates
+   BIDSDLL   LIB - Library file for C++ classes with templates
+   BIDSS     LIB - Library file for C++ classes with templates
+   TCLASDBS  LIB - Library file for C++ classes
+   TCLASDLL  LIB - Library file for C++ classes
+   TCLASSS   LIB - Library file for C++ classes
+
+CLIB      ZIP - Compact model libraries
+   C0C       OBJ - Compact model startup code
+   C0DC      OBJ - Compact model startup code - Windows DLL
+   C0FC      OBJ - Compact model startup code - assume SS=DS
+   CC        LIB - Compact model run-time library
+   MATHC     LIB - Compact model math library
+
+HEAP      ZIP - zip file
+   DEMO_MEM  BAT - Tasm example file
+   DISPLAY   ASM - Tasm example File
+   DISPLAY   INC - Tasm example file
+   MEM       ASM - Tasm example File
+   MEM       INC - Tasm example file
+   MEMTEST   ASM - Tasm example file
+   MEMTEST   MAK - Tasm example File
+   VMTUTIL   INC - Tasm example File
+
+RWCDEMO   ZIP - Compressed Borland C++ demo files
+   BITBNAPP    C - Demo app using bitmapped button DLL
+   BITBNAPP  RES - Bitmapped button application resources
+   BITBTN      C - Demo bitmapped button dll with custom control API
+   BITBTN    DEF - Bitmapped button dll linker definitions file
+   BITBTN    PRJ - Bitmapped button DLL IDE Project file
+   BITBTN    RES - Bitmapped button dll resources
+   BITBTNCO    H - Bitmapped button dll resource #defines
+   BTNBNAPP  PRJ - Bitmapped button application IDE project file
+   RWCDEMO   CPP - BCC Demo app
+   RWCDEMO   DEF - BCC Demo linker definitions file
+   RWCDEMO     H - BCC Demo app .h file
+   RWCDEMO   PRJ - Project file for building demo app with "standard" windows
+                   controls
+   RWCDEMO    RC - Demo resources using "standard" controls
+   RWCDEMO   RES - Demo resources using "standard" controls
+   RWCDEMOB  PRJ - Project file for building demo app with Borland Custom
+                   Controls
+   RWCDEMOB   RC - Demo resources using Borland Windows Custom Controls
+   RWCDEMOB  RES - Demo resources using Borland Windows Custom Controls
+   RWCDEMOC    H - Demo .h file for resource id's
+   RWCDLG    CPP - BCC Demo app dialogs
+   RWCDLG      H - BCC Demo app dialogs .h file
+   RWCWND    CPP - BCC Demo app windows
+   RWCWND      H - BCC Demo dialogs .h file
+   RWDEMO    CUR - Demo cursor file
+   RWDEMO    ICO - BCC demo icon
+   STATBAR   BMP - Demo status line bitmap
+   STATLINE  BMP - Demo status line bitmap
+
+TDEXMPL   ZIP - Turbo Debugger Example Programs for DOS
+   BCDEMO      C - C Program to Demonstrate Debugger Features
+   BCDEMO    EXE - Executable File For C Program
+   BCDEMOB     C - C Program to Demonstrate Debugger Features
+   BCDEMOB   EXE - Executable File For C Program
+
+WHELP1    CA2 - Split File of WHELP1.ZIP
+WHELP1    CA3 - Split File of WHELP1.ZIP
+WHELP1    CA4 - Split File of WHELP1.ZIP
+WHEREIS   ZIP - zip file
+   BIOS      INC - Tasm example file
+   BIOSMAC   DOC - Tasm example File
+   DEMO1     BAT - Tasm example file
+   DOS       INC - Tasm example File
+   DOSMAC    DOC - Tasm example file
+   IASCIIZS  ASM - Tasm example File
+   IBIOS     MAC - Tasm example file
+   IBYTECPY  ASM - Tasm example File
+   IDELCHAR  ASM - Tasm example file
+   IDOS      INC - Tasm example File
+   IDOS      MAC - Tasm example file
+   IEXECDOS  ASM - Tasm example File
+   IFINDBYT  ASM - Tasm example file
+   IFINDFIL  ASM - Tasm example File
+   IFINDREP  ASM - Tasm example file
+   ILOCSTRG  ASM - Tasm example File
+   IMACROS   MAC - Tasm example file
+   IPARAM    ASM - Tasm example File
+   IPARSEFN  ASM - Tasm example file
+   ISKPWHIT  ASM - Tasm example File
+   IWHEREIS  ASM - Tasm example File
+   IWHGLOBL  INC - Tasm example file
+   IWRITEPS  ASM - Tasm example File
+   KBD       INC - Tasm example file
+   WHEREIS   DOC - Tasm example File
+   WHEREIS   MAK - Tasm example file
+   WHUSAGE   INC - Tasm example file
+
+
+DISK 4
+------
+BINDLL    ZIP - 
+   BC30RTL   DLL - Borland run-time library DLL for Windows
+   BIDS      DLL - Library file for C++ classes with templates
+   TCLASS    DLL - Library file for C++ classes
+
+BWCC      ZIP - Compressed BWCC.DLL
+   BWCC      DLL - Custom controls dynamic link library
+
+FILT      ZIP - zip file
+   CONVERT1  INC - Tasm example file
+   CONVERT2  INC - Tasm example File
+   DEMO2     BAT - Tasm example File
+   DEMO3     BAT - Tasm example file
+   FILT      ASM - Tasm example File
+   FILT      DOC - Tasm example file
+   FILT      MAK - Tasm example File
+   FILT      RSP - Tasm example file
+   GLOBALS   INC - Tasm example File
+   OBYTEHI   ASM - Tasm example file
+   OBYTELOW  ASM - Tasm example File
+   OBYTENRM  ASM - Tasm example file
+   OCMDNUM   ASM - Tasm example File
+   OERREXIT  ASM - Tasm example file
+   OFCREATE  ASM - Tasm example File
+   OFILALOC  ASM - Tasm example file
+   OFILCLOS  ASM - Tasm example File
+   OFILEFIL  ASM - Tasm example file
+   OFILFREE  ASM - Tasm example File
+   OFILREAD  ASM - Tasm example file
+   OFILWRIT  ASM - Tasm example File
+   OFLFLUSH  ASM - Tasm example file
+   OFOPENR   ASM - Tasm example File
+   OFOPENW   ASM - Tasm example file
+   OLOCASE   ASM - Tasm example File
+   OPARSCMD  ASM - Tasm example file
+   OPRCBYTE  ASM - Tasm example File
+   OPROCDOC  ASM - Tasm example file
+   OPROCLIN  ASM - Tasm example File
+   OSETOPTN  ASM - Tasm example file
+   OSPACES   ASM - Tasm example File
+   OSTORSPC  ASM - Tasm example file
+   OSTORTAB  ASM - Tasm example File
+   OTABCLR   ASM - Tasm example file
+   OTABNEXT  ASM - Tasm example File
+   OTABRSET  ASM - Tasm example file
+   OTABSET   ASM - Tasm example File
+   OUPCASE   ASM - Tasm example file
+   SHOW87    ASM - Tasm example File
+   SHOW87    DOC - Tasm example file
+   VIDEO1    INC - Tasm example File
+   VIDEO2    INC - Tasm example file
+
+HLIB      ZIP - Huge model libraries
+   C0FH      OBJ - Huge model startup code - assume SS=DS
+   C0H       OBJ - Huge model startup code
+   CH        LIB - Huge model run-time library
+   MATHH     LIB - Huge model math library
+
+LLIB      ZIP - Large model libraries
+   C0DL      OBJ - Large model startup code - Windows DLL
+   C0FL      OBJ - Large model startup code - assume SS=DS
+   C0L       OBJ - Large model startup code
+   CL        LIB - Large model run-time library
+   MATHL     LIB - Large model math library
+
+RW        CA2 - Split File of RW.ZIP
+TASM      CA1 - Turbo Assembler 3.0 and Utilities
+   H2ASH     EXE - Utility to convert .h files to .ash files
+   TASM      EXE - Turbo Assembler 3.0 DOS
+   TASM      TAH - Turbo Assembler Help text file
+   TASMX     EXE - Turbo Assembler 3.0 with DPMI Support
+   TCREF     EXE - Turbo Assembler cross-reference utility
+
+TASM      CA2 - Split File of TASM.ZIP
+TFEXMPL   ZIP - Packed example files for Turbo Profiler
+   CALLTEST    C - C Program to Demonstrate Turbo Profiler Features
+   CALLTEST  EXE - Executable File For C Pascal Program
+   PLOST       C - C Program to Demonstrate Turbo Profiler Features
+   PLOST     EXE - Executable File For C Program
+   PRIME0      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME0    EXE - Executable File For C Program
+   PRIME1      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME1    EXE - Executable File For C Program
+   PRIME2      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME2    EXE - Executable File For C Program
+   PRIME3      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME3    EXE - Executable File For C Program
+   PRIME4      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME4    EXE - Executable File For C Program
+   PRIME5      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME5    EXE - Executable File For C Program
+   PRIME6      C - C Program to Demonstrate Turbo Profiler Features
+   PRIME6    EXE - Executable File For C Program
+   PTOLL       C - C Program to Demonstrate Turbo Profiler Features
+   PTOLL     EXE - Executable File For C Program
+
+WEXAMPLE  ZIP - Windows example files
+   BITMAP    CPP - Windows sample app - source
+   BITMAP    DEF - Windows sample app - module definition file
+   BITMAP      H - Windows sample app - header file
+   BITMAP    PRJ - Windows sample app - project file
+   BITMAP     RC - Windows sample app - resource file
+   BITMAP    RES - Windows sample app - resource file
+   BULLET    BMP - Help compiler example bitmap file
+   CHKBOFF   BMP - Help compiler example bitmap file
+   CHKBON    BMP - Help compiler example bitmap file
+   CODEC     BMP - Help compiler example bitmap file
+   CONTINUE  BMP - Help compiler example bitmap file
+   DDECLNT     C - Windows sample app - source
+   DDECLNT     H - Windows sample app - header file
+   DDESRVR     C - Windows sample app - source
+   DDESRVR     H - Windows sample app - header file
+   DLLDEMO   CPP - Windows sample app - source
+   DLLDEMO   DEF - Windows sample app - module definition file
+   DLLDEMO   ICO - Windows sample app - icon file
+   DLLDEMO   PRJ - Windows sample app - project file
+   DLLDEMO    RC - Windows sample app - resource file
+   DLLDEMO   RES - Windows sample app - resource file
+   DLLDEMO1  BMP - Windows sample app - bitmap file
+   DLLDEMO2  BMP - Windows sample app - bitmap file
+   DLLSHELL  CPP - Windows sample app - source
+   DONE      BMP - Help compiler example bitmap file
+   FFIND       C - Windows sample app - Source
+   FFIND     DEF - Windows sample app - Module definition file
+   FFIND       H - Windows sample app - Header File
+   FFIND     ICO - Windows sample app - icon file
+   FFIND     PRJ - Windows sample app - project file
+   FFIND      RC - Windows sample app - resource file
+   FFIND     RES - Windows sample app - resource file
+   HDUMP       C - Windows sample app - source
+   HDUMP     DEF - Windows sample app - module definition file
+   HDUMP       H - Windows sample app - header file
+   HDUMP     ICO - Windows sample app - icon file
+   HDUMP     PRJ - Windows sample app - project file
+   HDUMP      RC - Windows sample app - resource file
+   HDUMP     RES - Windows sample app - resource file
+   HELP      CUR - Help compiler example file
+   HELPEX      C - Help compiler example source file
+   HELPEX    DEF - Help compiler example module definition file
+   HELPEX    DLG - Help compiler example dialog file
+   HELPEX      H - Help compiler example header file
+   HELPEX    HLP - Help compiler example file
+   HELPEX    HPJ - Help compiler example file
+   HELPEX     PH - Help compiler example file
+   HELPEX    PRJ - Project file for help compiler examples
+   HELPEX     RC - Help compiler example resource file
+   HELPEX    RES - Windows compiler app - resource file
+   HELPEX    RTF - Help compiler example file
+   HELPICON  BMP - Help compiler example bitmap file
+   HELPIDS     H - Help compiler example header file
+   KEYS      RTF - Help compiler example file
+   MAX2ICON  BMP - Help compiler example bitmap file
+   MOUSE     BMP - Help compiler example bitmap file
+   MSGPROC     C - Windows sample app - source
+   MSGPROC     H - Windows sample app - header file
+   MSGWND      C - Windows sample app - source
+   MSGWND    DEF - Windows sample app - module definition file
+   MSGWND      H - Windows sample app - header file
+   MSGWND    ICO - Windows sample app - icon file
+   MSGWND    PRJ - Windows sample app - project file
+   MSGWND     RC - Windows sample app - resource file
+   MSGWND    RES - Windows sample app - resource file
+   TERMS     RTF - Help compiler example bitmap file
+   TODO      DEF - Windows sample app - Module definition file
+   TODO      PRJ - Windows sample app - Project file
+   TODODEFS    H - Windows sample app - Header file
+   TODODLGS  CPP - Windows sample app - Source
+   TODODLGS    H - Windows sample app - Header file
+   TODOLIST  CPP - Windows sample app - Source
+   TODOLIST    H - Windows sample app - Header file
+   TODOWIN   CPP - Windows sample app - Source
+   TODOWIN     H - Windows sample app - Header file
+   TODOWIN    RC - Windows sample app - Resource file
+   TODOWIN   RES - Windows sample app - Resource file
+   TSTAPP      C - Windows sample app - source
+   TSTAPP    DEF - Windows sample app - module definition file
+   TSTAPP      H - Windows sample app - header file
+   TSTAPP    ICO - Windows sample app - icon file
+   TSTAPP    PRJ - Windows sample app - project file
+   TSTAPP     RC - Windows sample app - resource file
+   TSTAPP    RES - Windows sample app - resource file
+   WHELLO    CPP - Windows sample app - Source
+   WHELLO    DEF - Windows sample app - Module definition file
+   WHELLO    ICO - Windows sample app - icon file
+   WHELLO    PRJ - Windows sample app - project file
+   WHELLO     RC - Windows sample app - resource file
+   WHELLO    RES - Windows sample app - resource file
+   WINWORD   BMP - Help compiler example bitmap file
+
+
+DISK 5
+------
+BC        CA2 - Split File of BC.ZIP
+IDE       ZIP - Files in Borland C++ Compiler - IDE version
+   GREP2MSG  EXE - GREP filter program for IDE
+   IMPL2MSG  EXE - IMPLIB filter program for Programmer's Platform
+   PRJCNVT   EXE - Utility to convert from Turbo C 2.x project files to
+                   Borland C++ project files
+   TASM2MSG  EXE - TASM filter program for IDE
+   TEMC      EXE - Turbo editor macro compiler
+
+INCLUDE   ZIP - Borland C++ header files
+   _DEFS       H - Definitions of _FAR, _Cdecl, _CType, _CLASSTYPE
+   _NULL       H - Definition of NULL
+   ALLOC       H - Borland C++ RTL header file
+   ASSERT      H - Borland C++ RTL header file
+   BCD         H - Borland C++ RTL header file
+   BIOS        H - Borland C++ RTL header file
+   COMPLEX     H - Borland C++ RTL header file
+   CONIO       H - Borland C++ RTL header file
+   CONSTREA    H - Borland RTL Header file
+   CTYPE       H - Borland C++ RTL header file
+   DIR         H - Borland C++ RTL header file
+   DIRECT      H - Borland C++ RTL header file
+   DIRENT      H - Borland C++ RTL header file
+   DOS         H - Borland C++ RTL header file
+   ERRNO       H - Borland C++ RTL header file
+   FCNTL       H - Borland C++ RTL header file
+   FLOAT       H - Borland C++ RTL header file
+   FSTREAM     H - Borland C++ RTL header file
+   GENERIC     H - Borland C++ RTL header file
+   GRAPHICS    H - Borland C++ RTL header file
+   IO          H - Borland C++ RTL header file
+   IOMANIP     H - Borland C++ RTL header file
+   IOSTREAM    H - Borland C++ RTL header file
+   LIMITS      H - Borland C++ RTL header file
+   LOCALE      H - Borland C++ RTL header file
+   LOCKING     H - Borland C++ RTL header file
+   MALLOC      H - Borland C++ RTL header file
+   MATH        H - Borland C++ RTL header file
+   MEM         H - Borland C++ RTL header file
+   MEMORY      H - Borland C++ RTL header file
+   NEW         H - Borland C++ RTL header file
+   PROCESS     H - Borland C++ RTL header file
+   SEARCH      H - Borland C++ RTL header file
+   SETJMP      H - Borland C++ RTL header file
+   SHARE       H - Borland C++ RTL header file
+   SIGNAL      H - Borland C++ RTL header file
+   STAT        H - Borland C++ RTL header file
+   STDARG      H - Borland C++ RTL header file
+   STDDEF      H - Borland C++ RTL header file
+   STDIO       H - Borland C++ RTL header file
+   STDIOSTR    H - Borland C++ RTL header file
+   STDLIB      H - Borland C++ RTL header file
+   STRING      H - Borland C++ RTL header file
+   STRSTREA    H - Borland C++ RTL header file
+   TIME        H - Borland C++ RTL header file
+   TIMEB       H - Borland C++ RTL header file
+   TYPES       H - Borland C++ RTL header file
+   UTIME       H - Borland C++ RTL header file
+   VALUES      H - Borland C++ RTL header file
+   VARARGS     H - Borland C++ RTL header file
+
+MLIB      ZIP - Medium model libraries
+   C0DM      OBJ - Medium model startup code - Windows DLL
+   C0FM      OBJ - Medium model startup code - assume SS=DS
+   C0M       OBJ - Medium model startup code
+   CM        LIB - Medium model run-time library
+   MATHM     LIB - Medium model math library
+
+RW        CA1 - Compressed Resource Workshop files
+   LOADBWCC  EXE - Loads bwcc.dll for custom apps
+   WORKED1   DLL - Menu editor
+   WORKED2   DLL - Icon, cursor, bitmap, and font editors
+   WORKED3   DLL - Dialog editor
+   WORKED4   DLL - Stringtable editor
+   WORKED5   DLL - Accelerator table editor
+   WORKHELP  HLP - Help file
+   WORKLIB1  DLL - Resource compiler, resource data base
+   WORKLIB2  DLL - Custom controls
+   WORKSHOP  EXE - Main program
+
+SLIB      ZIP - Small model libraries
+   C0DS      OBJ - Small model startup code - Windows DLL
+   C0FS      OBJ - Small model startup code - assume SS=DS
+   C0FT      OBJ - Tiny model startup code - assume SS=DS
+   C0S       OBJ - Small model startup code
+   C0T       OBJ - Tiny model startup code
+   CS        LIB - Small model run-time library
+   MATHS     LIB - Small model math library
+
+TCALC     ZIP - Tcalc sources and doc
+   TCALC       C - TurboCalc main program source code
+   TCALC     DOC - TurboCalc documentation
+   TCALC       H - The header file for TurboCalc
+   TCALC     PRJ - The TurboCalc project file
+   TCDISPLY    C - TurboCalc screen display source code
+   TCINPUT     C - TurboCalc input routines source code
+   TCOMMAND    C - TurboCalc commands source code
+   TCPARSER    C - TurboCalc input parser source code
+   TCUTIL      C - TurboCalc utilities source code
+
+TDWEXMPL  ZIP - Turbo Debugger Example Programs for Windows
+   BCWDEMO     C - C Program to Demonstrate Debugger Features of TDW
+   BCWDEMO   DEF - Definition File used to Build BCWDEMO*.C Programs
+   BCWDEMO   EXE - Executable File For C Program to run in TDW
+   BCWDEMO     H - Header File used to Build Sample BCWDEMO* Programs
+   BCWDEMO   ICO - Icon File used to attached to Sample BCWDEMO* Programs
+   BCWDEMO   PRJ - Makefile to Build Sample BCWDEMO.C Program
+   BCWDEMO    RC - Resource File used to Build BCWDEMO*.C Programs
+   BCWDEMO   RES - Borland C++ Resource file for Window Apps
+   BCWDEMOA    C - C Program to Demonstrate Debugger Features of TDW
+   BCWDEMOA  EXE - Executable File For C Program to run in TDW
+   BCWDEMOA  PRJ - Makefile to Build Sample BCWDEMOA.C Program
+   BCWDEMOB    C - C Program to Demonstrate Debugger Features of TDW
+   BCWDEMOB  EXE - Executable File For C Program to run in TDW
+   BCWDEMOB  PRJ - Makefile to Build Sample BCWDEMOB.C Program
+
+WHELP1    CA1 - 
+   TCHELP    TCH - Help file with Windows API
+   THELP     COM - Pop-up help utility program
+
+WINCLUDE  ZIP - Windows header files
+   DDE         H - Borland C++ RTL header file
+   DRIVINIT    H - Borland C++ RTL header file
+   WINDOWS     H - Borland C++ RTL header file
+   WINDOWS   INC - Borland C++ RTL header file
+
+
+DISK 6
+------
+TD        CA1 - Turbo Debugger Programs for DOS Debugging
+   TD        EXE - Turbo Debugger Program for DOS
+   TD286     EXE - Protected Mode Turbo Debugger
+   TD386     EXE - Utility for 80386/80486 Virtual Mode Debugging
+
+TDW       CA1 - Turbo Debugger Programs and Utilities for Windows
+                Debugging
+   TDDEBUG   386 - Device driver for 80386/80486 processors
+   TDW       EXE - Turbo Debugger Program for Windows
+   TDWHELP   TDH - Help File for the TDW Debugger
+   TDWINST   EXE - Custom configuration Program for TDW
+   WINDEBUG  DLL - Dynamic Link Library used in Debugging MS-Windows Programs
+   WREMOTE   EXE - Remote Debugging Utility for use in MS-Windows w/ TD.EXE
+   WRSETUP   EXE - Utility to set Parameters in MS-Windows for WREMOTE.EXE
+
+WBIN      CA2 - Split File of WBIN.ZIP
+WHELP2    CA1 - 
+   TCWHELP   HLP - Help file with Windows API
+
+
+DISK 7
+------
+DOC       ZIP - Miscellaneous documentation
+   DBGBOARD   TD - Info about the TD hardware debugging interface
+   DEFAULTS  TEM - Sample Editor Macros File
+   BRIEF     TEM - Editor Macros file for Brief emulation
+   EPSILON   TEM - Editor Macros file for Epsilon emulation
+   DOSEDIT   TEM - Editor Macros file for Dosedit emulation
+   CMACROS   TEM - Editor Macros file for C emulation
+   H2ASH     TSM - Documentation for .H to .ASH conversion utility
+   HDWDEBUG   TD - How to use 386 hardware debugging features
+   HELPME!   DOC - Answers to commonly asked questions
+   HELPME!   PRF - Answers to commonly asked PROF questions
+   HELPME!    TD - Answers to commonly asked DEBUGGER questions
+   HELPME!   TSM - Answers to commonly asked TASM questions
+   TCREF     TSM - Info about the TASM TCREF utility
+   UTIL      DOC - Information about Borland C++ utilities
+   WINMEM    DOC - Information about windows specific memory manager
+   UTILS     PRF - Info about the TPROF TDRF utility
+   UTILS      TD - Info about various TD utilities
+
+TDUTIL    ZIP - Turbo Debugger Utility Programs for DOS
+   TD286INS  EXE - Kernel Configuration Program for Installing TD286.EXE
+   TDDEV     EXE - Program to Display Currently Active Device Drivers
+   TDH386    SYS - Device Driver for TD386.EXE
+   TDHELP    TDH - Help File for the TD, TD286, and TD386 Debuggers
+   TDINST    EXE - Custom Configuration Program for TD, TD286, TD386
+   TDMAP     EXE - Converts .MAP Files Generated for CodeView to TD Format
+   TDMEM     EXE - Utility to Display Current Memory Mapping and Usage
+   TDNMI     COM - Program to Clear NMI switch
+   TDREMOTE  EXE - Remote Debugging Utility for use at DOS w/ TD.EXE/TDRF.EXE
+   TDRF      EXE - Remote File Transfer Utility for use with TDREMOTE.EXE
+   TDSTRIP   EXE - Utility to Strip Debug Information from .EXE Files
+   TDUMP     EXE - Dumps Symbolic Information from .EXE/.OBJ Files
+
+TPROF     ZIP - Turbo Profiler Programs and Utilities
+   TDH386    SYS - Device Driver for TPROF.EXE
+   TF386     EXE - Utility For 80386/80486 Virtual Profiling
+   TFHELP    TFH - Help File for TPROF.EXE
+   TFINST    EXE - Configuration Customization Program for TPROF.EXE
+   TFREMOTE  EXE - Remote Profiling Kernel for TPROF
+   TPROF     EXE - Turbo Profiler program
+
+TPROFW    ZIP - 
+   TFWHELP   TFH - Help file for TPROFW.EXE
+   TPROFW    EXE - Turbo Profiler program for Windows
+
+WBIN      CA1 - Windows binary files
+   ATI       DLL - Super VGA support for TDW and TPROFW with an ATT video
+                   card
+   BC        ICO - Borland C++ Icon file
+   BC        PIF - PIF file for BC
+   FCONVERT  EXE - ASCII <> ANSI conversion utility
+   GROUPS    EXE - Build Windows group for Borland's window compatible
+                   products
+   HC        EXE - Help Compiler
+   IMPLIBW   EXE - Utility to convert windows LIB files to DEF files
+   RC        EXE - Resource Compiler
+   RC2MSG    EXE - RC filter program for Programmer's Platform
+   RCPP      ERR - Resource Compiler error file
+   RCPP      EXE - Resource Compiler file
+   TBROWSER  DLL - Borland Class Browser for Window Apps
+   TCW       EXE - Turbo C++ for Windows IDE
+   TOOLHELP  DLL - Support DLL for Winsight
+   TSENG     DLL - Super VGA support for TDW and TPROFW with a TSENG based
+                   video card
+   WINSIGHT  EXE - WinSight program for Windows
+   WINSIGHT  HLP - Help for WinSight
+   WINSTUB   EXE - Windows stub program
+   WSIHOOK   DLL - Support DLL for WinSight
+   WSIWIN    DLL - Support DLL for WinSight
+
+XLIB      ZIP - Math and utility libraries
+   EMU       LIB - 8087 emulator library
+   FP87      LIB - 8087 library
+   GRAPHICS  LIB - Graphics library
+   IMPORT    LIB - Windows imports library
+   MATHERR     C - Source code for handling math library exceptions
+   OVERLAY   LIB - Overlays library
+   WILDARGS  OBJ - Object code for module to expand wildcard arguments
+
+
+DISK 8
+------
+CMDLINE   CA2 - Split File of CMDLINE.ZIP
+RW        CA3 - Split File of RW.ZIP
+WBIN      CA3 - Split File of WBIN.ZIP
+WINLIB    CA2 - Split File of WINLIB.ZIP

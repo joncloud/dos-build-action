@@ -1,0 +1,1063 @@
+                      Welcome to Borland C++ 3.0
+                      --------------------------
+
+  This README file contains important information about Borland C++.
+  For the latest information about Borland C++ and its accompanying
+  programs and manuals, read this file in its entirety.
+
+TABLE OF CONTENTS
+-----------------
+1.  How to Get Help
+2.  Installation
+3.  Features
+4.  Important Information
+5.  Testing Your Expanded Memory
+6.  Corrections to the Documents
+
+
+ 1. HOW TO GET HELP
+-------------------
+  If you have any problems, please read this file, the
+  HELPME!.DOC and other files in your DOC subdirectory, and the
+  Borland C++ manuals first. If you still have a question and
+  need assistance, help is available from the following sources:
+
+  1. Type GO BPROGB on the CompuServe bulletin board system for
+     instant access to the Borland forums with their libraries of
+     technical information and answers to common questions.
+
+     If you are not a member of CompuServe, see the enclosed
+     special offer, and write for full details on how to receive
+     a free IntroPak containing a $15 credit toward your first
+     month's on-line charges.
+
+  2. Check with your local software dealer or users' group.
+
+  3. Borland's TECHFAX service. Call (800) 822-4269 for a FAX 
+     catalog of entries.
+
+  4. If you have an urgent problem that cannot wait and you have
+     sent in the license agreement that came with the package,
+     you may call the Borland Technical Support Department at
+     (408) 438-5300. Please have the following information ready
+     before calling:
+
+     a. Product name and serial number on your original
+        distribution disk.  Please have your serial number ready
+        or we will be unable to process your call.
+
+     b. Product version number. The version number for Borland
+        C++ can be displayed by pressing Alt-H/A.
+
+     c. Computer brand, model, and the brands and model numbers of
+        any additional hardware.
+
+     d. Operating system and version number. (The version number
+        can be determined by typing VER at the DOS prompt.)
+
+     e. Contents of your AUTOEXEC.BAT file.
+
+     f. Contents of your CONFIG.SYS file.
+
+
+ 2. INSTALLATION
+----------------
+
+  You MUST use the INSTALL program to install Borland C++. The
+  files on the distribution disks are all archived and have to be
+  properly assembled.  You cannot do this by hand!
+
+  To start the installation, change your current drive to the one
+  that has the install program on it and type INSTALL.  You will
+  be given instructions in a box at the bottom of the screen for
+  each prompt. For example, if you will be installing from drive
+  A:, type:
+
+    A:
+    INSTALL
+
+  -  This INSTALL handles the installation of both the compiler
+     and debugger and tools in one operation, and allows several
+     new configuration options.
+
+  -  After installation, make sure you insert \BORLANDC\BIN - or
+     whatever you selected as your BIN directory - into
+     your DOS path so the DLL and executable files can be found.
+
+  -  Note: The list of files is contained in a separate file
+     called FILELIST.DOC, which will appear in the target
+     directory you specify during installation.
+
+  -  If you have previously installed Resource Workshop, make sure
+     that you remove the directory of that version from your path. The
+     version included on these disks supercedes previous versions.
+
+  -  If you use a Windows command shell other than Program Manager,
+     you may not get a Borland C++ group installed for Windows. If
+     you don't, use File|Run in Program Manager to run the following
+     command:
+
+          GROUPS GROUPS.B$$
+
+     You will then have a new group for Borland C++.
+
+  -  If you chose to put Turbo Debugger files in a non-default
+     directory which is not on your path, you will need to copy
+     WINDEBUG.DLL from that directory to one which is on your path if
+     you want to debug Windows applications with Turbo Debugger.
+
+  -  After your initial installation, you can run INSTALL again to
+     add elements you omitted the first time. Just select only the
+     things you want to add in the INSTALL options screen. Because
+     some things you may want to save could be overwritten, review
+     the following items to make sure you don't lose important
+     information:
+
+     1.  Selecting CMD (the Command-line compiler) causes an 
+         overwrite of any existing turboc.cfg & tlink.cfg file
+         with path information provided in that INSTALL session.
+         Any switches other than -L (library path) and -I
+         (include path) will not be preserved.
+
+     2.  Selecting IDE will clear the previous settings for the
+         desktop and default project and reset them to the
+         defaults (for instance, 25-line display mode), and the
+         include and library paths will be reset to the paths
+         provided in that INSTALL session.
+
+     3.  By selecting any one of the following, the help file
+         paths and choices for THELP.CFG will reflect the current
+         session's installation choices: 
+         
+              a. CMD - command-line compiler 
+              b. IDE - integrated environment
+              c. TD - Turbo Debugger
+              d. TASM - Turbo Assembler 
+
+     4.  Alterations to headers or startup files will be
+         overwritten if any library models are selected.
+
+     5.  Selecting the Create BorlandC++ Group option will add an
+         icon to the existing group.
+
+     In general, any selection you make of something installed
+     earlier will cause an overwrite of the earlier version
+     without prompting.
+
+
+  You should read the rest of this README file to get further
+  information about this release before you do the installation.
+
+
+ 3. FEATURES
+------------
+
+  Borland C++ 3.0 includes complete support for Windows
+  programming, as well as big speed and capacity gains.  Here are
+  some important features found in this version:
+
+  - A Windows hosted IDE (TCW.EXE), including a class hierarchy 
+    browser.
+
+  - New code optimization features. 
+
+  - Turbo Debugger support for breakpoints with multiple conditions
+    and for viewing selectors.
+
+  - Profiling under Windows (TPROFW.EXE).
+
+  - Remote debugging using a Novell-compatible network.
+
+  - DPMI services for increased capacity and operation under Windows
+    3.0 Enhanced Mode.
+
+  - C++ 2.1 support, including the new nested class specifications,
+    and support of C++ 3.0 templates.
+
+  - Added library functions for compatibility with other runtime 
+    libraries, and addition of support for long double parameters
+    in math functions. (Please see the Library Reference for details.)
+
+  - New MAKE features. (Please see the Tools and Utilities Guide
+    for details.)
+
+  - EasyWin, which includes library support for stdio.h and
+    conio.h functions under Windows. (Please see the Borland C++
+    User's Guide for details.)
+
+  - Object oriented assembler features in Turbo Assembler.
+
+  - Added BGI (Borland Graphics Interface) fonts and support. (See
+    "New BGI fonts", below.)
+
+  - A resident DPMI kernel program, DPMIRES.EXE. (See "DPMI", below.)
+
+  - WinSight, a debugging tool for examining Windows messages
+    and general information about Windows classes. (Please see the Tools
+    and Utilities Guide for details.)
+
+
+  - FCONVERT.EXE -  Converts OEM to ANSI Character Set
+
+      DOS text files use the OEM character set; Windows text
+      files generally use the ANSI character set. The demo
+      program, FCONVERT.EXE converts data back and forth between
+      these formats. The only text files that will be affected
+      are those containing international characters (ASCII values
+      above 128) like the umlaut, etc. Not all OEM characters are
+      present in the ANSI character set, and vice versa. 
+      Therefore, converting between these character sets may
+      produce a mapping that is not reversible.  Refer to your
+      Windows documentation for further information about ANSI
+      vs. OEM character sets.
+
+  - Inline versions of string and memory library functions for
+    code efficiency. (Please see the section on Intrinsic
+    Functions in Appendix A in the User's Guide for details.)
+
+  - THELP now allows you to switch between help files without
+    unloading and reloading. (Please see UTIL.DOC for details.)
+
+
+NEW BGI FONTS
+-------------
+
+Several new fonts have been added to the Borland Graphics Interface:
+
+
+Name            Value   Description
+-------------------------------------------
+SCRIPT_FONT     5       Stroked script font
+SIMPLEX_FONT    6       Stroked simplex font
+TRIP_SCR_FONT   7       Stroked triplex script font
+COMPLEX_FONT    8       Stroked complex font
+EURO_FONT       9       Stroked European font
+BOLD_FONT       10      Stroked bold font
+
+The fonts in the BGI now support the full ASCII character set.
+
+DPMI
+----
+
+BC.EXE, BCC.EXE, and TLINK.EXE are now hosted under DPMI. These files
+replace both the files with the same name in Borland C++ 2.0 and the
+BCX.EXE, BCCX.EXE, and TLINKX.EXE files in the same product. There is
+no longer a TKERNEL.EXE file.
+
+If you encounter a "machine not in database" message while attempting
+to run the compiler, run the DPMIINST program to add your machine
+configuration to the DPMI server database.
+
+This version includes a resident DPMI host program, DPMIRES.EXE, that
+allows you to preload the server before invoking BC, BCC, or any other
+DPMI-hosted executables. If you want to run such hosted EXEs in a
+Windows Standard Mode DOS window, you should run DPMIRES.EXE before
+loading Windows. To do this, enter the following commands at DOS:
+ 
+  set DPMIMEM=MAXMEM 2000
+  dpmires
+  win /s
+
+If you want to limit the amount of extended memory used by the
+DPMI-hosted executables, an environment variable called DPMIMEM
+can be set to do so. For instance, the command
+
+  set DPMIMEM=MAXMEM 2000
+
+reserves about 2 Mb of memory for DPMIRES. The number after MAXMEM
+can be adjusted, but cannot be lower than 1000.
+
+The hosted executables cannot spawn each other when SHARE is loaded.
+For instance, if you run MAKE on a file which in turn calls MAKE
+again, you will get a sharing violation. In this specific case,
+you can call the real mode version, MAKER, within the given makefile,
+and a sharing violation won't occur.
+
+
+ 4. IMPORTANT INFORMATION
+-------------------------
+
+  - There is now only one version of the DOS IDE, BC.EXE, and
+    of the command-line compiler program, BCC.EXE. Because the
+    BCX and BCCX files are no longer in Borland C++,  you'll need
+    to alter batch or make files that use those names.
+
+  - Borland C++ only supports Protected Mode Windows target
+    files. Make sure to use the /t option when using the Resource
+    Compiler if you want to enforce Protected Mode usage.
+
+  - When using Brief with THELP, make sure to use Brief's -p
+    switch to ensure that the thelp window will be visible.
+
+  - We recommend that you use the following mouse drivers with
+    this product:
+
+       Microsoft Mouse version 7.04 or later;
+       Logitech Mouse version 5.01 or later;
+       Genius Mouse version 9.06 or later.
+
+  - If you use MAKE or the IDE's Project Make to invoke the Resource
+    Compiler, the .RC files you wish to compile MUST be in the same 
+    directory as your project or makefile.  This is because the Microsoft
+    Resource Compiler does not properly handle relative path names, and
+    returns a misleading error message that refers to an incorrectly
+    spelled version of your .RC file.
+
+
+  - If you get a "floating point formats not linked" message at
+    runtime, put the following somewhere in your source files:
+
+        extern void _floatconvert();
+        #pragma extref _floatconvert
+
+    This will force inclusion of floating point formats, which
+    may not be linked to reduce executable size.
+
+  - Make sure that you use the -WE switch (Options|Compiler|Entry|
+    Windows <DLL> explicit functions exported in the IDE) when
+    using the fastcall modifier. The same applies when using the
+    fastcall compilation option (-pr on the command line,
+    Options|Compiler|Entry|Register in the IDE.)
+
+
+  COMPILER
+
+  - The default extension for source files to the command-line
+    compiler is .CPP; that is, if you enter
+
+       BCC -c test
+
+    the compiler will search for test.cpp, and give an error if a
+    file of that name cannot be found. If you want to have the
+    command-line compiler assume a .c extension and C language
+    source, use the command-line option -P-c. For more
+    information, see "The command-line compiler" in the User's
+    Guide.
+
+  - Note that the Generate COMDEFs choice under
+    Options|Compiler|Code Generation and the -Fc command-line
+    option are only supported in the C language. Linker errors
+    will result if you attempt to use a communal variable in C++.
+
+  - The macros min() and max() are not defined when stdlib.h is
+    compiled as C++ (to allow their use in 3rd party libraries,
+    etc.).
+
+  - Note that SYMDEB creates .SYM files for use in debugging;
+    Borland C++ creates .SYM files for pre-compiled headers. They
+    are not compatible and collisions should be avoided by
+    setting the name of the pre-compiled header file (using -
+    H=filename).
+
+  - There is now full support of distance modifiers (near and
+    far) used for class member pointers. Here are two sample
+    declarations and their meanings:
+
+       void (A::* far var) ();
+
+    this is a far variable 'var' of type 'void (A::*)()';
+
+       void (far A::* var) ();
+
+    this is a 'default distance' variable 'var' of type
+	'void (far A::*)()'
+
+  - You must use "smart callbacks" - -WS from the command line,
+    Options| Compiler|Entry/Exit Code|Windows smart callbacks in
+    the IDE - if your application uses classes whose code is in a
+    DLL. This applies especially in the case of a class
+    implemented in an EXE which is derived from another
+    implemented in a DLL, which normally applies for users of OWL
+    and other object-oriented class libraries.
+
+  - If you use C++ templates, and use a separate TLINK command
+    line rather than letting BCC invoke TLINK, you should make
+    sure that you turn on case-sensitive links with the /c switch.
+
+  IDE
+
+  - When debugging a mouse application the Options|Debugger|Display
+    Swapping option should be set to "Always" for best results.
+
+  - In the DOS IDE, the mouse cursor is turned off during compilation
+    for performance improvements.
+
+  - If you run File|Printer setup from TCW.EXE (or another Windows
+    application which has printer setup support) under the Windows
+    3.0 debugging kernel, you will get a System Error from Windows.
+    You must switch to the NODEBUG version to run this option.
+
+  - The initial block marking behavior in the IDE is determined
+    by which version of the IDE is used first after installation.
+    Invoking TCW.EXE first will cause Windows-style block marking
+    conventions to be in effect; otherwise the standard DOS IDE
+    behavior will be used. You can change the behavior by
+    selecting Options|Environment| Editor and changing the
+    settings for Persistent blocks and Overwrite blocks.
+
+  WinSight
+
+  - WinSight traces messages received by GetMessage or SendMessage. It
+    does not trace messages sent directly by function call such as
+    WM_INITDIALOG.
+
+  - Please note that messages displayed as "dispatched" are actually
+    intercepted at the time of GetMessage, not DispatchMessage.
+
+
+  EXAMPLE PROGRAMS
+
+  - When you are running any example programs that come with .PRJ
+    files, if you didn't use the standard directories when you
+    installed Borland C++ you will have to change the .PRJ file
+    to reflect your actual directory setup.  Do this from inside
+    Borland C++ with Alt-O/D.
+
+
+  LINKING C++ WITH C
+
+  - Linking C++ modules with C modules requires the use of a
+    linkage specification.  Prototypes for C functions within C++
+    modules must be in one of the following forms:
+
+        extern "C" declaration
+        extern "C" { declarations }
+
+    For example, if a C module contains these functions:
+
+        char *SCopy(char*, char*);
+        void ClearScreen(void)
+
+    they must be declared in a C++ module in one of the
+      following ways:
+
+        extern "C" char *SCopy(char*, char*);
+        extern "C" void ClearScreen(void);
+
+      or
+
+         extern "C" {
+            char *SCopy(char*, char*);
+            void ClearScreen(void);
+         }
+
+    Failure to do so will result in "Undefined symbol" errors
+      during link. For further examples, see the standard header
+      files.
+
+  OPTIMIZATIONS
+
+  - When Ignore Aliasing is used - -Oa from the command line, or
+    Options|Compiler|Optimization|Assume no pointer aliasing in
+    the IDE - some initializations could be skipped. This applies
+    only when Copy propagation -Op or Options|Compiler|Optimization|
+    Copy propagation is used as well (which is the case when
+    using -O2 or Options|Compiler|Optimization|Fastest Code.) The
+    following case illustrates the issue:
+
+        len = 0;
+        read(help_file, (char *)&len, 1);
+        read(help_file, (char *)title, len);
+
+    The initializion of len to the value 0 above will probably
+    not be reflected in the first call to read() if aliases are
+    ignored. If the initialization of len were guaranteed by the
+    call to read(), the first line would be unnecessary, and the
+    value in len would be assigned and passed to the second read
+    correctly. We recommend that you avoid using these options
+    together when explicit initializations are used in code
+    sequences like these.
+
+
+  TURBO DEBUGGER/TURBO PROFILER/TURBO ASSEMBLER
+
+  - Some Windows mouse drivers are incompatible with Turbo
+    Debugger, and will cause the mouse cursor to get scrambled
+    when debugging DOS graphics applications on a second monitor
+    (-do option).  If that happens, you can try a different
+    driver, or turn off the mouse in TD by using the -p- option on
+    the TD command line.  The mouse will still be active in the
+    target application.
+
+  - You cannot set a window message breakpoint by using a window
+    handle in an ObjectWindows application. You can, however, set
+    window message breakpoints with ObjectWindows applications by
+    enabling ObjectWindows support (use TDINST -w and choose
+    Options|Source Debugging|OWL Window Messages), then using
+    window object names to set message breakpoints.
+
+  - The MEMPAGE segment attribute in TASM is not currently
+    supported by TLINK.  This option was added to TASM to support
+    a feature of the Phar Lap linker.
+
+  - The first time a program is run under TDW or TPROFW, mouse
+    messages are processed normally. However, on every subsequent
+    execution of that program,  you must press a key on the
+    keyboard before mouse messages can be processed.
+
+  - On page 10 in Chapter 1 of the "Turbo Profiler User's Guide,"
+    there is a statement that Pascal versions of the PRIMEn.C
+    programs are included  on disk. Only the C versions of these
+    sample programs are included on the distribution disks.
+
+  Super VGA support for TDW & TPROFW
+  ==================================
+
+  TDW and TPROFW handles most of the popular 2, 4, and 16-color
+  high-resolution Super VGA modes. If your card isn't supported
+  correctly, or if you want to debug in a 256-color mode, you'll
+  need to use a special Super VGA DLL.
+
+  Currently, the following DLLs are supplied with your language
+  compiler to support these SVGA cards and modes:
+
+    TSENG.DLL (TSENG ET-3000 /ET-4000 based cards)
+       640x480x256
+       800x600x256
+       1024x768x256
+
+
+    ATI.DLL (ATI VGA Wonder card)
+       640x480x256    (See the NOTE below)
+       800x600x256
+
+  To use a Super VGA DLL, copy the appropriate DLL file into the
+  directory that contains the TDW or TPROFW executable (usually
+  the BIN subdirectory of your language compiler directory), and
+  rename it to TDVIDEO.DLL.
+
+  TDW (or TPROFW), upon loading, looks for TDVIDEO.DLL in the
+  same directory that harbors TDW.EXE (or TPROFW.EXE). If it
+  finds the file, TDW (or TPROFW) accesses the DLL as it's
+  needed. TDW (or TPROFW) makes calls to the DLL to handle the
+  entire video screen switching context. The DLL accomplishes the
+  screen switching by allocating a buffer as it gets loaded.
+  Graphic screen contents are then saved to this buffer as TDW
+  (or TPROFW) enters text mode. The DLL restores the graphics
+  screen from this buffer as TDW (or TPROFW) exits text mode.
+  Memory allocated for the buffer is freed when the DLL is
+  unloaded.
+
+  If there is an error loading TDVIDEO.DLL, or if the DLL doesn't
+  support the selected card or mode, TDW will report the error in
+  a Windows dialog box. When this happens, TDW will unload
+  TDVIDEO and exit. If this situation occurs, delete TDVIDEO.DLL,
+  or select a mode that is supported by the DLL.
+
+  If you're debugging an application that's been built with
+  EasyWin, you may see incorrect screen painting as you step over
+  lines of code that make calls to STDIO functions. In this case,
+  edit the TDVIDEO.INI file and set the Int2FAssist option to
+  "yes" (see the NOTE below).
+
+  NOTE: The ATI mode 640x480x256 and EasyWin applications may
+    require some special handling. An option called Int2FAssist
+    in the TDVIDEO.INI file allows this mode work to correctly on
+    most systems. The behaviour is as follows: When you set
+    "Int2FAssist=yes", TDVIDEO makes Windows tell all sub-windows
+    on the screen to re-paint themselves as the DLL is loaded.
+    This allows the user screen to be viewed when Stepping,
+    Tracing, or Running your application. It will not, however,
+    switch to the user screen when you press <Alt-F5> since TDW
+    is still in control (it doesn't allow Windows to process any
+    messages). If you also set "SaveWholeScreen=yes", then <Alt-
+    F5> will show the user screen (TDVIDEO will now copy the
+    screen for you). The drawback to enabling SaveWholeScreen is
+    that it will take longer to Step or Trace if TDW needs to
+    switch back to the user screen for that particular
+    instruction. Also, extra messages are getting passed to your
+    application that normally would not be passed. This may
+    effect the debugging of certain pieces of code (like finding
+    a bug in an owner-draw procedure). In these cases, you should
+    avoid this video mode.
+
+
+  TDVIDEO.INI
+  -----------
+
+  You can create the file TDVIDEO.INI with any ASCII text editor.
+  This file is used to control how TDVIDEO.DLL functions.
+  TDVIDEO.INI must be located in WINDOW's main directory (usually
+  C:\WINDOWS). The options in TDVIDEO.INI are handled by the DLL
+  itself and are therefore subject to change with newer versions
+  of the DLLs. The DLLs use the following options, written in any
+  order, under the heading [VideoOptions]:
+
+    SaveWholeScreen --    default = 'no'
+    Int2FAssist     --    default = 'no'
+    DebugFile       --    default = ''  (no logging will occur)
+
+  The SaveWholeScreen and Int2FAssist can be set to either 'yes'
+  or 'no'. DebugFile can be either blank, or it can be set to a
+  specific filename.
+
+  *** SaveWholeScreen ***
+
+    This option, normally set to 'no', determines whether the
+    entire screen (512k - 64k from 8 planes) will be saved (the
+    entire graphics screen is cleared when switching to it) or if
+    only the top 32K of planes 0 through 3 will be saved (the
+    entire screen is NOT cleared when switching modes.)
+
+    Saving the whole screen is rarely needed, but is provided in
+    case you're using a nonstandard card that needs the whole
+    screen to be saved.
+
+  *** Int2FAssist ***
+
+    This option, normally set to 'no', tells TDVIDEO, to make a
+    special Int 2F call before switching video modes. This call
+    tells the current Windows screen driver (VGA.DRV for standard
+    VGA mode) what's happening. The desired side-effect of this
+    call is to make Windows tell all of its child windows to re-
+    paint themselves. This option is provided only for support for an
+    ATI Super VGA video mode and for applications built using
+    EasyWin (see NOTE above). However, be aware, that this option
+    can affect the other supported modes if it's enabled (use
+    this option only if absolutly necessary).
+
+  *** DebugFile ***
+
+    TDVIDEO.DLL normally doesn't save any debugging information.
+    If you're having problems using a special DLL, the DebugFile
+    option can be used to specify the path and filename of a log
+    file. Information logged to this file can be used if you need
+    to contact Borland's Technical Support. Information logged
+    consists of the Date/Time, the version of the DLL, the name
+    of the Windows screen driver that is currently in use, the
+    state of all .INI options, and a listing of all the calls to
+    the DLL's functions.
+
+    For example, if you want your DLL to save the entire screen
+    and log information to a file named C:\WINDOWS\TDVIDEO.LOG,
+    create a file called TDVIDEO.INI in the WINDOWS directory
+    that contains the following commands:
+
+      [VideoOptions]
+      SaveWholeScreen=yes
+      DebugFile=c:\windows\tdvideo.log
+
+  Turbo Profiler and remote profiling of Windows applications
+  ===========================================================
+
+  Some system configurations may cause WREMOTE and TPROF to fail when
+  profiling Windows applications on a remote system. The problem usually
+  causes both your program and Windows to abort when you attempt to
+  execute your program on the remote machine. If you experience this
+  problem with your system configuration, there are several possible
+  ways to avoid the problem.
+
+    1. Use TPROFW to profile the program directly under Windows on one
+       machine, rather than using two machines.
+
+    2. Run Windows in standard mode (using the DOS command WIN /S), then load
+       WREMOTE. On the local machine, use TPROF in passive analysis mode
+       (note that passive analysis is not available in 386 enhanced mode.)
+
+    3. If you require active analysis mode and cannot use TPROFW directly,
+       the following procedure may provide a solution. First, load Windows
+       and WREMOTE on the remote machine. Next, load TPROF on the local
+       machine and, without running the program, remove all area markers
+       using the Module window's local menu (Ctrl-R, A, from the Module
+       window). With this, exit TPROF using Alt-X, thus creating a .TFA
+       file having no areas marked.  Reload TPROF and your program; there
+       should be no areas marked (you can verify this by opening an Areas
+       window). Add any areas you are interested in examining, and begin
+       profiling your program.
+
+
+
+  CLASS LIBRARY
+
+  - If you used the add(), addAt(), or getItemsInContainer()
+    member functions of the Array class in Borland C++ 2.0
+    applications, note that their behavior has changed slightly.
+    The following rules apply to these and related functions:
+
+      1. add() will insert its argument at the lowest available
+         location in the Array.  This location is known as the
+         "insertion point".
+
+      2. detach() will remove its argument from the Array, and if
+         that Object is located below the insertion point, it
+         will move the elements above the Object being removed
+         and below the insertion point down one position, so that
+         the elements below the insertion point remain
+         contiguous.  The insertion point, of course, moves down
+         one.
+
+      3. if the location specified in a call to addAt() is below
+         or at the insertion point, the elements above the
+         specified location and below the insertion point are
+         moved up one position, and the Object is inserted.  The
+         insertion point moves up one.
+
+      4. if the location specified in a call to addAt() is above
+         the insertion point, the Object is inserted at that
+         location, replacing any Object that may have been placed
+         there previously.
+
+      5. getItemsInContainer() returns the number of elements
+         below the current insertion point.  If you use addAt()
+         to add elements above the insertion point, they will not
+         affect the value returned by getItemsInContainer(). 
+         This is a change from the behavior in the previous
+         version of the class library.
+
+  - Two versions of the class library sources are provided; one
+    using an implementation using C++ templates, and one not using
+    templates. The small and dynamic link libraries are provided, and
+    a makefile is provided to build other models.
+
+ 5. TESTING YOUR EXPANDED MEMORY: EMSTEST.COM
+---------------------------------------------
+
+  Included with Borland C++ is a program to test your Expanded
+  Memory hardware and software. If you have problems using
+  Borland C++ with your EMS, type EMSTEST at the DOS prompt and
+  follow the instructions.
+
+
+ 6.  CORRECTIONS TO THE DOCUMENTS
+---------------------------------
+
+Borland C++ Programmer's Guide
+------------------------------
+ Chapter 8, "Building a Windows application"
+ -------------------------------------------
+
+  Page 321
+  --------
+  The TLINK command line should be changed to:
+
+   tlink /Tw /v /n /c C:\BORLANDC\LIB\c0ws whello,\
+         whello,\
+         ,\
+         C:\BORLANDC\LIB\cws
+                         ^^^
+
+Turbo Assembler User's Guide
+----------------------------
+
+Page 333 in Appendix D, Utilities, states that Turbo Assembler's
+online help facility is called TASMHELP. TASMHELP can be used as
+documented, but only if Turbo Assembler is installed in a
+directory other than the directory where Borland C++ is
+installed. If TASM is installed in the same directory as Borland
+C++, use the THELP utility for online help. THELP allows you to
+access a variety of help files via an easy to use menu system.
+
+Here's how THELP works:
+
+  1) After installing Borland C++ and Turbo Assembler, invoke THELP at
+     your DOS prompt.
+
+  2) Type ALT-F to bring up the menu of available help files.
+
+  3) Choose TASM.TAH to access help for Turbo Assembler.
+
+
+Tools and Utilities Guide
+-------------------------
+
+ Introduction
+ ------------
+ Information on transfer macros, the Turbo Editor Macro Language
+ (TEML), and the Turbo Editor Macro Compiler (TEMC) are also
+ documented in the online file UTIL.DOC.
+
+ Chapter 1, "Import library tools"
+ ---------------------------------
+
+  Page 7
+  ------
+   IMPLIBW does allow you to create a single import library from
+   multiple DLLs or module definition files. At the File Select
+   dialog box, you can type multiple filenames in the File edit
+   control. When you choose OK to make the import library,
+   IMPLIBW will use all the exports from each of the DLLs or
+   module definition files you listed. Note that you can only
+   select a single file using the file list box; you must type in
+   the filenames if you need to specify more than one.
+
+ Chapter 2, "Make: The program manager"
+ --------------------------------------
+
+  Page 11
+  -------
+   In the sentence that begins "All options that do not specify a
+   string (-s or ña, for example)..." the "ña" should be "-a".
+
+  Page 33
+  -------
+   The last word of the page, "which" should be "while @<".
+
+ Chapter 3, "TLIB: The Turbo librarian"
+ --------------------------------------
+ - There is an additional TLIB command line option, /0, which is
+   not documented in the printed TLIB reference (Chapter 3 of the
+   Tools & Utilities Guide).  The /0 option instructs the Turbo
+   Librarian to remove all "Comment" records from the library. 
+   Comment records are typically used to store information used
+   by the debugger or other tools, and are not needed to create
+   an executable file.  Using this option will make your
+   libraries (and executable programs created using the
+   libraries) smaller.  The /0 option is equivalent to checking
+   Purge Comment Records in the Options|Librarian dialog box
+   within the IDE.
+
+ Chapter 4, "TLINK: The Turbo linker"
+ --------------------------------------
+
+  Page 58
+  -------
+   Change the TLINK format description to:
+
+    tlink C0[W|D|F]x myobjs,exe,[map],[IMPORT][mylibs][OVERLAY]
+    [EMU|FP87 mathx][CWx|Cx],[deffile]
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  Page 60
+  -------
+   Reverse the order of the two bullet items below:
+
+   o CWx.LIB, the run-time library..
+   o if you are using floating point math, FP87.LIB...
+
+   The math libraries should be linked before the run-time library.
+
+
+
+ Appendix A, "Error messages"
+ ----------------------------
+
+  Page 183
+  --------
+   In the TLINK warning "filename(linenum): Duplicate internal name
+   in imports," there is an extraneous right bracket that should be
+   removed.
+
+  Page 197
+  --------
+   In the compile-time error "Last parameter of operator must have
+   type int," "operator-ñ" should actually read "operator--"
+
+Library Reference
+-----------------
+
+  Chapter 2, "The run-time library"
+  ---------------------------------
+    Page 173
+    --------
+      Under "Return value" "doserno" should be "_doserrno".
+
+    Page 174
+    --------
+      Under "Return value" "doserno" should be "_doserrno" and
+      the entry for ENOENT should be "Path or file name not found".
+
+    Page 185
+    --------
+      _fpreset() is shown as being available under Windows, which
+      is not true.
+
+  Note that two functions are incorrectly prototyped in the Library
+  Reference. Here are their correct prototypes:
+
+     size_t far _fstrlen(const char far *s);
+     size_t far _fstrcspn(const char *s1, const char far *s2);
+
+  The following functions have some missing documentation in the Library
+  Reference:
+
+  ------------------------------------------------------------------
+  Function: stackavail
+  Gets the amount of available memory.
+
+  Syntax:
+  #include <malloc.h>
+  size_t stackavail(void);
+
+  ÉÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍ»
+  º  DOS  ³  UNIX  ³  Windows ³  ANSI C  ³ C++ only  º
+  ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+  º    ş  ³        ³          ³          ³           º
+  ÈÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍ¼
+                     ^^^^^^^^
+  Remarks:
+  stackavail returns the number of bytes available on the stack. This
+  is the amount of dynamic memory which alloca may access.
+
+  Return value:
+  stackavail returns a size_t value indicating the number of bytes
+  available.
+
+  See also:
+  alloca, allocmem, coreleft, _dos_allocmem, farcoreleft,
+  _stklen (global variable)
+
+  Example:
+  #include <malloc.h>
+  #include <stdio.h>
+
+  int main(void) {
+     char *buf;
+
+     printf("\nThe stack: %u\tstack pointer: %u", stackavail(), _SP);
+     buf = (char *) alloca(100 * sizeof(char));
+     printf("\nNow, the stack: %u\tstack pointer: %u", stackavail(), _SP);
+     return(0);
+     }
+
+
+  Program output:
+    The stack: 63528         stack pointer: 65524
+    Now, the stack: 63424    stack pointer: 65420
+
+
+  ------------------------------------------------------------------
+  Function: strcmp, _fstrcmp
+  Compares one string to another.
+
+  Syntax:
+  #include <string.h>
+  Near version: int strcmp(const char *s1, const char *s2);
+  Far version: int far _fstrcmp(const char far *s1, const char far *s2);
+
+
+                ÉÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍ»
+                º  DOS  ³  UNIX  ³  Windows ³  ANSI C  ³ C++ only  º
+                ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+  Near version  º    ş  ³    ş   ³     ş    ³    ş     ³           º
+                ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+  Far version   º    ş  ³        ³     ş    ³          ³           º
+                ÈÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍ¼
+
+  Remarks:
+  strcmp performs an unsigned comparison of s1 to s2, starting with
+  the  first character in each string and continuing with
+  subsequent characters  until the corresponding characters differ
+  or until the end of the strings is reached.
+
+  Return value:
+  strcmp returns a value that is
+
+    < 0 if s1 is less than s2
+    == 0 if s1 is the same as s2
+    > 0 if s1 is greater than s2
+
+  See also:
+  strcmpi, strcoll, stricmp, strncmp, strncmpi, strnicmp
+
+  Example:
+  #include <string.h>
+  #include <stdio.h>
+
+  int main(void)
+  {
+     char *buf1 = "aaa", *buf2 = "bbb", *buf3 ="ccc";
+     int ptr;
+     ptr = strcmp(buf2, buf1);
+     if (ptr > 0)
+        printf("buffer 2 is greater than buffer 1\n");
+     else
+        printf("buffer 2 is less than buffer 1\n");
+     ptr = strcmp(buf2, buf3);
+     if (ptr > 0)
+        printf("buffer 2 is greater than buffer 3\n");
+     else
+        printf("buffer 2 is less than buffer 3\n");
+     return 0;
+  }
+
+
+
+  ------------------------------------------------------------------
+  Function: strcpy, _fstrcpy
+  Copies one string into another.
+
+  Syntax
+  #include <string.h>
+  Near version: char *strcpy(char *dest, const char *src);
+  Far version: char far * _fstrcpy(char far *dest, const char far *src);
+
+
+
+                ÉÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍ»
+                º  DOS  ³  UNIX  ³  Windows ³  ANSI C  ³ C++ only  º
+                ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+  Near version  º    ş  ³    ş   ³     ş    ³    ş     ³           º
+                ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+  Far version   º    ş  ³        ³     ş    ³          ³           º
+                ÈÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍ¼
+
+  Remarks:
+  Copies string src to dest, stopping after the terminating null
+  character has been moved.
+
+  Return value:
+  strcpy returns dest.
+
+  See also: stpcpy
+
+  Example:
+  #include <stdio.h>
+  #include <string.h>
+
+  int main(void)
+  {
+     char string[10];
+     char *str1 = "abcdefghi";
+     strcpy(string, str1);
+     printf("%s\n", string);
+     return 0;
+  }
+
+
+  ------------------------------------------------------------------
+  Function: _dos_open
+  Opens the specified file and prepares it for reading or writing.
+
+  Syntax:
+  #include <fcntl.h>
+  #include <share.h>
+  #include <DOS.H>
+  unsigned _dos_open(const char *filename, unsigned oflags, int *handlep);
+
+  Arguments:
+  filename --  File that the function opens and prepares for reading and/or
+               writing
+  oflags   --  Open-mode symbolic constants (defined in FCNTL.H) and
+               file-sharing symbolic constants (defined in SHARE.H) that
+               specify the file's open mode (read, write, share, etc.)
+  handlep  --  Points to the location where the function stores
+               the file's handle.
+
+                ÉÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍ»
+                º  DOS  ³  UNIX  ³  Windows ³  ANSI C  ³ C++ only  º
+                ÇÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ¶
+                º  Yes  ³        ³    Yes   ³          ³           º
+                ÈÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍ¼
+
+
+  Remarks:
+  Opens the file specified by filename, then prepares it for reading
+  or writing. The file is always opened in binary mode.
+
+  On successfully opening the file, the function sets the file pointer (which
+  marks the current position in the file) to the beginning of the file.
+
+  The maximum number of simultaneously open files is defined by HANDLE_MAX.
+
+  Return Value:
+  On success, _dos_open returns 0, stores the file handle at the location
+    *handlep
+  On error, _dos_open returns the DOS error code and sets errno to one
+    of the following:
+           ENOENT  (Path or file not found)
+           EMFILE  (Too many open files)
+           EACCES  (Permission denied)
+           EINVACC (Invalid access code)
+
+   See Also:  _dos_creat _dos_read _dos_write _read open sopen
+
+
