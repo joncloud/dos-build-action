@@ -21,7 +21,12 @@ describe('e2e', function () {
           ...process.env,
           INPUT_RUN: run,
           INPUT_PROGRAMS: programs,
-          INPUT_CONF: '',
+          INPUT_CONF: `[dosbox]
+            memsize=256
+
+            [cpu]
+            cycles=max
+            turbo=true`,
         },
         stdio: 'ignore',
       });
