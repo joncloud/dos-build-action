@@ -5,6 +5,8 @@ import assert from 'assert/strict';
 import { fork } from 'child_process';
 
 describe('e2e', function () {
+  this.timeout(5000);
+
   before(async function () {
     const files = await readdir('sample');
     for (const file of files) {

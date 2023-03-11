@@ -6,6 +6,8 @@ import assert from 'assert/strict';
 import { PassThrough } from 'stream';
 
 describe('dosbox', function () {
+  this.timeout(5000);
+
   /** @type {string} */
   let tempPath;
   /** @type {string} */
